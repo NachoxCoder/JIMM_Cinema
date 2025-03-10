@@ -17,21 +17,21 @@ namespace Gestion_Cine
     public partial class Fr_MenuPrincipal : Form
     {
         private BE_Usuario usuarioActual;
-        //private readonly BLL_Permiso gestorPermiso;
-        //private readonly BLL_Bitacora gestorBitacora;
-        public Fr_MenuPrincipal()
+        private readonly BLL_Permiso gestorPermiso;
+        private Form frLogin;
+        public Fr_MenuPrincipal(BE_Usuario usuario, Form FrLogin)
         {
             InitializeComponent();
-            //usuarioActual = usuario;
-            //gestorPermiso = new BLL_Permiso();
-            //gestorBitacora = new BLL_Bitacora();
+            usuarioActual = usuario;
+            gestorPermiso = new BLL_Permiso();
+            this.Load += Fr_MenuPrincipal_Load;
+            frLogin = FrLogin;
         }
 
         private void Fr_MenuPrincipal_Load(object sender, EventArgs e)
         {
             CargarMenuSegunPermisos();
             Text = $"Bienvenido {usuarioActual.Nombre} {usuarioActual.Apellido}";
-            //gestorBitacora.Log(usuarioActual, "Inicio de sesión");
         }
 
         private void CargarMenuSegunPermisos()
@@ -68,14 +68,12 @@ namespace Gestion_Cine
 
         private void cerrarSesiónToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //gestorBitacora.Log(usuarioActual, "Cierre de sesión");
             Close();
-            //new Fr_Login().Show();
+            frLogin.Show();
         }
 
         private void SalirToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //gestorBitacora.Log(usuarioActual, "Salio de Sistema");
             Application.Exit();
         }
 
@@ -135,14 +133,21 @@ namespace Gestion_Cine
 
         private void gestionDeEmpleadosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var form = new Fr_GestionUsuarios();
+            var form = new Fr_GestionUsuarios(usuarioActual);
             CargarForm(form);
         }
 
         private void gestionDePermisosYRolesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var form = new Fr_GestionPermisos();
+            var form = new Fr_GestionPermisos(usuarioActual);
             CargarForm(form);
         }
+
+        private void gestionDeBackupsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = new Fr_GestionBackupRestore(usuarioActual);
+            CargarForm(form);
+        }
+
     }
 }

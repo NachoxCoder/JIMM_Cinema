@@ -41,251 +41,269 @@ namespace UI
         /// </summary>
         private void InitializeComponent()
         {
-            pnlTop = new Panel();
-            lblTitle = new Label();
-            grpClient = new GroupBox();
-            txtMembresiaCliente = new TextBox();
-            label2 = new Label();
-            label1 = new Label();
-            txtNombreCliente = new TextBox();
-            txtClientDNI = new TextBox();
-            btnBuscarCliente = new Button();
-            dgvFunciones = new DataGridView();
-            panelButacas = new FlowLayoutPanel();
-            lstBxButacasSeleccionadas = new ListBox();
-            lblTotal = new Label();
-            btnCompletarVenta = new Button();
-            dgvPeliculas = new DataGridView();
-            btnNuevoCliente = new Button();
-            btnMembresia = new Button();
-            cmbxMetodoPago = new ComboBox();
-            label3 = new Label();
-            pnlTop.SuspendLayout();
-            grpClient.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvFunciones).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dgvPeliculas).BeginInit();
-            SuspendLayout();
+            this.pnlTop = new System.Windows.Forms.Panel();
+            this.lblTitle = new System.Windows.Forms.Label();
+            this.grpClient = new System.Windows.Forms.GroupBox();
+            this.txtMembresiaCliente = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtNombreCliente = new System.Windows.Forms.TextBox();
+            this.txtClientDNI = new System.Windows.Forms.TextBox();
+            this.btnBuscarCliente = new System.Windows.Forms.Button();
+            this.dgvFunciones = new System.Windows.Forms.DataGridView();
+            this.panelButacas = new System.Windows.Forms.FlowLayoutPanel();
+            this.lstBxButacasSeleccionadas = new System.Windows.Forms.ListBox();
+            this.lblTotal = new System.Windows.Forms.Label();
+            this.btnCompletarVenta = new System.Windows.Forms.Button();
+            this.dgvPeliculas = new System.Windows.Forms.DataGridView();
+            this.btnNuevoCliente = new System.Windows.Forms.Button();
+            this.btnMembresia = new System.Windows.Forms.Button();
+            this.cmbxMetodoPago = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.pnlTop.SuspendLayout();
+            this.grpClient.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvFunciones)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPeliculas)).BeginInit();
+            this.SuspendLayout();
             // 
             // pnlTop
             // 
-            pnlTop.BackColor = Color.FromArgb(10, 18, 80);
-            pnlTop.Controls.Add(lblTitle);
-            pnlTop.Dock = DockStyle.Top;
-            pnlTop.Location = new Point(0, 0);
-            pnlTop.Name = "pnlTop";
-            pnlTop.Size = new Size(1320, 60);
-            pnlTop.TabIndex = 0;
+            this.pnlTop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(18)))), ((int)(((byte)(80)))));
+            this.pnlTop.Controls.Add(this.lblTitle);
+            this.pnlTop.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlTop.Location = new System.Drawing.Point(0, 0);
+            this.pnlTop.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pnlTop.Name = "pnlTop";
+            this.pnlTop.Size = new System.Drawing.Size(1320, 48);
+            this.pnlTop.TabIndex = 0;
             // 
             // lblTitle
             // 
-            lblTitle.BackColor = Color.Sienna;
-            lblTitle.Dock = DockStyle.Fill;
-            lblTitle.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
-            lblTitle.ForeColor = Color.White;
-            lblTitle.Location = new Point(0, 0);
-            lblTitle.Name = "lblTitle";
-            lblTitle.Size = new Size(1320, 60);
-            lblTitle.TabIndex = 0;
-            lblTitle.Text = "VENTA DE BOLETOS";
-            lblTitle.TextAlign = ContentAlignment.MiddleCenter;
+            this.lblTitle.BackColor = System.Drawing.Color.Sienna;
+            this.lblTitle.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
+            this.lblTitle.ForeColor = System.Drawing.Color.White;
+            this.lblTitle.Location = new System.Drawing.Point(0, 0);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(1320, 48);
+            this.lblTitle.TabIndex = 0;
+            this.lblTitle.Text = "VENTA DE BOLETOS";
+            this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // grpClient
             // 
-            grpClient.Controls.Add(txtMembresiaCliente);
-            grpClient.Controls.Add(label2);
-            grpClient.Controls.Add(label1);
-            grpClient.Controls.Add(txtNombreCliente);
-            grpClient.Controls.Add(txtClientDNI);
-            grpClient.Controls.Add(btnBuscarCliente);
-            grpClient.Location = new Point(12, 70);
-            grpClient.Name = "grpClient";
-            grpClient.Size = new Size(785, 96);
-            grpClient.TabIndex = 1;
-            grpClient.TabStop = false;
-            grpClient.Text = "Datos del Cliente";
+            this.grpClient.Controls.Add(this.txtMembresiaCliente);
+            this.grpClient.Controls.Add(this.label2);
+            this.grpClient.Controls.Add(this.label1);
+            this.grpClient.Controls.Add(this.txtNombreCliente);
+            this.grpClient.Controls.Add(this.txtClientDNI);
+            this.grpClient.Controls.Add(this.btnBuscarCliente);
+            this.grpClient.Location = new System.Drawing.Point(12, 56);
+            this.grpClient.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.grpClient.Name = "grpClient";
+            this.grpClient.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.grpClient.Size = new System.Drawing.Size(785, 77);
+            this.grpClient.TabIndex = 1;
+            this.grpClient.TabStop = false;
+            this.grpClient.Text = "Datos del Cliente";
             // 
             // txtMembresiaCliente
             // 
-            txtMembresiaCliente.Location = new Point(393, 60);
-            txtMembresiaCliente.Name = "txtMembresiaCliente";
-            txtMembresiaCliente.Size = new Size(386, 27);
-            txtMembresiaCliente.TabIndex = 5;
+            this.txtMembresiaCliente.Location = new System.Drawing.Point(393, 48);
+            this.txtMembresiaCliente.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtMembresiaCliente.Name = "txtMembresiaCliente";
+            this.txtMembresiaCliente.Size = new System.Drawing.Size(386, 22);
+            this.txtMembresiaCliente.TabIndex = 5;
             // 
             // label2
             // 
-            label2.AutoSize = true;
-            label2.Location = new Point(302, 67);
-            label2.Name = "label2";
-            label2.Size = new Size(83, 20);
-            label2.TabIndex = 4;
-            label2.Text = "Membresia";
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(302, 54);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(75, 16);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "Membresia";
             // 
             // label1
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(302, 20);
-            label1.Name = "label1";
-            label1.Size = new Size(64, 20);
-            label1.TabIndex = 3;
-            label1.Text = "Nombre";
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(302, 16);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(56, 16);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "Nombre";
             // 
             // txtNombreCliente
             // 
-            txtNombreCliente.Location = new Point(393, 17);
-            txtNombreCliente.Name = "txtNombreCliente";
-            txtNombreCliente.Size = new Size(386, 27);
-            txtNombreCliente.TabIndex = 2;
+            this.txtNombreCliente.Location = new System.Drawing.Point(393, 14);
+            this.txtNombreCliente.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtNombreCliente.Name = "txtNombreCliente";
+            this.txtNombreCliente.Size = new System.Drawing.Size(386, 22);
+            this.txtNombreCliente.TabIndex = 2;
             // 
             // txtClientDNI
             // 
-            txtClientDNI.Location = new Point(20, 40);
-            txtClientDNI.Name = "txtClientDNI";
-            txtClientDNI.Text = "DNI del Cliente";
-            txtClientDNI.Size = new Size(180, 27);
-            txtClientDNI.TabIndex = 0;
+            this.txtClientDNI.Location = new System.Drawing.Point(20, 32);
+            this.txtClientDNI.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtClientDNI.Name = "txtClientDNI";
+            this.txtClientDNI.Size = new System.Drawing.Size(180, 22);
+            this.txtClientDNI.TabIndex = 0;
+            this.txtClientDNI.Text = "DNI del Cliente";
             // 
             // btnBuscarCliente
             // 
-            btnBuscarCliente.Location = new Point(210, 39);
-            btnBuscarCliente.Name = "btnBuscarCliente";
-            btnBuscarCliente.Size = new Size(70, 27);
-            btnBuscarCliente.TabIndex = 1;
-            btnBuscarCliente.Text = "Buscar";
-            btnBuscarCliente.Click += btnBuscarCliente_Click_1;
+            this.btnBuscarCliente.Location = new System.Drawing.Point(210, 31);
+            this.btnBuscarCliente.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnBuscarCliente.Name = "btnBuscarCliente";
+            this.btnBuscarCliente.Size = new System.Drawing.Size(86, 23);
+            this.btnBuscarCliente.TabIndex = 1;
+            this.btnBuscarCliente.Text = "Buscar";
+            this.btnBuscarCliente.Click += new System.EventHandler(this.btnBuscarCliente_Click);
             // 
             // dgvFunciones
             // 
-            dgvFunciones.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dgvFunciones.ColumnHeadersHeight = 29;
-            dgvFunciones.Location = new Point(693, 184);
-            dgvFunciones.MultiSelect = false;
-            dgvFunciones.Name = "dgvFunciones";
-            dgvFunciones.RowHeadersWidth = 51;
-            dgvFunciones.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvFunciones.Size = new Size(600, 200);
-            dgvFunciones.TabIndex = 2;
-            dgvFunciones.SelectionChanged += dgvFunciones_SelectionChanged;
+            this.dgvFunciones.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvFunciones.ColumnHeadersHeight = 29;
+            this.dgvFunciones.Location = new System.Drawing.Point(693, 147);
+            this.dgvFunciones.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dgvFunciones.MultiSelect = false;
+            this.dgvFunciones.Name = "dgvFunciones";
+            this.dgvFunciones.RowHeadersWidth = 51;
+            this.dgvFunciones.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvFunciones.Size = new System.Drawing.Size(600, 160);
+            this.dgvFunciones.TabIndex = 2;
+            this.dgvFunciones.SelectionChanged += new System.EventHandler(this.dgvFunciones_SelectionChanged);
             // 
             // panelButacas
             // 
-            panelButacas.BorderStyle = BorderStyle.FixedSingle;
-            panelButacas.Location = new Point(12, 390);
-            panelButacas.Name = "panelButacas";
-            panelButacas.Size = new Size(1074, 395);
-            panelButacas.TabIndex = 3;
+            this.panelButacas.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelButacas.Location = new System.Drawing.Point(12, 312);
+            this.panelButacas.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panelButacas.Name = "panelButacas";
+            this.panelButacas.Size = new System.Drawing.Size(1074, 483);
+            this.panelButacas.TabIndex = 3;
             // 
             // lstBxButacasSeleccionadas
             // 
-            lstBxButacasSeleccionadas.Location = new Point(1103, 394);
-            lstBxButacasSeleccionadas.Name = "lstBxButacasSeleccionadas";
-            lstBxButacasSeleccionadas.Size = new Size(190, 204);
-            lstBxButacasSeleccionadas.TabIndex = 4;
+            this.lstBxButacasSeleccionadas.ItemHeight = 16;
+            this.lstBxButacasSeleccionadas.Location = new System.Drawing.Point(1103, 315);
+            this.lstBxButacasSeleccionadas.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.lstBxButacasSeleccionadas.Name = "lstBxButacasSeleccionadas";
+            this.lstBxButacasSeleccionadas.Size = new System.Drawing.Size(190, 164);
+            this.lstBxButacasSeleccionadas.TabIndex = 4;
             // 
             // lblTotal
             // 
-            lblTotal.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            lblTotal.Location = new Point(1103, 608);
-            lblTotal.Name = "lblTotal";
-            lblTotal.Size = new Size(190, 30);
-            lblTotal.TabIndex = 5;
-            lblTotal.Text = "Total: $0.00";
-            lblTotal.TextAlign = ContentAlignment.MiddleRight;
+            this.lblTotal.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.lblTotal.Location = new System.Drawing.Point(1103, 486);
+            this.lblTotal.Name = "lblTotal";
+            this.lblTotal.Size = new System.Drawing.Size(190, 24);
+            this.lblTotal.TabIndex = 5;
+            this.lblTotal.Text = "Total: $0.00";
+            this.lblTotal.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // btnCompletarVenta
             // 
-            btnCompletarVenta.BackColor = Color.Sienna;
-            btnCompletarVenta.FlatStyle = FlatStyle.Flat;
-            btnCompletarVenta.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            btnCompletarVenta.ForeColor = Color.White;
-            btnCompletarVenta.Location = new Point(1103, 745);
-            btnCompletarVenta.Name = "btnCompletarVenta";
-            btnCompletarVenta.Size = new Size(190, 40);
-            btnCompletarVenta.TabIndex = 6;
-            btnCompletarVenta.Text = "COMPLETAR VENTA";
-            btnCompletarVenta.UseVisualStyleBackColor = false;
-            btnCompletarVenta.Click += btnCompletarVenta_Click;
+            this.btnCompletarVenta.BackColor = System.Drawing.Color.Sienna;
+            this.btnCompletarVenta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCompletarVenta.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.btnCompletarVenta.ForeColor = System.Drawing.Color.White;
+            this.btnCompletarVenta.Location = new System.Drawing.Point(1103, 596);
+            this.btnCompletarVenta.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnCompletarVenta.Name = "btnCompletarVenta";
+            this.btnCompletarVenta.Size = new System.Drawing.Size(190, 32);
+            this.btnCompletarVenta.TabIndex = 6;
+            this.btnCompletarVenta.Text = "COMPLETAR VENTA";
+            this.btnCompletarVenta.UseVisualStyleBackColor = false;
+            this.btnCompletarVenta.Click += new System.EventHandler(this.btnCompletarVenta_Click);
             // 
             // dgvPeliculas
             // 
-            dgvPeliculas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvPeliculas.Location = new Point(12, 184);
-            dgvPeliculas.MultiSelect = false;
-            dgvPeliculas.Name = "dgvPeliculas";
-            dgvPeliculas.RowHeadersWidth = 51;
-            dgvPeliculas.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvPeliculas.Size = new Size(642, 200);
-            dgvPeliculas.TabIndex = 7;
-            dgvPeliculas.SelectionChanged += dgvPeliculas_SelectionChanged;
+            this.dgvPeliculas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPeliculas.Location = new System.Drawing.Point(12, 147);
+            this.dgvPeliculas.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dgvPeliculas.MultiSelect = false;
+            this.dgvPeliculas.Name = "dgvPeliculas";
+            this.dgvPeliculas.RowHeadersWidth = 51;
+            this.dgvPeliculas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvPeliculas.Size = new System.Drawing.Size(642, 160);
+            this.dgvPeliculas.TabIndex = 7;
+            this.dgvPeliculas.SelectionChanged += new System.EventHandler(this.dgvPeliculas_SelectionChanged);
             // 
             // btnNuevoCliente
             // 
-            btnNuevoCliente.BackColor = Color.Sienna;
-            btnNuevoCliente.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            btnNuevoCliente.ForeColor = Color.White;
-            btnNuevoCliente.Location = new Point(834, 70);
-            btnNuevoCliente.Name = "btnNuevoCliente";
-            btnNuevoCliente.Size = new Size(169, 44);
-            btnNuevoCliente.TabIndex = 8;
-            btnNuevoCliente.Text = "Nuevo Cliente";
-            btnNuevoCliente.UseVisualStyleBackColor = false;
-            btnNuevoCliente.Click += btnNuevoCliente_Click;
+            this.btnNuevoCliente.BackColor = System.Drawing.Color.Sienna;
+            this.btnNuevoCliente.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.btnNuevoCliente.ForeColor = System.Drawing.Color.White;
+            this.btnNuevoCliente.Location = new System.Drawing.Point(834, 56);
+            this.btnNuevoCliente.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnNuevoCliente.Name = "btnNuevoCliente";
+            this.btnNuevoCliente.Size = new System.Drawing.Size(190, 35);
+            this.btnNuevoCliente.TabIndex = 8;
+            this.btnNuevoCliente.Text = "Nuevo Cliente";
+            this.btnNuevoCliente.UseVisualStyleBackColor = false;
+            this.btnNuevoCliente.Click += new System.EventHandler(this.btnNuevoCliente_Click);
             // 
             // btnMembresia
             // 
-            btnMembresia.BackColor = Color.Sienna;
-            btnMembresia.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            btnMembresia.ForeColor = Color.White;
-            btnMembresia.Location = new Point(834, 123);
-            btnMembresia.Name = "btnMembresia";
-            btnMembresia.Size = new Size(169, 48);
-            btnMembresia.TabIndex = 9;
-            btnMembresia.Text = "Gestionar Membresia";
-            btnMembresia.UseVisualStyleBackColor = false;
-            btnMembresia.Click += btnMembresia_Click;
+            this.btnMembresia.BackColor = System.Drawing.Color.Sienna;
+            this.btnMembresia.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.btnMembresia.ForeColor = System.Drawing.Color.White;
+            this.btnMembresia.Location = new System.Drawing.Point(834, 98);
+            this.btnMembresia.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnMembresia.Name = "btnMembresia";
+            this.btnMembresia.Size = new System.Drawing.Size(190, 38);
+            this.btnMembresia.TabIndex = 9;
+            this.btnMembresia.Text = "Gestionar Membresia";
+            this.btnMembresia.UseVisualStyleBackColor = false;
+            this.btnMembresia.Click += new System.EventHandler(this.btnMembresia_Click);
             // 
             // cmbxMetodoPago
             // 
-            cmbxMetodoPago.FormattingEnabled = true;
-            cmbxMetodoPago.Location = new Point(1103, 679);
-            cmbxMetodoPago.Name = "cmbxMetodoPago";
-            cmbxMetodoPago.Size = new Size(181, 28);
-            cmbxMetodoPago.TabIndex = 10;
+            this.cmbxMetodoPago.FormattingEnabled = true;
+            this.cmbxMetodoPago.Location = new System.Drawing.Point(1103, 543);
+            this.cmbxMetodoPago.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cmbxMetodoPago.Name = "cmbxMetodoPago";
+            this.cmbxMetodoPago.Size = new System.Drawing.Size(181, 24);
+            this.cmbxMetodoPago.TabIndex = 10;
             // 
             // label3
             // 
-            label3.AutoSize = true;
-            label3.Location = new Point(1103, 656);
-            label3.Name = "label3";
-            label3.Size = new Size(120, 20);
-            label3.TabIndex = 11;
-            label3.Text = "Metodo de Pago";
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(1103, 525);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(108, 16);
+            this.label3.TabIndex = 11;
+            this.label3.Text = "Metodo de Pago";
             // 
             // Fr_VentaBoletos
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
-            AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1320, 833);
-            Controls.Add(label3);
-            Controls.Add(cmbxMetodoPago);
-            Controls.Add(btnMembresia);
-            Controls.Add(btnNuevoCliente);
-            Controls.Add(dgvPeliculas);
-            Controls.Add(pnlTop);
-            Controls.Add(grpClient);
-            Controls.Add(dgvFunciones);
-            Controls.Add(panelButacas);
-            Controls.Add(lstBxButacasSeleccionadas);
-            Controls.Add(lblTotal);
-            Controls.Add(btnCompletarVenta);
-            Name = "Fr_VentaBoletos";
-            Text = "Fr_VentaBoletos";
-            pnlTop.ResumeLayout(false);
-            grpClient.ResumeLayout(false);
-            grpClient.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvFunciones).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dgvPeliculas).EndInit();
-            ResumeLayout(false);
-            PerformLayout();
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(1320, 806);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.cmbxMetodoPago);
+            this.Controls.Add(this.btnMembresia);
+            this.Controls.Add(this.btnNuevoCliente);
+            this.Controls.Add(this.dgvPeliculas);
+            this.Controls.Add(this.pnlTop);
+            this.Controls.Add(this.grpClient);
+            this.Controls.Add(this.dgvFunciones);
+            this.Controls.Add(this.panelButacas);
+            this.Controls.Add(this.lstBxButacasSeleccionadas);
+            this.Controls.Add(this.lblTotal);
+            this.Controls.Add(this.btnCompletarVenta);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Name = "Fr_VentaBoletos";
+            this.Text = "Fr_VentaBoletos";
+            this.pnlTop.ResumeLayout(false);
+            this.grpClient.ResumeLayout(false);
+            this.grpClient.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvFunciones)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPeliculas)).EndInit();
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
         }
 
         #endregion

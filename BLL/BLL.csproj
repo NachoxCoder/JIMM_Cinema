@@ -41,6 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BLL_Backup.cs" />
+    <Compile Include="BLL_Bitacora.cs" />
     <Compile Include="BLL_Boleto.cs" />
     <Compile Include="BLL_Butaca.cs" />
     <Compile Include="BLL_Cliente.cs" />

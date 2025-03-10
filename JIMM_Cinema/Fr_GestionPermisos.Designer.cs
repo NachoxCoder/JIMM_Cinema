@@ -31,307 +31,340 @@ namespace UI
         /// </summary>
         private void InitializeComponent()
         {
-            pnlTop = new Panel();
-            lblTitle = new Label();
-            pnlTrees = new Panel();
-            groupBox3 = new GroupBox();
-            btnRemoverPermisoUsuario = new Button();
-            btnAsignarPermisoUsuario = new Button();
-            btnAsignarRolUsuario = new Button();
-            btnRemoverRolUsuario = new Button();
-            groupBox2 = new GroupBox();
-            btnAsignarPermiso = new Button();
-            btnQuitarPermiso = new Button();
-            groupBox1 = new GroupBox();
-            btnCrearRol = new Button();
-            btnEliminarRol = new Button();
-            txtNombreRol = new TextBox();
-            grpUsuarios = new GroupBox();
-            tvUsuarios = new TreeView();
-            grpRoles = new GroupBox();
-            tvRoles = new TreeView();
-            grpPermisos = new GroupBox();
-            tvPermisos = new TreeView();
-            grpRolesPermisos = new GroupBox();
-            tvRolesPermisos = new TreeView();
-            grpUsuariosPermisos = new GroupBox();
-            tvUsuariosPermisos = new TreeView();
-            pnlTop.SuspendLayout();
-            pnlTrees.SuspendLayout();
-            groupBox3.SuspendLayout();
-            groupBox2.SuspendLayout();
-            groupBox1.SuspendLayout();
-            grpUsuarios.SuspendLayout();
-            grpRoles.SuspendLayout();
-            grpPermisos.SuspendLayout();
-            grpRolesPermisos.SuspendLayout();
-            grpUsuariosPermisos.SuspendLayout();
-            SuspendLayout();
+            this.pnlTop = new System.Windows.Forms.Panel();
+            this.lblTitle = new System.Windows.Forms.Label();
+            this.pnlTrees = new System.Windows.Forms.Panel();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.btnRemoverPermisoUsuario = new System.Windows.Forms.Button();
+            this.btnAsignarPermisoUsuario = new System.Windows.Forms.Button();
+            this.btnAsignarRolUsuario = new System.Windows.Forms.Button();
+            this.btnRemoverRolUsuario = new System.Windows.Forms.Button();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnAsignarPermiso = new System.Windows.Forms.Button();
+            this.btnQuitarPermiso = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnCrearRol = new System.Windows.Forms.Button();
+            this.btnEliminarRol = new System.Windows.Forms.Button();
+            this.txtNombreRol = new System.Windows.Forms.TextBox();
+            this.grpUsuarios = new System.Windows.Forms.GroupBox();
+            this.tvUsuarios = new System.Windows.Forms.TreeView();
+            this.grpRoles = new System.Windows.Forms.GroupBox();
+            this.tvRoles = new System.Windows.Forms.TreeView();
+            this.grpPermisos = new System.Windows.Forms.GroupBox();
+            this.tvPermisos = new System.Windows.Forms.TreeView();
+            this.grpRolesPermisos = new System.Windows.Forms.GroupBox();
+            this.tvRolesPermisos = new System.Windows.Forms.TreeView();
+            this.grpUsuariosPermisos = new System.Windows.Forms.GroupBox();
+            this.tvUsuariosPermisos = new System.Windows.Forms.TreeView();
+            this.pnlTop.SuspendLayout();
+            this.pnlTrees.SuspendLayout();
+            this.groupBox3.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            this.grpUsuarios.SuspendLayout();
+            this.grpRoles.SuspendLayout();
+            this.grpPermisos.SuspendLayout();
+            this.grpRolesPermisos.SuspendLayout();
+            this.grpUsuariosPermisos.SuspendLayout();
+            this.SuspendLayout();
             // 
             // pnlTop
             // 
-            pnlTop.BackColor = Color.FromArgb(10, 18, 80);
-            pnlTop.Controls.Add(lblTitle);
-            pnlTop.Dock = DockStyle.Top;
-            pnlTop.Location = new Point(0, 0);
-            pnlTop.Name = "pnlTop";
-            pnlTop.Size = new Size(1200, 60);
-            pnlTop.TabIndex = 0;
+            this.pnlTop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(18)))), ((int)(((byte)(80)))));
+            this.pnlTop.Controls.Add(this.lblTitle);
+            this.pnlTop.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlTop.Location = new System.Drawing.Point(0, 0);
+            this.pnlTop.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pnlTop.Name = "pnlTop";
+            this.pnlTop.Size = new System.Drawing.Size(1200, 48);
+            this.pnlTop.TabIndex = 0;
             // 
             // lblTitle
             // 
-            lblTitle.BackColor = Color.Sienna;
-            lblTitle.Dock = DockStyle.Fill;
-            lblTitle.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
-            lblTitle.ForeColor = Color.White;
-            lblTitle.Location = new Point(0, 0);
-            lblTitle.Name = "lblTitle";
-            lblTitle.Size = new Size(1200, 60);
-            lblTitle.TabIndex = 0;
-            lblTitle.Text = "GESTIÓN DE PERMISOS";
-            lblTitle.TextAlign = ContentAlignment.MiddleCenter;
+            this.lblTitle.BackColor = System.Drawing.Color.Sienna;
+            this.lblTitle.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
+            this.lblTitle.ForeColor = System.Drawing.Color.White;
+            this.lblTitle.Location = new System.Drawing.Point(0, 0);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(1200, 48);
+            this.lblTitle.TabIndex = 0;
+            this.lblTitle.Text = "GESTIÓN DE PERMISOS";
+            this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // pnlTrees
             // 
-            pnlTrees.Controls.Add(groupBox3);
-            pnlTrees.Controls.Add(groupBox2);
-            pnlTrees.Controls.Add(groupBox1);
-            pnlTrees.Controls.Add(grpUsuarios);
-            pnlTrees.Controls.Add(grpRoles);
-            pnlTrees.Controls.Add(grpPermisos);
-            pnlTrees.Controls.Add(grpRolesPermisos);
-            pnlTrees.Controls.Add(grpUsuariosPermisos);
-            pnlTrees.Dock = DockStyle.Fill;
-            pnlTrees.Location = new Point(0, 0);
-            pnlTrees.Name = "pnlTrees";
-            pnlTrees.Padding = new Padding(10);
-            pnlTrees.Size = new Size(1200, 700);
-            pnlTrees.TabIndex = 1;
+            this.pnlTrees.Controls.Add(this.groupBox3);
+            this.pnlTrees.Controls.Add(this.groupBox2);
+            this.pnlTrees.Controls.Add(this.groupBox1);
+            this.pnlTrees.Controls.Add(this.grpUsuarios);
+            this.pnlTrees.Controls.Add(this.grpRoles);
+            this.pnlTrees.Controls.Add(this.grpPermisos);
+            this.pnlTrees.Controls.Add(this.grpRolesPermisos);
+            this.pnlTrees.Controls.Add(this.grpUsuariosPermisos);
+            this.pnlTrees.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlTrees.Location = new System.Drawing.Point(0, 0);
+            this.pnlTrees.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pnlTrees.Name = "pnlTrees";
+            this.pnlTrees.Padding = new System.Windows.Forms.Padding(10, 8, 10, 8);
+            this.pnlTrees.Size = new System.Drawing.Size(1200, 560);
+            this.pnlTrees.TabIndex = 1;
             // 
             // groupBox3
             // 
-            groupBox3.Controls.Add(btnRemoverPermisoUsuario);
-            groupBox3.Controls.Add(btnAsignarPermisoUsuario);
-            groupBox3.Controls.Add(btnAsignarRolUsuario);
-            groupBox3.Controls.Add(btnRemoverRolUsuario);
-            groupBox3.Location = new Point(10, 424);
-            groupBox3.Name = "groupBox3";
-            groupBox3.Size = new Size(293, 111);
-            groupBox3.TabIndex = 7;
-            groupBox3.TabStop = false;
-            groupBox3.Text = "Usuario";
+            this.groupBox3.Controls.Add(this.btnRemoverPermisoUsuario);
+            this.groupBox3.Controls.Add(this.btnAsignarPermisoUsuario);
+            this.groupBox3.Controls.Add(this.btnAsignarRolUsuario);
+            this.groupBox3.Controls.Add(this.btnRemoverRolUsuario);
+            this.groupBox3.Location = new System.Drawing.Point(10, 440);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox3.Size = new System.Drawing.Size(293, 89);
+            this.groupBox3.TabIndex = 7;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Usuario";
             // 
             // btnRemoverPermisoUsuario
             // 
-            btnRemoverPermisoUsuario.Location = new Point(147, 68);
-            btnRemoverPermisoUsuario.Name = "btnRemoverPermisoUsuario";
-            btnRemoverPermisoUsuario.Size = new Size(136, 25);
-            btnRemoverPermisoUsuario.TabIndex = 6;
-            btnRemoverPermisoUsuario.Text = "Remover Permiso";
-            btnRemoverPermisoUsuario.Click += btnRemoverPermisoUsuario_Click;
+            this.btnRemoverPermisoUsuario.Location = new System.Drawing.Point(147, 54);
+            this.btnRemoverPermisoUsuario.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnRemoverPermisoUsuario.Name = "btnRemoverPermisoUsuario";
+            this.btnRemoverPermisoUsuario.Size = new System.Drawing.Size(140, 31);
+            this.btnRemoverPermisoUsuario.TabIndex = 6;
+            this.btnRemoverPermisoUsuario.Text = "Remover Permiso";
+            this.btnRemoverPermisoUsuario.Click += new System.EventHandler(this.btnRemoverPermisoUsuario_Click);
             // 
             // btnAsignarPermisoUsuario
             // 
-            btnAsignarPermisoUsuario.Location = new Point(147, 27);
-            btnAsignarPermisoUsuario.Name = "btnAsignarPermisoUsuario";
-            btnAsignarPermisoUsuario.Size = new Size(136, 25);
-            btnAsignarPermisoUsuario.TabIndex = 5;
-            btnAsignarPermisoUsuario.Text = "Asignar Permiso";
-            btnAsignarPermisoUsuario.Click += btnAsignarPermisoUsuario_Click;
+            this.btnAsignarPermisoUsuario.Location = new System.Drawing.Point(147, 22);
+            this.btnAsignarPermisoUsuario.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnAsignarPermisoUsuario.Name = "btnAsignarPermisoUsuario";
+            this.btnAsignarPermisoUsuario.Size = new System.Drawing.Size(140, 28);
+            this.btnAsignarPermisoUsuario.TabIndex = 5;
+            this.btnAsignarPermisoUsuario.Text = "Asignar Permiso";
+            this.btnAsignarPermisoUsuario.Click += new System.EventHandler(this.btnAsignarPermisoUsuario_Click);
             // 
             // btnAsignarRolUsuario
             // 
-            btnAsignarRolUsuario.Location = new Point(6, 28);
-            btnAsignarRolUsuario.Name = "btnAsignarRolUsuario";
-            btnAsignarRolUsuario.Size = new Size(124, 25);
-            btnAsignarRolUsuario.TabIndex = 3;
-            btnAsignarRolUsuario.Text = "Asignar Rol";
-            btnAsignarRolUsuario.Click += btnAsignarRolUsuario_Click;
+            this.btnAsignarRolUsuario.Location = new System.Drawing.Point(6, 22);
+            this.btnAsignarRolUsuario.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnAsignarRolUsuario.Name = "btnAsignarRolUsuario";
+            this.btnAsignarRolUsuario.Size = new System.Drawing.Size(135, 28);
+            this.btnAsignarRolUsuario.TabIndex = 3;
+            this.btnAsignarRolUsuario.Text = "Asignar Rol";
+            this.btnAsignarRolUsuario.Click += new System.EventHandler(this.btnAsignarRolUsuario_Click);
             // 
             // btnRemoverRolUsuario
             // 
-            btnRemoverRolUsuario.Location = new Point(6, 68);
-            btnRemoverRolUsuario.Name = "btnRemoverRolUsuario";
-            btnRemoverRolUsuario.Size = new Size(124, 25);
-            btnRemoverRolUsuario.TabIndex = 4;
-            btnRemoverRolUsuario.Text = "Remover Rol";
-            btnRemoverRolUsuario.Click += btnRemoverRolUsuario_Click;
+            this.btnRemoverRolUsuario.Location = new System.Drawing.Point(6, 54);
+            this.btnRemoverRolUsuario.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnRemoverRolUsuario.Name = "btnRemoverRolUsuario";
+            this.btnRemoverRolUsuario.Size = new System.Drawing.Size(135, 31);
+            this.btnRemoverRolUsuario.TabIndex = 4;
+            this.btnRemoverRolUsuario.Text = "Remover Rol";
+            this.btnRemoverRolUsuario.Click += new System.EventHandler(this.btnRemoverRolUsuario_Click);
             // 
             // groupBox2
             // 
-            groupBox2.Controls.Add(btnAsignarPermiso);
-            groupBox2.Controls.Add(btnQuitarPermiso);
-            groupBox2.Location = new Point(682, 424);
-            groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(336, 111);
-            groupBox2.TabIndex = 6;
-            groupBox2.TabStop = false;
-            groupBox2.Text = "Permiso";
+            this.groupBox2.Controls.Add(this.btnAsignarPermiso);
+            this.groupBox2.Controls.Add(this.btnQuitarPermiso);
+            this.groupBox2.Location = new System.Drawing.Point(822, 440);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox2.Size = new System.Drawing.Size(336, 89);
+            this.groupBox2.TabIndex = 6;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Permiso";
             // 
             // btnAsignarPermiso
             // 
-            btnAsignarPermiso.Location = new Point(6, 28);
-            btnAsignarPermiso.Name = "btnAsignarPermiso";
-            btnAsignarPermiso.Size = new Size(183, 25);
-            btnAsignarPermiso.TabIndex = 3;
-            btnAsignarPermiso.Text = "Asignar Permiso a Rol";
-            btnAsignarPermiso.Click += btnAsignarPermiso_Click;
+            this.btnAsignarPermiso.Location = new System.Drawing.Point(6, 22);
+            this.btnAsignarPermiso.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnAsignarPermiso.Name = "btnAsignarPermiso";
+            this.btnAsignarPermiso.Size = new System.Drawing.Size(183, 28);
+            this.btnAsignarPermiso.TabIndex = 3;
+            this.btnAsignarPermiso.Text = "Asignar Permiso a Rol";
+            this.btnAsignarPermiso.Click += new System.EventHandler(this.btnAsignarPermiso_Click);
             // 
             // btnQuitarPermiso
             // 
-            btnQuitarPermiso.Location = new Point(6, 68);
-            btnQuitarPermiso.Name = "btnQuitarPermiso";
-            btnQuitarPermiso.Size = new Size(183, 25);
-            btnQuitarPermiso.TabIndex = 4;
-            btnQuitarPermiso.Text = "Remover Permiso a Rol";
-            btnQuitarPermiso.Click += btnQuitarPermiso_Click;
+            this.btnQuitarPermiso.Location = new System.Drawing.Point(6, 54);
+            this.btnQuitarPermiso.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnQuitarPermiso.Name = "btnQuitarPermiso";
+            this.btnQuitarPermiso.Size = new System.Drawing.Size(183, 31);
+            this.btnQuitarPermiso.TabIndex = 4;
+            this.btnQuitarPermiso.Text = "Remover Permiso a Rol";
+            this.btnQuitarPermiso.Click += new System.EventHandler(this.btnQuitarPermiso_Click);
             // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(btnCrearRol);
-            groupBox1.Controls.Add(btnEliminarRol);
-            groupBox1.Controls.Add(txtNombreRol);
-            groupBox1.Location = new Point(326, 424);
-            groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(336, 111);
-            groupBox1.TabIndex = 5;
-            groupBox1.TabStop = false;
-            groupBox1.Text = "Rol";
+            this.groupBox1.Controls.Add(this.btnCrearRol);
+            this.groupBox1.Controls.Add(this.btnEliminarRol);
+            this.groupBox1.Controls.Add(this.txtNombreRol);
+            this.groupBox1.Location = new System.Drawing.Point(380, 440);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox1.Size = new System.Drawing.Size(366, 89);
+            this.groupBox1.TabIndex = 5;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Rol";
             // 
             // btnCrearRol
             // 
-            btnCrearRol.Location = new Point(6, 26);
-            btnCrearRol.Name = "btnCrearRol";
-            btnCrearRol.Size = new Size(100, 25);
-            btnCrearRol.TabIndex = 1;
-            btnCrearRol.Text = "Crear Rol";
-            btnCrearRol.Click += btnCrearRol_Click;
+            this.btnCrearRol.Location = new System.Drawing.Point(6, 21);
+            this.btnCrearRol.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnCrearRol.Name = "btnCrearRol";
+            this.btnCrearRol.Size = new System.Drawing.Size(100, 29);
+            this.btnCrearRol.TabIndex = 1;
+            this.btnCrearRol.Text = "Crear Rol";
+            this.btnCrearRol.Click += new System.EventHandler(this.btnCrearRol_Click);
             // 
             // btnEliminarRol
             // 
-            btnEliminarRol.Location = new Point(6, 68);
-            btnEliminarRol.Name = "btnEliminarRol";
-            btnEliminarRol.Size = new Size(100, 25);
-            btnEliminarRol.TabIndex = 2;
-            btnEliminarRol.Text = "Eliminar Rol";
-            btnEliminarRol.Click += btnEliminarRol_Click;
+            this.btnEliminarRol.Location = new System.Drawing.Point(6, 54);
+            this.btnEliminarRol.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnEliminarRol.Name = "btnEliminarRol";
+            this.btnEliminarRol.Size = new System.Drawing.Size(100, 31);
+            this.btnEliminarRol.TabIndex = 2;
+            this.btnEliminarRol.Text = "Eliminar Rol";
+            this.btnEliminarRol.Click += new System.EventHandler(this.btnEliminarRol_Click);
             // 
             // txtNombreRol
             // 
-            txtNombreRol.Location = new Point(112, 26);
-            txtNombreRol.Name = "txtNombreRol";
-            // Replace the line causing the error with the following code
-            txtNombreRol.Text = "Nombre del nuevo rol";
-            txtNombreRol.Size = new Size(200, 27);
-            txtNombreRol.TabIndex = 0;
+            this.txtNombreRol.Location = new System.Drawing.Point(112, 21);
+            this.txtNombreRol.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtNombreRol.Name = "txtNombreRol";
+            this.txtNombreRol.Size = new System.Drawing.Size(248, 22);
+            this.txtNombreRol.TabIndex = 0;
+            this.txtNombreRol.Text = "Nombre del nuevo rol";
             // 
             // grpUsuarios
             // 
-            grpUsuarios.Controls.Add(tvUsuarios);
-            grpUsuarios.Location = new Point(10, 66);
-            grpUsuarios.Name = "grpUsuarios";
-            grpUsuarios.Size = new Size(220, 352);
-            grpUsuarios.TabIndex = 0;
-            grpUsuarios.TabStop = false;
-            grpUsuarios.Text = "Usuarios";
+            this.grpUsuarios.Controls.Add(this.tvUsuarios);
+            this.grpUsuarios.Location = new System.Drawing.Point(10, 53);
+            this.grpUsuarios.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.grpUsuarios.Name = "grpUsuarios";
+            this.grpUsuarios.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.grpUsuarios.Size = new System.Drawing.Size(220, 383);
+            this.grpUsuarios.TabIndex = 0;
+            this.grpUsuarios.TabStop = false;
+            this.grpUsuarios.Text = "Usuarios";
             // 
             // tvUsuarios
             // 
-            tvUsuarios.Location = new Point(3, 26);
-            tvUsuarios.Name = "tvUsuarios";
-            tvUsuarios.Size = new Size(211, 320);
-            tvUsuarios.TabIndex = 0;
+            this.tvUsuarios.Location = new System.Drawing.Point(3, 21);
+            this.tvUsuarios.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tvUsuarios.Name = "tvUsuarios";
+            this.tvUsuarios.Size = new System.Drawing.Size(211, 347);
+            this.tvUsuarios.TabIndex = 0;
             // 
             // grpRoles
             // 
-            grpRoles.Controls.Add(tvRoles);
-            grpRoles.Location = new Point(251, 66);
-            grpRoles.Name = "grpRoles";
-            grpRoles.Size = new Size(220, 352);
-            grpRoles.TabIndex = 1;
-            grpRoles.TabStop = false;
-            grpRoles.Text = "Roles";
+            this.grpRoles.Controls.Add(this.tvRoles);
+            this.grpRoles.Location = new System.Drawing.Point(251, 53);
+            this.grpRoles.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.grpRoles.Name = "grpRoles";
+            this.grpRoles.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.grpRoles.Size = new System.Drawing.Size(220, 383);
+            this.grpRoles.TabIndex = 1;
+            this.grpRoles.TabStop = false;
+            this.grpRoles.Text = "Roles";
             // 
             // tvRoles
             // 
-            tvRoles.Location = new Point(4, 26);
-            tvRoles.Name = "tvRoles";
-            tvRoles.Size = new Size(211, 320);
-            tvRoles.TabIndex = 1;
+            this.tvRoles.Location = new System.Drawing.Point(4, 21);
+            this.tvRoles.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tvRoles.Name = "tvRoles";
+            this.tvRoles.Size = new System.Drawing.Size(211, 347);
+            this.tvRoles.TabIndex = 1;
             // 
             // grpPermisos
             // 
-            grpPermisos.Controls.Add(tvPermisos);
-            grpPermisos.Location = new Point(477, 66);
-            grpPermisos.Name = "grpPermisos";
-            grpPermisos.Size = new Size(220, 352);
-            grpPermisos.TabIndex = 2;
-            grpPermisos.TabStop = false;
-            grpPermisos.Text = "Permisos";
+            this.grpPermisos.Controls.Add(this.tvPermisos);
+            this.grpPermisos.Location = new System.Drawing.Point(477, 53);
+            this.grpPermisos.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.grpPermisos.Name = "grpPermisos";
+            this.grpPermisos.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.grpPermisos.Size = new System.Drawing.Size(220, 383);
+            this.grpPermisos.TabIndex = 2;
+            this.grpPermisos.TabStop = false;
+            this.grpPermisos.Text = "Permisos";
             // 
             // tvPermisos
             // 
-            tvPermisos.Location = new Point(0, 26);
-            tvPermisos.Name = "tvPermisos";
-            tvPermisos.Size = new Size(211, 320);
-            tvPermisos.TabIndex = 2;
+            this.tvPermisos.Location = new System.Drawing.Point(6, 19);
+            this.tvPermisos.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tvPermisos.Name = "tvPermisos";
+            this.tvPermisos.Size = new System.Drawing.Size(211, 349);
+            this.tvPermisos.TabIndex = 2;
             // 
             // grpRolesPermisos
             // 
-            grpRolesPermisos.Controls.Add(tvRolesPermisos);
-            grpRolesPermisos.Location = new Point(703, 66);
-            grpRolesPermisos.Name = "grpRolesPermisos";
-            grpRolesPermisos.Size = new Size(220, 352);
-            grpRolesPermisos.TabIndex = 3;
-            grpRolesPermisos.TabStop = false;
-            grpRolesPermisos.Text = "Roles y sus Permisos";
+            this.grpRolesPermisos.Controls.Add(this.tvRolesPermisos);
+            this.grpRolesPermisos.Location = new System.Drawing.Point(703, 53);
+            this.grpRolesPermisos.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.grpRolesPermisos.Name = "grpRolesPermisos";
+            this.grpRolesPermisos.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.grpRolesPermisos.Size = new System.Drawing.Size(220, 383);
+            this.grpRolesPermisos.TabIndex = 3;
+            this.grpRolesPermisos.TabStop = false;
+            this.grpRolesPermisos.Text = "Roles y sus Permisos";
             // 
             // tvRolesPermisos
             // 
-            tvRolesPermisos.Location = new Point(0, 26);
-            tvRolesPermisos.Name = "tvRolesPermisos";
-            tvRolesPermisos.Size = new Size(211, 320);
-            tvRolesPermisos.TabIndex = 3;
+            this.tvRolesPermisos.Location = new System.Drawing.Point(0, 21);
+            this.tvRolesPermisos.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tvRolesPermisos.Name = "tvRolesPermisos";
+            this.tvRolesPermisos.Size = new System.Drawing.Size(211, 347);
+            this.tvRolesPermisos.TabIndex = 3;
             // 
             // grpUsuariosPermisos
             // 
-            grpUsuariosPermisos.Controls.Add(tvUsuariosPermisos);
-            grpUsuariosPermisos.Location = new Point(929, 66);
-            grpUsuariosPermisos.Name = "grpUsuariosPermisos";
-            grpUsuariosPermisos.Size = new Size(229, 352);
-            grpUsuariosPermisos.TabIndex = 4;
-            grpUsuariosPermisos.TabStop = false;
-            grpUsuariosPermisos.Text = "Usuarios y sus Roles y Permisos";
+            this.grpUsuariosPermisos.Controls.Add(this.tvUsuariosPermisos);
+            this.grpUsuariosPermisos.Location = new System.Drawing.Point(929, 53);
+            this.grpUsuariosPermisos.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.grpUsuariosPermisos.Name = "grpUsuariosPermisos";
+            this.grpUsuariosPermisos.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.grpUsuariosPermisos.Size = new System.Drawing.Size(229, 383);
+            this.grpUsuariosPermisos.TabIndex = 4;
+            this.grpUsuariosPermisos.TabStop = false;
+            this.grpUsuariosPermisos.Text = "Usuarios y sus Roles y Permisos";
             // 
             // tvUsuariosPermisos
             // 
-            tvUsuariosPermisos.Location = new Point(0, 26);
-            tvUsuariosPermisos.Name = "tvUsuariosPermisos";
-            tvUsuariosPermisos.Size = new Size(223, 320);
-            tvUsuariosPermisos.TabIndex = 3;
+            this.tvUsuariosPermisos.Location = new System.Drawing.Point(0, 21);
+            this.tvUsuariosPermisos.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tvUsuariosPermisos.Name = "tvUsuariosPermisos";
+            this.tvUsuariosPermisos.Size = new System.Drawing.Size(223, 347);
+            this.tvUsuariosPermisos.TabIndex = 3;
             // 
             // Fr_GestionPermisos
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
-            AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1200, 700);
-            Controls.Add(pnlTop);
-            Controls.Add(pnlTrees);
-            Name = "Fr_GestionPermisos";
-            StartPosition = FormStartPosition.CenterScreen;
-            Text = "Gestión de Permisos";
-            pnlTop.ResumeLayout(false);
-            pnlTrees.ResumeLayout(false);
-            groupBox3.ResumeLayout(false);
-            groupBox2.ResumeLayout(false);
-            groupBox1.ResumeLayout(false);
-            groupBox1.PerformLayout();
-            grpUsuarios.ResumeLayout(false);
-            grpRoles.ResumeLayout(false);
-            grpPermisos.ResumeLayout(false);
-            grpRolesPermisos.ResumeLayout(false);
-            grpUsuariosPermisos.ResumeLayout(false);
-            ResumeLayout(false);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(1200, 560);
+            this.Controls.Add(this.pnlTop);
+            this.Controls.Add(this.pnlTrees);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Name = "Fr_GestionPermisos";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Gestión de Permisos";
+            this.pnlTop.ResumeLayout(false);
+            this.pnlTrees.ResumeLayout(false);
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.grpUsuarios.ResumeLayout(false);
+            this.grpRoles.ResumeLayout(false);
+            this.grpPermisos.ResumeLayout(false);
+            this.grpRolesPermisos.ResumeLayout(false);
+            this.grpUsuariosPermisos.ResumeLayout(false);
+            this.ResumeLayout(false);
+
         }
 
         private Panel pnlTop;

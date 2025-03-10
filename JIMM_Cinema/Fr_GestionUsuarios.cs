@@ -15,16 +15,15 @@ namespace UI
     public partial class Fr_GestionUsuarios : Form
     {
         private readonly BLL_Usuario gestorUsuario;
-        //private readonly BLL_Bitacora gestorBitacora;
         private readonly BE_Usuario usuarioActual;
         private BE_Usuario usuarioSeleccionado;
 
-        public Fr_GestionUsuarios()
+        public Fr_GestionUsuarios(BE_Usuario usuario)
         {
             InitializeComponent();
             gestorUsuario = new BLL_Usuario();
-            //gestorBitacora = new BLL_Bitacora();
-            //usuarioActual = usuario;
+            usuarioActual = usuario;
+            this.Load += Fr_GestionUsuarios_Load;
         }
 
         private void Fr_GestionUsuarios_Load(object sender, EventArgs e)
@@ -54,18 +53,18 @@ namespace UI
             {
                 if (!ValidarDatos()) return;
 
-                if (usuarioSeleccionado == null)
-                    usuarioSeleccionado = new BE_Usuario();
+                var nuevoUsuario = new BE_Usuario
+                {
+                    Username = txtUsername.Text,
+                    Nombre = txtNombre.Text,
+                    Apellido = txtApellido.Text,
+                    Area = txtArea.Text,
+                    Password = Servicio.Encriptacion.EncriptarPassword(txtPassword.Text),
+                    listaPermisos = new List<BE_Componente>()
+                };
 
-                usuarioSeleccionado.Username = txtUsername.Text;
-                usuarioSeleccionado.Nombre = txtNombre.Text;
-                usuarioSeleccionado.Apellido = txtApellido.Text;
-                usuarioSeleccionado.Area = txtArea.Text;
-                usuarioSeleccionado.Password = Servicio.Encriptacion.EncriptarPassword(txtPassword.Text);
-
-                gestorUsuario.Alta(usuarioSeleccionado);
+                gestorUsuario.Alta(nuevoUsuario);
                 MessageBox.Show("usuario guardado correctamente");
-                //gestorBitacora.Log(usuarioActual, $"Se ha guardado el usuario {usuarioSeleccionado.Username}");
                 CargarUsuarios();
                 LimpiarForm();
             }
@@ -79,16 +78,19 @@ namespace UI
         {
             try
             {
-                if (usuarioSeleccionado != null)
+                if (usuarioSeleccionado == null)
                 {
-                    if (MessageBox.Show($"¿Está seguro que desea eliminar el usuario {usuarioSeleccionado.Username}?", "Eliminar usuario", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                    {
-                        gestorUsuario.Baja(usuarioSeleccionado);
-                            MessageBox.Show("usuario eliminado correctamente");
-                            //gestorBitacora.Log(usuarioActual, $"Se ha eliminado el usuario {usuarioSeleccionado.Username}");
-                            CargarUsuarios();
-                            LimpiarForm();
-                    }
+                    MessageBox.Show("Debe seleccionar un usuario para eliminar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                if (MessageBox.Show($"¿Está seguro que desea eliminar el usuario {usuarioSeleccionado.Username}?",
+                    "Eliminar usuario", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    gestorUsuario.Baja(usuarioSeleccionado);
+                    MessageBox.Show("Usuario eliminado correctamente", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    CargarUsuarios();
+                    LimpiarForm();
                 }
             }
             catch (Exception ex)
@@ -114,14 +116,13 @@ namespace UI
                 usuarioSeleccionado.Apellido = txtApellido.Text;
                 usuarioSeleccionado.Area = txtArea.Text;
 
-                if (!string.IsNullOrWhiteSpace(txtPassword.Text))
+                if (!string.IsNullOrWhiteSpace(txtPassword.Text) && txtPassword.Text != "*********")
                 {
                     usuarioSeleccionado.Password = Servicio.Encriptacion.EncriptarPassword(txtPassword.Text);
                 }
 
                 gestorUsuario.Modificar(usuarioSeleccionado);
                 MessageBox.Show("usuario modificado correctamente");
-                //gestorBitacora.Log(usuarioActual, $"Se ha modificado el usuario: {usuarioSeleccionado.Username}");
                 CargarUsuarios();
                 LimpiarForm();
             }
@@ -172,13 +173,20 @@ namespace UI
             txtPassword.ReadOnly = !habilitar;
         }
 
-        private bool ValidarDatos()
+        private bool ValidarDatos(bool esModificacion = false)
         {
-            if (string.IsNullOrWhiteSpace(txtUsername.Text) || string.IsNullOrWhiteSpace(txtPassword.Text) ||
-                string.IsNullOrWhiteSpace(txtNombre.Text) || string.IsNullOrWhiteSpace(txtApellido.Text) ||
+            if (string.IsNullOrWhiteSpace(txtUsername.Text) ||
+                string.IsNullOrWhiteSpace(txtNombre.Text) ||
+                string.IsNullOrWhiteSpace(txtApellido.Text) ||
                 string.IsNullOrWhiteSpace(txtArea.Text))
             {
-                MessageBox.Show("Debe completar todos los campos");
+                MessageBox.Show("Debe completar todos los campos obligatorios", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            if (!esModificacion && string.IsNullOrWhiteSpace(txtPassword.Text))
+            {
+                MessageBox.Show("Debe ingresar una contraseña para el nuevo usuario", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
 

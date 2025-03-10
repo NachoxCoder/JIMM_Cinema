@@ -20,7 +20,8 @@ namespace Mappers
         public void Alta(BE_Usuario usuario)
         {
             List<BE_Usuario> usuarios = _dalXml.LeerXml<BE_Usuario>();
-            if (usuarios.Any(p => p.Username == usuario.Username))
+
+            if (usuarios.Any(p => string.Equals(p.Username, usuario.Username, StringComparison.OrdinalIgnoreCase)))
             {
                 throw new Exception("Ya existe un usuario con ese Username");
             }
@@ -32,45 +33,45 @@ namespace Mappers
         public void Baja(BE_Usuario usuario)
         {
             List<BE_Usuario> usuarios = _dalXml.LeerXml<BE_Usuario>();
-            var usuarioEncontrado = usuarios.Find(x => x.ID == usuario.ID);
-            if (usuarioEncontrado != null)
-            {
-                usuarios.Remove(usuarioEncontrado);
-                _dalXml.GuardarXml(usuarios);
-            }
-            else
+            var usuarioEncontrado = usuarios.FirstOrDefault(x => x.ID == usuario.ID);
+
+            if (usuarioEncontrado == null)
             {
                 throw new Exception("No se encontro el usuario");
             }
+            usuarios.Remove(usuarioEncontrado);
+            _dalXml.GuardarXml(usuarios);
         }
 
         public void Modificar(BE_Usuario usuario)
         {
             List<BE_Usuario> usuarios = _dalXml.LeerXml<BE_Usuario>();
-            var empleadoExistente = usuarios.Find(x => x.ID == usuario.ID);
+            var empleadoExistente = usuarios.FirstOrDefault(e => e.ID == usuario.ID);
 
-            if (empleadoExistente != null)
-            {
-                var usuarioExistente = usuarios.FirstOrDefault(e =>
-                    e.Username == usuario.Username && e.ID != usuario.ID);
-
-                if (usuarioExistente != null)
-                {
-                    throw new Exception("Ya existe un empleado con ese nombre de usuario");
-                }
-
-                empleadoExistente.Username = usuario.Username;
-                empleadoExistente.Password = usuario.Password;
-                empleadoExistente.Nombre = usuario.Nombre;
-                empleadoExistente.Apellido = usuario.Apellido;
-                empleadoExistente.Area = usuario.Area;
-
-                _dalXml.GuardarXml(usuarios);
-            }
-            else
+            if (empleadoExistente == null)
             {
                 throw new Exception("No se encontro el usuario");
             }
+
+            var usuarioExistente = usuarios.FirstOrDefault(e =>
+                    string.Equals(e.Username, usuario.Username, StringComparison.OrdinalIgnoreCase) && e.ID != usuario.ID);
+            if (usuarioExistente != null)
+            {
+                throw new Exception("Ya existe un usuario con ese Username");
+            }
+
+            empleadoExistente.Username = usuario.Username;
+            empleadoExistente.Nombre = usuario.Nombre;
+            empleadoExistente.Apellido = usuario.Apellido;
+            empleadoExistente.Area = usuario.Area;
+            empleadoExistente.Password = usuario.Password;
+
+            if(usuario.listaPermisos != null)
+            {
+                empleadoExistente.listaPermisos = usuario.listaPermisos;
+            }
+
+            _dalXml.GuardarXml(usuarios);
         }
 
         public List<BE_Usuario> Consultar()
@@ -85,7 +86,11 @@ namespace Mappers
 
         public BE_Usuario ConsultarPorUsername(string username)
         {
-            return Consultar().FirstOrDefault(x => x.Username == username);
+            if (string.IsNullOrWhiteSpace(username))
+                return null;
+
+            return Consultar().FirstOrDefault(x =>
+                string.Equals(x.Username, username, StringComparison.OrdinalIgnoreCase));
         }
     }
 }

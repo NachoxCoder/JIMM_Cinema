@@ -11,23 +11,23 @@ namespace BE
         public int ID { get; set; }
         public DateTime Fecha { get; set; }
         public string Evento { get; set; }
-        public BE_Usuario UsuarioEmpleado { get; set; }
+        public BE_Usuario Usuario { get; set; }
 
         public BE_Bitacora()
         {
             Fecha = DateTime.Now;
             Evento = string.Empty;
         }
-        public BE_Bitacora(DateTime fecha, string evento, BE_Usuario usuarioEmpleado)
+        public BE_Bitacora(DateTime fecha, string evento, BE_Usuario usuario)
         {
             Fecha = fecha;
             Evento = evento;
-            UsuarioEmpleado = usuarioEmpleado;
+            Usuario = usuario;
         }
 
         public override string ToString()
         {
-            return $"[{Fecha:dd/MM/yyyy HH:mm:ss}] - {Evento} - {UsuarioEmpleado}";
+            return $"[{Fecha:dd/MM/yyyy HH:mm:ss}] - {Evento} - {Usuario}";
         }
 
         public override bool Equals(object obj)

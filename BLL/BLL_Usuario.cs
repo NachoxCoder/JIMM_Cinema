@@ -51,11 +51,16 @@ namespace BLL
 
         public bool ValidarCredenciales(string username, string password)
         {
-            var empleado = ConsultarPorUsername(username);
-            if (empleado != null)
+            if(string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
             {
-                string decryptedPassword = Encriptacion.DesencriptarPassword(empleado.Password);
-                return decryptedPassword == password;
+                return false;
+            }
+
+            var usuario = ConsultarPorUsername(username);
+            if(usuario != null)
+            {
+                string passwordDesencriptado = Encriptacion.DesencriptarPassword(usuario.Password);
+                return passwordDesencriptado == password;
             }
             return false;
         }

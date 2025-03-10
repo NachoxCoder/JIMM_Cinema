@@ -1,11 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace BE
 {
+    [XmlInclude(typeof(BE_Rol))]
+    [XmlInclude(typeof(BE_Permiso))]
     public abstract class BE_Componente
     {
         public int ID { get; set; }
@@ -17,8 +21,13 @@ namespace BE
             Nombre = pNombre;
         }
 
+        protected BE_Componente()
+        {
+                
+        }
+
         //Metodos abstractos pra implementar el patron Composite
-        public abstract IList<BE_Componente> ObtenerHijos();
+        public abstract List<BE_Componente> ObtenerHijos();
         public abstract void AgregarHijo(BE_Componente pComponent);
         public abstract void RemoverHijo(BE_Componente pComponent);
         public abstract void QuitarTodosHijos();

@@ -279,7 +279,7 @@ namespace UI
             frMembresia.ShowDialog();
         }
 
-        private void btnBuscarCliente_Click_1(object sender, EventArgs e)
+        private void btnBuscarCliente_Click(object sender, EventArgs e)
         {
             funcionSeleccionada = null;
             lstBxButacasSeleccionadas.Items.Clear();

@@ -16,17 +16,16 @@ namespace UI
     {
         private readonly BLL_Usuario gestorUsuario;
         private readonly BLL_Permiso gestorPermiso;
-        //private readonly BLL_Bitacora gestorBitacora;
         private readonly BE_Usuario usuarioActual;
 
 
-        public Fr_GestionPermisos()
+        public Fr_GestionPermisos(BE_Usuario usuario)
         {
             InitializeComponent();
             gestorUsuario = new BLL_Usuario();
             gestorPermiso = new BLL_Permiso();
-            //gestorBitacora = new BLL_Bitacora();
-            //usuarioActual = usuario;
+            usuarioActual = usuario;
+            this.Load += Fr_GestionPermisos_Load;
         }
 
         private void Fr_GestionPermisos_Load(object sender, EventArgs e)
@@ -308,5 +307,6 @@ namespace UI
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
     }
 }

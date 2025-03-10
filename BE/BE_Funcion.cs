@@ -20,8 +20,22 @@ namespace BE
         [Browsable(false)]
         public int ID { get; set; }
         public DateTime FechaFuncion { get; set; }
+        [XmlIgnore]
         public TimeSpan HoraInicio { get; set; }
+        [XmlIgnore]
         public TimeSpan HoraFin { get; set; }
+        [Browsable(false)]
+        public string HoraInicioString
+        {
+            get { return HoraInicio.ToString(); }
+            set { HoraInicio = TimeSpan.Parse(value); }
+        }
+        [Browsable(false)]
+        public string HoraFinString
+        {
+            get { return HoraFin.ToString(); }
+            set { HoraFin = TimeSpan.Parse(value); }
+        }
         public bool EstaActiva { get; set; }
         public decimal Precio { get; set; }
         public BE_Pelicula Pelicula { get; set; }

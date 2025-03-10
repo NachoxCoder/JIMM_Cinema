@@ -12,13 +12,16 @@ namespace BE
         {
             EsRol = false;
         }
+        public BE_Permiso()
+        {
+        }
 
         public override void AgregarHijo(BE_Componente pComponente)
         {
             throw new InvalidOperationException("No se pueden agregar hijos a un permiso");
         }
 
-        public override IList<BE_Componente> ObtenerHijos()
+        public override List<BE_Componente> ObtenerHijos()
         {
             return new List<BE_Componente>();
         }
@@ -33,5 +36,21 @@ namespace BE
             throw new InvalidOperationException("No se pueden remover hijos a un permiso");
 
         }
+    }
+
+    public enum Enum_Permisos
+    {
+        VentaBoletos,
+        GestorMembresias,
+        GestionClientes,
+        GestionIvnentario,
+        GestionOrdenCompras,
+        GestionFactuas,
+        GestionPeliculas,
+        GestionSalas,
+        GestionDashboard,
+        GestionUsuarios,
+        GestionBitacora,
+        GestionPermisos
     }
 }

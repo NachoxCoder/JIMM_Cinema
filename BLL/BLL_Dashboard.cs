@@ -1,7 +1,9 @@
-﻿using System;
+﻿using BE;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -12,8 +14,6 @@ namespace BLL
         private readonly BLL_Boleto _gestorBoleto;
         private readonly BLL_Cliente _gestorCliente;
         private readonly BLL_Membresia _gestorMembresia;
-        private readonly BLL_Producto _gestorProducto;
-        private readonly BLL_Pelicula _gestorPelicula;
         private readonly BLL_Sala _gestorSala;
         private readonly BLL_Funcion _gestorFuncion;
 
@@ -22,136 +22,115 @@ namespace BLL
             _gestorBoleto = new BLL_Boleto();
             _gestorCliente = new BLL_Cliente();
             _gestorMembresia = new BLL_Membresia();
-            _gestorProducto = new BLL_Producto();
-            _gestorPelicula = new BLL_Pelicula();
             _gestorSala = new BLL_Sala();
             _gestorFuncion = new BLL_Funcion();
         }
 
-        public Dictionary<string, object> ObtenerDatos()
+        public Dictionary<string, object> ObtenerDatos(DateTime? fechaDesde = null, DateTime? fechaHasta = null)
         {
             var datos = new Dictionary<string, object>();
 
+            fechaDesde = fechaDesde ?? DateTime.Today.AddMonths(-1);
+            fechaHasta = fechaHasta ?? DateTime.Today;
+
+            var boletos = _gestorBoleto.Consultar();
+            var boletosPeriodo = boletos.Where(x => x.FechaVenta.Date >= fechaDesde.Value.Date 
+                                               && x.FechaVenta.Date <= fechaHasta.Value.Date).ToList();
+
             datos["TotalClientes"] = _gestorCliente.Consultar().Count;
             datos["TotalMembresiasActivas"] = _gestorMembresia.Consultar().Count(x => x.EstaActiva);
-            var boletosHoy = _gestorBoleto.Consultar().Where(x => x.FechaVenta.Date == DateTime.Today).ToList();
-            datos["VentasHoy"] = boletosHoy.Sum(x => x.Precio);
-            var boletosMes = _gestorBoleto.Consultar().Where(x => x.FechaVenta.Date >= DateTime.Today.AddMonths(-1) 
-                                                            && x.FechaVenta.Date <= DateTime.Today).ToList();
-            datos["VentasMes"] = boletosMes.Sum(x => x.Precio);
+            datos["NuevasMembresias"] = _gestorMembresia.Consultar().Count(x => x.FechaInicio >= fechaDesde.Value 
+                                        && x.FechaInicio <= fechaHasta.Value);
+            datos["BoletosVendidosPeriodo"] = boletosPeriodo.Count;
+            datos["VentasPeriodo"] = boletosPeriodo.Sum(x => x.Precio);
+            datos["TotalTicketsVendidos"] = boletos.Count;
+            datos["VentasHoy"] = boletos.Where(x => x.FechaVenta.Date == DateTime.Today.Date).Sum(x => x.Precio);
+            datos["VentasMes"] = boletos.Where(x => x.FechaVenta.Month == DateTime.Today.Month
+                                    && x.FechaVenta.Year == DateTime.Today.Year).Sum(x => x.Precio);
 
             return datos;
         }
 
-        public Dictionary<string, decimal> ObtenerDatosPorPeriodo(DateTime fechaDesde, DateTime fechaHasta)
+        public Dictionary<string, int> ObtenerDatosPeliculas(DateTime fechaDesde, DateTime fechaHasta)
         {
-            var datos = new Dictionary<string, decimal>();
+            var datos = new Dictionary<string, int>();
 
-            var boletos = _gestorBoleto.Consultar().Where(x => x.FechaVenta.Date >= fechaDesde.Date 
-                && x.FechaVenta.Date <= fechaHasta.Date)
-                .GroupBy(x => x.FechaVenta.Date).Select(x => new { Fecha = x.Key, Total = x.Sum(y => y.Precio) })
-                .OrderBy(x => x.Fecha).ToList();
+            var boletos = _gestorBoleto.Consultar().Where(x => x.FechaVenta.Date >= fechaDesde.Date
+                        && x.FechaVenta.Date <= fechaHasta.Date);
 
-            for(var date = fechaDesde.Date; date <= fechaHasta.Date; date = date.AddDays(1))
-            {
-                string dateKey = date.ToString("MM/dd");
-                datos[dateKey] = 0;
-            }
+            if (!boletos.Any()) return datos;
 
-            foreach (var item in boletos)
-            {
-                string dateKey = item.Fecha.ToString("MM/dd");
-                datos[dateKey] = item.Total;
-            }
-
-            return datos;
-        }
-
-        public Dictionary<string, double> ObtenerDatosPeliculas()
-        {
-            var datos = new Dictionary<string, double>();
-
-            var peliculas = _gestorBoleto.Consultar().GroupBy(x => x.Funcion.Pelicula.Titulo)
-                .Select(x => new { Pelicula = x.Key, Cantidad = x.Count() })
-                .OrderByDescending(x => x.Cantidad).Take(5).ToList();
+            var peliculas = boletos.GroupBy(x => x.Funcion?.Pelicula?.Titulo ?? "Sin Titulo")
+                .Select(x => new { Pelicula = x.Key, ButacasVendidas = x.Sum(b => b.Butacas.Count) })
+                .OrderByDescending(x => x.ButacasVendidas).Take(5).ToList();
 
             foreach (var item in peliculas)
             {
-                datos[item.Pelicula] = item.Cantidad;
+                datos[item.Pelicula] = item.ButacasVendidas;
             }
 
             return datos;
         }
 
-        public Dictionary<string, double> ObtenerDatosOcupacion()
+        public Dictionary<string, double> ObtenerDatosOcupacion(DateTime fechaDesde, DateTime fechaHasta)
         {
             var datos = new Dictionary<string, double>();
-            var boletos = _gestorBoleto.Consultar();
-            var salas = _gestorSala.Consultar();
 
-            foreach (var item in salas)
-            {
-                var funcionesSala = _gestorFuncion.Consultar().Where(x => x.Sala.ID == item.ID).ToList();
-                if(funcionesSala.Count == 0) continue;
-
-                int totalCapacidad = funcionesSala.Sum(x => x.Sala.Capacidad);
-                int butacasOcupadas = boletos.Count(x => funcionesSala.Any(y => y.ID == x.Funcion.ID));
-
-                double porcentajeOcupacion = totalCapacidad > 0 ? (double)butacasOcupadas / totalCapacidad * 100 : 0;
-
-                datos[item.Nombre] = Math.Round(porcentajeOcupacion, 1);
-            }
-
-            return datos;
-        }
-
-        public void ExportarReporte(string filePath, DateTime fechaDesde, DateTime fechaHasta)
-        {
             try
             {
-                using (var fs = new FileStream(filePath, FileMode.Create))
+                var boletos = _gestorBoleto.Consultar()
+                    .Where(b => b.FechaVenta.Date >= fechaDesde.Date &&
+                                b.FechaVenta.Date <= fechaHasta.Date)
+                    .ToList();
+
+                if (!boletos.Any())
                 {
-                    using (var writer = new StreamWriter(fs, Encoding.UTF8))
-                    {
-                        // Simple text-based export as a fallback without iTextSharp dependency
-                        writer.WriteLine("REPORTE DE MÉTRICAS DE CINE");
-                        writer.WriteLine($"Período: {fechaDesde:dd/MM/yyyy} - {fechaHasta:dd/MM/yyyy}");
-                        writer.WriteLine();
-
-                        var metrics = ObtenerDatos();
-                        writer.WriteLine("MÉTRICAS GENERALES");
-                        writer.WriteLine($"Total Clientes: {metrics["TotalClientes"]}");
-                        writer.WriteLine($"Membresías Activas: {metrics["MembresiasActivas"]}");
-                        writer.WriteLine($"Ventas del Día: $ {metrics["VentasHoy"]:N2}");
-                        writer.WriteLine($"Ventas del Período: $ {metrics["VentasMes"]:N2}");
-                        writer.WriteLine();
-
-                        writer.WriteLine("PELÍCULAS MÁS VISTAS");
-                        foreach (var pelicula in ObtenerDatosPeliculas())
-                        {
-                            writer.WriteLine($"{pelicula.Key}: {pelicula.Value} tickets");
-                        }
-                        writer.WriteLine();
-
-                        writer.WriteLine("OCUPACIÓN POR SALAS");
-                        foreach (var sala in ObtenerDatosOcupacion())
-                        {
-                            writer.WriteLine($"{sala.Key}: {sala.Value:N1}%");
-                        }
-                        writer.WriteLine();
-
-                        writer.WriteLine("PRODUCTOS CON STOCK BAJO");
-                        foreach (var producto in _gestorProducto.ConsultarConStockBajo())
-                        {
-                            writer.WriteLine($"{producto.NombreProducto}: {producto.Stock} unidades");
-                        }
-                    }
+                    datos["Sin Datos"] = 100;
+                    return datos;
                 }
+
+                var boletosPorSala = boletos.Where(b => b.Funcion != null && b.Funcion.Sala != null).GroupBy(b => b.Funcion.Sala.Nombre)
+                    .ToDictionary( g => g.Key,g => g.Sum(b => b.Butacas?.Count ?? 0));
+
+                int totalButacasVendidas = boletosPorSala.Sum(kvp => kvp.Value);
+
+                if (totalButacasVendidas == 0)
+                {
+                    datos["Sin Datos"] = 100;
+                    return datos;
+                }
+
+                foreach (var kvp in boletosPorSala)
+                {
+                    double porcentaje = ((double)kvp.Value / totalButacasVendidas) * 100;
+                    datos[kvp.Key] = Math.Round(porcentaje, 1);
+                }
+
+                return datos;
             }
             catch (Exception ex)
             {
-                throw new Exception($"Error al exportar reporte: {ex.Message}", ex);
+                Console.WriteLine($"Error in ObtenerDatosOcupacion: {ex.Message}");
+
+                datos["Sin Datos"] = 100;
+                return datos;
             }
+        }
+
+        public Dictionary<string, int> ObtenerMembresiasActivasPorTipo()
+        {
+            var datos = new Dictionary<string, int>();
+
+            var membresiasActivas = _gestorMembresia.Consultar().Where(x => x.EstaActiva);
+
+            foreach(TipoMembresia tipo in Enum.GetValues(typeof(TipoMembresia)))
+            {
+                string tipoNombre = tipo.ToString();
+                int cantidad = membresiasActivas.Count(x => x.Tipo == tipo);
+                datos[tipoNombre] = cantidad;
+            }
+
+            return datos;
         }
     }
 }

@@ -9,6 +9,11 @@ namespace BE
 {
     public class BE_Usuario
     {
+        public BE_Usuario()
+        {
+            listaPermisos = new List<BE_Componente>();
+        }
+
         [Browsable(false)]
         public int ID { get; set; }
         public string Username { get; set; }
@@ -20,10 +25,6 @@ namespace BE
 
         public List<BE_Componente> listaPermisos { get; set; }
 
-        public BE_Usuario() 
-        {
-            listaPermisos = new List<BE_Componente>();
-        }
         public string NombreCompleto()
         {
             return $"{Nombre} {Apellido}";
