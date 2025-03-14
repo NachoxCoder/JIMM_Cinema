@@ -26,6 +26,21 @@ namespace Gestion_Cine
             gestorPermiso = new BLL_Permiso();
             this.Load += Fr_MenuPrincipal_Load;
             frLogin = FrLogin;
+            gestorClientesToolStripMenuItem.Click += gestorClientesToolStripMenuItem_Click;
+            gestionDeBackupsToolStripMenuItem.Click += gestionDeBackupsToolStripMenuItem_Click;
+            generarOrdenDeCompraToolStripMenuItem.Click += generarOrdenDeCompraToolStripMenuItem_Click;
+            membresiasToolStripMenuItem.Click += membresiasToolStripMenuItem_Click;
+            boletosToolStripMenuItem.Click += boletosToolStripMenuItem_Click;
+            gestionDeInventarioToolStripMenuItem.Click += gestionDeInventarioToolStripMenuItem_Click;
+            gestionDeFacturasToolStripMenuItem.Click += gestionDeFacturasToolStripMenuItem_Click;
+            dashboardToolStripMenuItem.Click += dashboardToolStripMenuItem_Click;
+            gestionDePeliculasToolStripMenuItem.Click += gestionDePeliculasToolStripMenuItem_Click;
+            gestionDeSalasToolStripMenuItem.Click += gestionDeSalasToolStripMenuItem_Click;
+            gestionDePermisosYRolesToolStripMenuItem.Click += gestionDePermisosYRolesToolStripMenuItem_Click;
+            gestionDeUsuariosToolStripMenuItem.Click += gestionDeUsuariosToolStripMenuItem_Click;
+            cerrarSesionToolStripMenuItem.Click += cerrarSesionToolStripMenuItem_Click;
+            salirSistemaToolStripMenuItem.Click += salirSistemaToolStripMenuItem_Click;
+            this.FormClosed += Fr_MenuPrincipal_FormClosed;
         }
 
         private void Fr_MenuPrincipal_Load(object sender, EventArgs e)
@@ -36,45 +51,64 @@ namespace Gestion_Cine
 
         private void CargarMenuSegunPermisos()
         {
-            //Cargar los permisos del usuario
-            /*
             usuarioActual.listaPermisos = gestorPermiso.ListarPermisosUsuario(usuarioActual);
 
-            //Configurar el Menu de acuerdo a los permisos que posee el usuario logeado
-            foreach (ToolStripMenuItem menuItem in menuStrip.Items)
+            ConfigurarMenu();
+
+            foreach(ToolStripMenuItem menuItem in menuStrip.Items)
             {
                 bool tienePermiso = false;
-                foreach (ToolStripMenuItem subItem in menuItem.DropDownItems)
+                foreach(ToolStripItem item in menuItem.DropDownItems)
                 {
-                    if (usuarioActual.TienePermiso(subItem.Tag?.ToString()))
+                    if (item is ToolStripMenuItem subItem)
                     {
-                        subItem.Visible = true;
-                        tienePermiso = true;
-                    }
-                    else
-                    {
-                        subItem.Visible = false;
+                        string permisoRequerido = subItem.Tag?.ToString();
+                        if(string.IsNullOrEmpty(permisoRequerido) || usuarioActual.TienePermiso(permisoRequerido))
+                        {
+                            subItem.Visible = true;
+                            tienePermiso = true;
+                        }
+                        else
+                        {
+                            subItem.Visible = false;
+                        }
                     }
                 }
+
                 menuItem.Visible = tienePermiso || menuItem.Text == "Archivo";
-            }*/
+            }
+        }
+
+        private void ConfigurarMenu()
+        {
+            boletosToolStripMenuItem.Tag = "VentaBoletos";
+            membresiasToolStripMenuItem.Tag = "GestorMembresias";
+            gestorClientesToolStripMenuItem.Tag = "GestionClientes";
+
+            // Compras menu
+            gestionDeInventarioToolStripMenuItem.Tag = "GestionIvnentario";
+            generarOrdenDeCompraToolStripMenuItem.Tag = "GestionOrdenCompras";
+            gestionDeFacturasToolStripMenuItem.Tag = "GestionFactuas";
+
+            // Administracion menu
+            gestionDePeliculasToolStripMenuItem.Tag = "GestionPeliculas";
+            gestionDeSalasToolStripMenuItem.Tag = "GestionSalas";
+            dashboardToolStripMenuItem.Tag = "GestionDashboard";
+
+            // Sistema menu
+            gestionDeUsuariosToolStripMenuItem.Tag = "GestionUsuarios";
+            gestionDePermisosYRolesToolStripMenuItem.Tag = "GestionPermisos";
+            gestionDeBackupsToolStripMenuItem.Tag = "GestionBitacora";
+
+            // Archivo menu
+            cerrarSesionToolStripMenuItem.Tag = string.Empty;
+            salirSistemaToolStripMenuItem.Tag = string.Empty;
         }
 
         private void CargarForm(Form form)
         {
             form.MdiParent = this;
             form.Show();
-        }
-
-        private void cerrarSesiónToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Close();
-            frLogin.Show();
-        }
-
-        private void SalirToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
         }
 
         private void gestorClientesToolStripMenuItem_Click(object sender, EventArgs e)
@@ -131,7 +165,7 @@ namespace Gestion_Cine
             CargarForm(form);
         }
 
-        private void gestionDeEmpleadosToolStripMenuItem_Click(object sender, EventArgs e)
+        private void gestionDeUsuariosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var form = new Fr_GestionUsuarios(usuarioActual);
             CargarForm(form);
@@ -149,5 +183,20 @@ namespace Gestion_Cine
             CargarForm(form);
         }
 
+        private void cerrarSesionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Close();
+            frLogin.Show();
+        }
+
+        private void salirSistemaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void Fr_MenuPrincipal_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

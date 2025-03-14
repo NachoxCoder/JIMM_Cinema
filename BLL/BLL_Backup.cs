@@ -48,7 +48,7 @@ namespace BLL
 
                 var mapperUsuario = new MapperUsuario();
                 var usuario = mapperUsuario.ConsultarPorID(int.Parse(usuarioId));
-                _gestorBitacora.LogEvent($"Backup realizado en fecha: {timestamp}", usuario);
+                _gestorBitacora.LogEvent("BACKUP", usuario);
 
                 return true;
             }
@@ -81,7 +81,7 @@ namespace BLL
 
                 var mapperUsuario = new MapperUsuario();
                 var usuario = mapperUsuario.ConsultarPorID(int.Parse(usuarioId));
-                _gestorBitacora.LogEvent($"Restore realizado desde: {Path.GetFileName(backupFolder)}", usuario);
+                _gestorBitacora.LogEvent("RESTORE", usuario);
 
                 return true;
             }

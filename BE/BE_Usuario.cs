@@ -17,7 +17,6 @@ namespace BE
         [Browsable(false)]
         public int ID { get; set; }
         public string Username { get; set; }
-        [Browsable(false)]
         public string Password { get; set; }
         public string Nombre { get; set; }
         public string Apellido { get; set; }

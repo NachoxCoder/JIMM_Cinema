@@ -26,6 +26,11 @@ namespace UI
             _gestorProveedor = new BLL_Proveedor();
             _gestorProducto = new BLL_Producto();
             productosCantidad = new Dictionary<BE_Producto, int>();
+            this.Load += Fr_GenerarOrdenCompra_Load;
+            btnAgregarProducto.Click += btnAgregarProducto_Click;
+            btnGuardar.Click += btnGuardar_Click;
+            btnRemover.Click += btnRemover_Click;
+            cmbProveedor.SelectedIndexChanged += cmbProveedor_SelectedIndexChanged;
         }
 
         private void Fr_GenerarOrdenCompra_Load(object sender, EventArgs e)

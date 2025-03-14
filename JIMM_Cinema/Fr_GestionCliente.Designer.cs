@@ -31,280 +31,291 @@ namespace Gestion_Cine
         /// </summary>
         private void InitializeComponent()
         {
-            pnlTop = new Panel();
-            lblTitle = new Label();
-            btnGuardar = new Button();
-            btnEliminar = new Button();
-            groupBox1 = new GroupBox();
-            dtpFechaNacimiento = new DateTimePicker();
-            txtDireccion = new TextBox();
-            txtTelefono = new TextBox();
-            txtEmail = new TextBox();
-            txtDNI = new TextBox();
-            txtApellido = new TextBox();
-            txtNombre = new TextBox();
-            label8 = new Label();
-            label6 = new Label();
-            label5 = new Label();
-            label4 = new Label();
-            label3 = new Label();
-            label2 = new Label();
-            label1 = new Label();
-            btnModificar = new Button();
-            dgvClientes = new DataGridView();
-            btnNuevoCliente = new Button();
-            pnlTop.SuspendLayout();
-            groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvClientes).BeginInit();
-            SuspendLayout();
+            this.pnlTop = new System.Windows.Forms.Panel();
+            this.lblTitle = new System.Windows.Forms.Label();
+            this.btnGuardar = new System.Windows.Forms.Button();
+            this.btnEliminar = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.dtpFechaNacimiento = new System.Windows.Forms.DateTimePicker();
+            this.txtDireccion = new System.Windows.Forms.TextBox();
+            this.txtTelefono = new System.Windows.Forms.TextBox();
+            this.txtEmail = new System.Windows.Forms.TextBox();
+            this.txtDNI = new System.Windows.Forms.TextBox();
+            this.txtApellido = new System.Windows.Forms.TextBox();
+            this.txtNombre = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btnModificar = new System.Windows.Forms.Button();
+            this.dgvClientes = new System.Windows.Forms.DataGridView();
+            this.btnNuevoCliente = new System.Windows.Forms.Button();
+            this.pnlTop.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).BeginInit();
+            this.SuspendLayout();
             // 
             // pnlTop
             // 
-            pnlTop.BackColor = Color.FromArgb(10, 18, 80);
-            pnlTop.Controls.Add(lblTitle);
-            pnlTop.Dock = DockStyle.Top;
-            pnlTop.Location = new Point(0, 0);
-            pnlTop.Name = "pnlTop";
-            pnlTop.Size = new Size(1139, 60);
-            pnlTop.TabIndex = 0;
+            this.pnlTop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(18)))), ((int)(((byte)(80)))));
+            this.pnlTop.Controls.Add(this.lblTitle);
+            this.pnlTop.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlTop.Location = new System.Drawing.Point(0, 0);
+            this.pnlTop.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pnlTop.Name = "pnlTop";
+            this.pnlTop.Size = new System.Drawing.Size(1139, 48);
+            this.pnlTop.TabIndex = 0;
             // 
             // lblTitle
             // 
-            lblTitle.BackColor = Color.Sienna;
-            lblTitle.Dock = DockStyle.Fill;
-            lblTitle.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
-            lblTitle.ForeColor = Color.White;
-            lblTitle.Location = new Point(0, 0);
-            lblTitle.Name = "lblTitle";
-            lblTitle.Size = new Size(1139, 60);
-            lblTitle.TabIndex = 0;
-            lblTitle.Text = "GESTION DE CLIENTES";
-            lblTitle.TextAlign = ContentAlignment.MiddleCenter;
+            this.lblTitle.BackColor = System.Drawing.Color.Sienna;
+            this.lblTitle.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
+            this.lblTitle.ForeColor = System.Drawing.Color.White;
+            this.lblTitle.Location = new System.Drawing.Point(0, 0);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(1139, 48);
+            this.lblTitle.TabIndex = 0;
+            this.lblTitle.Text = "GESTION DE CLIENTES";
+            this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnGuardar
             // 
-            btnGuardar.BackColor = Color.FromArgb(10, 18, 80);
-            btnGuardar.FlatStyle = FlatStyle.Flat;
-            btnGuardar.ForeColor = Color.White;
-            btnGuardar.Location = new Point(115, 437);
-            btnGuardar.Name = "btnGuardar";
-            btnGuardar.Size = new Size(94, 40);
-            btnGuardar.TabIndex = 2;
-            btnGuardar.Text = "GUARDAR";
-            btnGuardar.UseVisualStyleBackColor = false;
-            btnGuardar.Click += btnGuardar_Click_1;
+            this.btnGuardar.BackColor = System.Drawing.Color.Sienna;
+            this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGuardar.ForeColor = System.Drawing.Color.White;
+            this.btnGuardar.Location = new System.Drawing.Point(115, 350);
+            this.btnGuardar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnGuardar.Name = "btnGuardar";
+            this.btnGuardar.Size = new System.Drawing.Size(94, 32);
+            this.btnGuardar.TabIndex = 2;
+            this.btnGuardar.Text = "GUARDAR";
+            this.btnGuardar.UseVisualStyleBackColor = false;
             // 
             // btnEliminar
             // 
-            btnEliminar.BackColor = Color.Red;
-            btnEliminar.FlatStyle = FlatStyle.Flat;
-            btnEliminar.ForeColor = Color.White;
-            btnEliminar.Location = new Point(318, 437);
-            btnEliminar.Name = "btnEliminar";
-            btnEliminar.Size = new Size(94, 40);
-            btnEliminar.TabIndex = 3;
-            btnEliminar.Text = "ELIMINAR";
-            btnEliminar.UseVisualStyleBackColor = false;
-            btnEliminar.Click += btnEliminar_Click_1;
+            this.btnEliminar.BackColor = System.Drawing.Color.Red;
+            this.btnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEliminar.ForeColor = System.Drawing.Color.White;
+            this.btnEliminar.Location = new System.Drawing.Point(318, 350);
+            this.btnEliminar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(94, 32);
+            this.btnEliminar.TabIndex = 3;
+            this.btnEliminar.Text = "ELIMINAR";
+            this.btnEliminar.UseVisualStyleBackColor = false;
             // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(dtpFechaNacimiento);
-            groupBox1.Controls.Add(txtDireccion);
-            groupBox1.Controls.Add(txtTelefono);
-            groupBox1.Controls.Add(txtEmail);
-            groupBox1.Controls.Add(txtDNI);
-            groupBox1.Controls.Add(txtApellido);
-            groupBox1.Controls.Add(txtNombre);
-            groupBox1.Controls.Add(label8);
-            groupBox1.Controls.Add(label6);
-            groupBox1.Controls.Add(label5);
-            groupBox1.Controls.Add(label4);
-            groupBox1.Controls.Add(label3);
-            groupBox1.Controls.Add(label2);
-            groupBox1.Controls.Add(label1);
-            groupBox1.Location = new Point(12, 70);
-            groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(400, 361);
-            groupBox1.TabIndex = 5;
-            groupBox1.TabStop = false;
-            groupBox1.Text = "Datos Cliente";
+            this.groupBox1.Controls.Add(this.dtpFechaNacimiento);
+            this.groupBox1.Controls.Add(this.txtDireccion);
+            this.groupBox1.Controls.Add(this.txtTelefono);
+            this.groupBox1.Controls.Add(this.txtEmail);
+            this.groupBox1.Controls.Add(this.txtDNI);
+            this.groupBox1.Controls.Add(this.txtApellido);
+            this.groupBox1.Controls.Add(this.txtNombre);
+            this.groupBox1.Controls.Add(this.label8);
+            this.groupBox1.Controls.Add(this.label6);
+            this.groupBox1.Controls.Add(this.label5);
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Location = new System.Drawing.Point(12, 56);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox1.Size = new System.Drawing.Size(400, 289);
+            this.groupBox1.TabIndex = 5;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Datos Cliente";
             // 
             // dtpFechaNacimiento
             // 
-            dtpFechaNacimiento.Format = DateTimePickerFormat.Short;
-            dtpFechaNacimiento.Location = new Point(103, 304);
-            dtpFechaNacimiento.Name = "dtpFechaNacimiento";
-            dtpFechaNacimiento.Size = new Size(282, 27);
-            dtpFechaNacimiento.TabIndex = 13;
+            this.dtpFechaNacimiento.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpFechaNacimiento.Location = new System.Drawing.Point(103, 243);
+            this.dtpFechaNacimiento.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dtpFechaNacimiento.Name = "dtpFechaNacimiento";
+            this.dtpFechaNacimiento.Size = new System.Drawing.Size(282, 22);
+            this.dtpFechaNacimiento.TabIndex = 13;
             // 
             // txtDireccion
             // 
-            txtDireccion.Location = new Point(103, 248);
-            txtDireccion.Name = "txtDireccion";
-            txtDireccion.Size = new Size(282, 27);
-            txtDireccion.TabIndex = 12;
+            this.txtDireccion.Location = new System.Drawing.Point(103, 198);
+            this.txtDireccion.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtDireccion.Name = "txtDireccion";
+            this.txtDireccion.Size = new System.Drawing.Size(282, 22);
+            this.txtDireccion.TabIndex = 12;
             // 
             // txtTelefono
             // 
-            txtTelefono.Location = new Point(103, 206);
-            txtTelefono.Name = "txtTelefono";
-            txtTelefono.Size = new Size(282, 27);
-            txtTelefono.TabIndex = 9;
+            this.txtTelefono.Location = new System.Drawing.Point(103, 165);
+            this.txtTelefono.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtTelefono.Name = "txtTelefono";
+            this.txtTelefono.Size = new System.Drawing.Size(282, 22);
+            this.txtTelefono.TabIndex = 9;
             // 
             // txtEmail
             // 
-            txtEmail.Location = new Point(103, 164);
-            txtEmail.Name = "txtEmail";
-            txtEmail.Size = new Size(282, 27);
-            txtEmail.TabIndex = 11;
+            this.txtEmail.Location = new System.Drawing.Point(103, 131);
+            this.txtEmail.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.Size = new System.Drawing.Size(282, 22);
+            this.txtEmail.TabIndex = 11;
             // 
             // txtDNI
             // 
-            txtDNI.Location = new Point(103, 123);
-            txtDNI.Name = "txtDNI";
-            txtDNI.Size = new Size(282, 27);
-            txtDNI.TabIndex = 10;
+            this.txtDNI.Location = new System.Drawing.Point(103, 98);
+            this.txtDNI.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtDNI.Name = "txtDNI";
+            this.txtDNI.Size = new System.Drawing.Size(282, 22);
+            this.txtDNI.TabIndex = 10;
             // 
             // txtApellido
             // 
-            txtApellido.Location = new Point(103, 78);
-            txtApellido.Name = "txtApellido";
-            txtApellido.Size = new Size(282, 27);
-            txtApellido.TabIndex = 9;
+            this.txtApellido.Location = new System.Drawing.Point(103, 62);
+            this.txtApellido.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtApellido.Name = "txtApellido";
+            this.txtApellido.Size = new System.Drawing.Size(282, 22);
+            this.txtApellido.TabIndex = 9;
             // 
             // txtNombre
             // 
-            txtNombre.Location = new Point(103, 33);
-            txtNombre.Name = "txtNombre";
-            txtNombre.Size = new Size(282, 27);
-            txtNombre.TabIndex = 8;
+            this.txtNombre.Location = new System.Drawing.Point(103, 26);
+            this.txtNombre.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtNombre.Name = "txtNombre";
+            this.txtNombre.Size = new System.Drawing.Size(282, 22);
+            this.txtNombre.TabIndex = 8;
             // 
             // label8
             // 
-            label8.AutoSize = true;
-            label8.Location = new Point(6, 309);
-            label8.Name = "label8";
-            label8.Size = new Size(80, 20);
-            label8.TabIndex = 7;
-            label8.Text = "Fecha Nac.";
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(6, 247);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(76, 16);
+            this.label8.TabIndex = 7;
+            this.label8.Text = "Fecha Nac.";
             // 
             // label6
             // 
-            label6.AutoSize = true;
-            label6.Location = new Point(6, 255);
-            label6.Name = "label6";
-            label6.Size = new Size(72, 20);
-            label6.TabIndex = 5;
-            label6.Text = "Direccion";
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(6, 204);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(64, 16);
+            this.label6.TabIndex = 5;
+            this.label6.Text = "Direccion";
             // 
             // label5
             // 
-            label5.AutoSize = true;
-            label5.Location = new Point(6, 213);
-            label5.Name = "label5";
-            label5.Size = new Size(67, 20);
-            label5.TabIndex = 4;
-            label5.Text = "Telefono";
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(6, 170);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(61, 16);
+            this.label5.TabIndex = 4;
+            this.label5.Text = "Telefono";
             // 
             // label4
             // 
-            label4.AutoSize = true;
-            label4.Location = new Point(4, 171);
-            label4.Name = "label4";
-            label4.Size = new Size(46, 20);
-            label4.TabIndex = 3;
-            label4.Text = "Email";
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(4, 137);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(41, 16);
+            this.label4.TabIndex = 3;
+            this.label4.Text = "Email";
             // 
             // label3
             // 
-            label3.AutoSize = true;
-            label3.Location = new Point(6, 130);
-            label3.Name = "label3";
-            label3.Size = new Size(35, 20);
-            label3.TabIndex = 2;
-            label3.Text = "DNI";
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(6, 104);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(30, 16);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "DNI";
             // 
             // label2
             // 
-            label2.AutoSize = true;
-            label2.Location = new Point(4, 81);
-            label2.Name = "label2";
-            label2.Size = new Size(66, 20);
-            label2.TabIndex = 1;
-            label2.Text = "Apellido";
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(4, 65);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(57, 16);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Apellido";
             // 
             // label1
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(4, 40);
-            label1.Name = "label1";
-            label1.Size = new Size(64, 20);
-            label1.TabIndex = 0;
-            label1.Text = "Nombre";
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(4, 32);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(56, 16);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Nombre";
             // 
             // btnModificar
             // 
-            btnModificar.BackColor = Color.FromArgb(10, 18, 80);
-            btnModificar.FlatStyle = FlatStyle.Flat;
-            btnModificar.ForeColor = Color.White;
-            btnModificar.Location = new Point(215, 437);
-            btnModificar.Name = "btnModificar";
-            btnModificar.Size = new Size(97, 40);
-            btnModificar.TabIndex = 6;
-            btnModificar.Text = "MODIFICAR";
-            btnModificar.UseVisualStyleBackColor = false;
-            btnModificar.Click += btnModificar_Click;
+            this.btnModificar.BackColor = System.Drawing.Color.Sienna;
+            this.btnModificar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnModificar.ForeColor = System.Drawing.Color.White;
+            this.btnModificar.Location = new System.Drawing.Point(215, 350);
+            this.btnModificar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnModificar.Name = "btnModificar";
+            this.btnModificar.Size = new System.Drawing.Size(97, 32);
+            this.btnModificar.TabIndex = 6;
+            this.btnModificar.Text = "MODIFICAR";
+            this.btnModificar.UseVisualStyleBackColor = false;
             // 
             // dgvClientes
             // 
-            dgvClientes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvClientes.Location = new Point(418, 70);
-            dgvClientes.MultiSelect = false;
-            dgvClientes.Name = "dgvClientes";
-            dgvClientes.ReadOnly = true;
-            dgvClientes.RowHeadersWidth = 51;
-            dgvClientes.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvClientes.Size = new Size(709, 407);
-            dgvClientes.TabIndex = 7;
-            dgvClientes.SelectionChanged += dgvClientes_SelectionChanged_1;
+            this.dgvClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvClientes.Location = new System.Drawing.Point(418, 56);
+            this.dgvClientes.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dgvClientes.MultiSelect = false;
+            this.dgvClientes.Name = "dgvClientes";
+            this.dgvClientes.ReadOnly = true;
+            this.dgvClientes.RowHeadersWidth = 51;
+            this.dgvClientes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvClientes.Size = new System.Drawing.Size(709, 326);
+            this.dgvClientes.TabIndex = 7;
             // 
             // btnNuevoCliente
             // 
-            btnNuevoCliente.BackColor = Color.FromArgb(10, 18, 80);
-            btnNuevoCliente.FlatStyle = FlatStyle.Flat;
-            btnNuevoCliente.ForeColor = Color.White;
-            btnNuevoCliente.Location = new Point(12, 437);
-            btnNuevoCliente.Name = "btnNuevoCliente";
-            btnNuevoCliente.Size = new Size(94, 40);
-            btnNuevoCliente.TabIndex = 8;
-            btnNuevoCliente.Text = "NUEVO";
-            btnNuevoCliente.UseVisualStyleBackColor = false;
-            btnNuevoCliente.Click += btnNuevoCliente_Click;
+            this.btnNuevoCliente.BackColor = System.Drawing.Color.Sienna;
+            this.btnNuevoCliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNuevoCliente.ForeColor = System.Drawing.Color.White;
+            this.btnNuevoCliente.Location = new System.Drawing.Point(12, 350);
+            this.btnNuevoCliente.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnNuevoCliente.Name = "btnNuevoCliente";
+            this.btnNuevoCliente.Size = new System.Drawing.Size(94, 32);
+            this.btnNuevoCliente.TabIndex = 8;
+            this.btnNuevoCliente.Text = "NUEVO";
+            this.btnNuevoCliente.UseVisualStyleBackColor = false;
             // 
             // Fr_GestionCliente
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
-            AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1139, 489);
-            Controls.Add(btnNuevoCliente);
-            Controls.Add(dgvClientes);
-            Controls.Add(btnModificar);
-            Controls.Add(groupBox1);
-            Controls.Add(pnlTop);
-            Controls.Add(btnGuardar);
-            Controls.Add(btnEliminar);
-            FormBorderStyle = FormBorderStyle.FixedDialog;
-            MaximizeBox = false;
-            Name = "Fr_GestionCliente";
-            StartPosition = FormStartPosition.CenterScreen;
-            Text = "Gestión de Clientes";
-            Load += Fr_GestionCliente_Load_1;
-            pnlTop.ResumeLayout(false);
-            groupBox1.ResumeLayout(false);
-            groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvClientes).EndInit();
-            ResumeLayout(false);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(1139, 391);
+            this.Controls.Add(this.btnNuevoCliente);
+            this.Controls.Add(this.dgvClientes);
+            this.Controls.Add(this.btnModificar);
+            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.pnlTop);
+            this.Controls.Add(this.btnGuardar);
+            this.Controls.Add(this.btnEliminar);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.MaximizeBox = false;
+            this.Name = "Fr_GestionCliente";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Gestión de Clientes";
+            this.pnlTop.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvClientes)).EndInit();
+            this.ResumeLayout(false);
+
         }
 
         private System.Windows.Forms.Panel pnlTop;

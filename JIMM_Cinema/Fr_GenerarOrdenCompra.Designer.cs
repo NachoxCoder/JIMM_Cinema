@@ -31,209 +31,222 @@ namespace UI
         /// </summary>
         private void InitializeComponent()
         {
-            pnlTop = new Panel();
-            lblTitle = new Label();
-            grpProveedor = new GroupBox();
-            lblProveedor = new Label();
-            cmbProveedor = new ComboBox();
-            grpProducto = new GroupBox();
-            lblProducto = new Label();
-            cmbProducto = new ComboBox();
-            lblCantidad = new Label();
-            numCantidad = new NumericUpDown();
-            btnAgregarProducto = new Button();
-            dgvOrdenCompra = new DataGridView();
-            lblTotal = new Label();
-            btnGuardar = new Button();
-            btnRemover = new Button();
-            pnlTop.SuspendLayout();
-            grpProveedor.SuspendLayout();
-            grpProducto.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)numCantidad).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dgvOrdenCompra).BeginInit();
-            SuspendLayout();
+            this.pnlTop = new System.Windows.Forms.Panel();
+            this.lblTitle = new System.Windows.Forms.Label();
+            this.grpProveedor = new System.Windows.Forms.GroupBox();
+            this.lblProveedor = new System.Windows.Forms.Label();
+            this.cmbProveedor = new System.Windows.Forms.ComboBox();
+            this.grpProducto = new System.Windows.Forms.GroupBox();
+            this.btnRemover = new System.Windows.Forms.Button();
+            this.lblProducto = new System.Windows.Forms.Label();
+            this.cmbProducto = new System.Windows.Forms.ComboBox();
+            this.lblCantidad = new System.Windows.Forms.Label();
+            this.numCantidad = new System.Windows.Forms.NumericUpDown();
+            this.btnAgregarProducto = new System.Windows.Forms.Button();
+            this.dgvOrdenCompra = new System.Windows.Forms.DataGridView();
+            this.lblTotal = new System.Windows.Forms.Label();
+            this.btnGuardar = new System.Windows.Forms.Button();
+            this.pnlTop.SuspendLayout();
+            this.grpProveedor.SuspendLayout();
+            this.grpProducto.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numCantidad)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvOrdenCompra)).BeginInit();
+            this.SuspendLayout();
             // 
             // pnlTop
             // 
-            pnlTop.BackColor = Color.FromArgb(10, 18, 80);
-            pnlTop.Controls.Add(lblTitle);
-            pnlTop.Dock = DockStyle.Top;
-            pnlTop.Location = new Point(0, 0);
-            pnlTop.Name = "pnlTop";
-            pnlTop.Size = new Size(800, 60);
-            pnlTop.TabIndex = 0;
+            this.pnlTop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(18)))), ((int)(((byte)(80)))));
+            this.pnlTop.Controls.Add(this.lblTitle);
+            this.pnlTop.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlTop.Location = new System.Drawing.Point(0, 0);
+            this.pnlTop.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pnlTop.Name = "pnlTop";
+            this.pnlTop.Size = new System.Drawing.Size(800, 48);
+            this.pnlTop.TabIndex = 0;
             // 
             // lblTitle
             // 
-            lblTitle.BackColor = Color.Sienna;
-            lblTitle.Dock = DockStyle.Fill;
-            lblTitle.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
-            lblTitle.ForeColor = Color.White;
-            lblTitle.Location = new Point(0, 0);
-            lblTitle.Name = "lblTitle";
-            lblTitle.Size = new Size(800, 60);
-            lblTitle.TabIndex = 0;
-            lblTitle.Text = "GENERAR ORDEN DE COMPRA";
-            lblTitle.TextAlign = ContentAlignment.MiddleCenter;
+            this.lblTitle.BackColor = System.Drawing.Color.Sienna;
+            this.lblTitle.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
+            this.lblTitle.ForeColor = System.Drawing.Color.White;
+            this.lblTitle.Location = new System.Drawing.Point(0, 0);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(800, 48);
+            this.lblTitle.TabIndex = 0;
+            this.lblTitle.Text = "GENERAR ORDEN DE COMPRA";
+            this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // grpProveedor
             // 
-            grpProveedor.Controls.Add(lblProveedor);
-            grpProveedor.Controls.Add(cmbProveedor);
-            grpProveedor.Location = new Point(12, 70);
-            grpProveedor.Name = "grpProveedor";
-            grpProveedor.Size = new Size(776, 80);
-            grpProveedor.TabIndex = 1;
-            grpProveedor.TabStop = false;
-            grpProveedor.Text = "Datos del Proveedor";
+            this.grpProveedor.Controls.Add(this.lblProveedor);
+            this.grpProveedor.Controls.Add(this.cmbProveedor);
+            this.grpProveedor.Location = new System.Drawing.Point(12, 56);
+            this.grpProveedor.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.grpProveedor.Name = "grpProveedor";
+            this.grpProveedor.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.grpProveedor.Size = new System.Drawing.Size(776, 64);
+            this.grpProveedor.TabIndex = 1;
+            this.grpProveedor.TabStop = false;
+            this.grpProveedor.Text = "Datos del Proveedor";
             // 
             // lblProveedor
             // 
-            lblProveedor.Location = new Point(20, 30);
-            lblProveedor.Name = "lblProveedor";
-            lblProveedor.Size = new Size(100, 23);
-            lblProveedor.TabIndex = 0;
-            lblProveedor.Text = "Proveedor:";
+            this.lblProveedor.Location = new System.Drawing.Point(20, 24);
+            this.lblProveedor.Name = "lblProveedor";
+            this.lblProveedor.Size = new System.Drawing.Size(100, 18);
+            this.lblProveedor.TabIndex = 0;
+            this.lblProveedor.Text = "Proveedor:";
             // 
             // cmbProveedor
             // 
-            cmbProveedor.Location = new Point(120, 27);
-            cmbProveedor.Name = "cmbProveedor";
-            cmbProveedor.Size = new Size(300, 28);
-            cmbProveedor.TabIndex = 1;
-            cmbProveedor.SelectedIndexChanged += cmbProveedor_SelectedIndexChanged;
+            this.cmbProveedor.Location = new System.Drawing.Point(120, 22);
+            this.cmbProveedor.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cmbProveedor.Name = "cmbProveedor";
+            this.cmbProveedor.Size = new System.Drawing.Size(300, 24);
+            this.cmbProveedor.TabIndex = 1;
+            this.cmbProveedor.SelectedIndexChanged += new System.EventHandler(this.cmbProveedor_SelectedIndexChanged);
             // 
             // grpProducto
             // 
-            grpProducto.Controls.Add(btnRemover);
-            grpProducto.Controls.Add(lblProducto);
-            grpProducto.Controls.Add(cmbProducto);
-            grpProducto.Controls.Add(lblCantidad);
-            grpProducto.Controls.Add(numCantidad);
-            grpProducto.Controls.Add(btnAgregarProducto);
-            grpProducto.Location = new Point(12, 160);
-            grpProducto.Name = "grpProducto";
-            grpProducto.Size = new Size(776, 120);
-            grpProducto.TabIndex = 2;
-            grpProducto.TabStop = false;
-            grpProducto.Text = "Agregar Productos";
-            // 
-            // lblProducto
-            // 
-            lblProducto.Location = new Point(20, 30);
-            lblProducto.Name = "lblProducto";
-            lblProducto.Size = new Size(100, 23);
-            lblProducto.TabIndex = 0;
-            lblProducto.Text = "Producto:";
-            // 
-            // cmbProducto
-            // 
-            cmbProducto.Location = new Point(120, 25);
-            cmbProducto.Name = "cmbProducto";
-            cmbProducto.Size = new Size(326, 28);
-            cmbProducto.TabIndex = 1;
-            // 
-            // lblCantidad
-            // 
-            lblCantidad.Location = new Point(20, 70);
-            lblCantidad.Name = "lblCantidad";
-            lblCantidad.Size = new Size(84, 23);
-            lblCantidad.TabIndex = 2;
-            lblCantidad.Text = "Cantidad:";
-            // 
-            // numCantidad
-            // 
-            numCantidad.Location = new Point(120, 70);
-            numCantidad.Name = "numCantidad";
-            numCantidad.Size = new Size(120, 27);
-            numCantidad.TabIndex = 3;
-            // 
-            // btnAgregarProducto
-            // 
-            btnAgregarProducto.BackColor = Color.FromArgb(10, 18, 80);
-            btnAgregarProducto.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            btnAgregarProducto.ForeColor = Color.White;
-            btnAgregarProducto.Location = new Point(486, 70);
-            btnAgregarProducto.Name = "btnAgregarProducto";
-            btnAgregarProducto.Size = new Size(120, 34);
-            btnAgregarProducto.TabIndex = 6;
-            btnAgregarProducto.Text = "Agregar";
-            btnAgregarProducto.UseVisualStyleBackColor = false;
-            btnAgregarProducto.Click += btnAgregarProducto_Click;
-            // 
-            // dgvOrdenCompra
-            // 
-            dgvOrdenCompra.AllowUserToAddRows = false;
-            dgvOrdenCompra.AllowUserToDeleteRows = false;
-            dgvOrdenCompra.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dgvOrdenCompra.ColumnHeadersHeight = 29;
-            dgvOrdenCompra.Location = new Point(12, 290);
-            dgvOrdenCompra.MultiSelect = false;
-            dgvOrdenCompra.Name = "dgvOrdenCompra";
-            dgvOrdenCompra.ReadOnly = true;
-            dgvOrdenCompra.RowHeadersWidth = 51;
-            dgvOrdenCompra.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvOrdenCompra.Size = new Size(776, 200);
-            dgvOrdenCompra.TabIndex = 3;
-            // 
-            // lblTotal
-            // 
-            lblTotal.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            lblTotal.Location = new Point(12, 500);
-            lblTotal.Name = "lblTotal";
-            lblTotal.Size = new Size(776, 30);
-            lblTotal.TabIndex = 4;
-            lblTotal.Text = "Total: $ 0.00";
-            lblTotal.TextAlign = ContentAlignment.MiddleRight;
-            // 
-            // btnGuardar
-            // 
-            btnGuardar.BackColor = Color.Sienna;
-            btnGuardar.ForeColor = Color.White;
-            btnGuardar.Location = new Point(668, 540);
-            btnGuardar.Name = "btnGuardar";
-            btnGuardar.Size = new Size(120, 40);
-            btnGuardar.TabIndex = 5;
-            btnGuardar.Text = "GUARDAR";
-            btnGuardar.UseVisualStyleBackColor = false;
-            btnGuardar.Click += btnGuardar_Click;
+            this.grpProducto.Controls.Add(this.btnRemover);
+            this.grpProducto.Controls.Add(this.lblProducto);
+            this.grpProducto.Controls.Add(this.cmbProducto);
+            this.grpProducto.Controls.Add(this.lblCantidad);
+            this.grpProducto.Controls.Add(this.numCantidad);
+            this.grpProducto.Controls.Add(this.btnAgregarProducto);
+            this.grpProducto.Location = new System.Drawing.Point(12, 128);
+            this.grpProducto.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.grpProducto.Name = "grpProducto";
+            this.grpProducto.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.grpProducto.Size = new System.Drawing.Size(776, 96);
+            this.grpProducto.TabIndex = 2;
+            this.grpProducto.TabStop = false;
+            this.grpProducto.Text = "Agregar Productos";
             // 
             // btnRemover
             // 
-            btnRemover.BackColor = Color.Red;
-            btnRemover.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            btnRemover.ForeColor = Color.White;
-            btnRemover.Location = new Point(625, 70);
-            btnRemover.Name = "btnRemover";
-            btnRemover.Size = new Size(120, 34);
-            btnRemover.TabIndex = 7;
-            btnRemover.Text = "Remover";
-            btnRemover.UseVisualStyleBackColor = false;
-            btnRemover.Click += btnRemover_Click;
+            this.btnRemover.BackColor = System.Drawing.Color.Red;
+            this.btnRemover.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.btnRemover.ForeColor = System.Drawing.Color.White;
+            this.btnRemover.Location = new System.Drawing.Point(612, 56);
+            this.btnRemover.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnRemover.Name = "btnRemover";
+            this.btnRemover.Size = new System.Drawing.Size(133, 31);
+            this.btnRemover.TabIndex = 7;
+            this.btnRemover.Text = "Remover";
+            this.btnRemover.UseVisualStyleBackColor = false;
+            this.btnRemover.Click += new System.EventHandler(this.btnRemover_Click);
+            // 
+            // lblProducto
+            // 
+            this.lblProducto.Location = new System.Drawing.Point(20, 24);
+            this.lblProducto.Name = "lblProducto";
+            this.lblProducto.Size = new System.Drawing.Size(100, 18);
+            this.lblProducto.TabIndex = 0;
+            this.lblProducto.Text = "Producto:";
+            // 
+            // cmbProducto
+            // 
+            this.cmbProducto.Location = new System.Drawing.Point(120, 20);
+            this.cmbProducto.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cmbProducto.Name = "cmbProducto";
+            this.cmbProducto.Size = new System.Drawing.Size(326, 24);
+            this.cmbProducto.TabIndex = 1;
+            // 
+            // lblCantidad
+            // 
+            this.lblCantidad.Location = new System.Drawing.Point(20, 56);
+            this.lblCantidad.Name = "lblCantidad";
+            this.lblCantidad.Size = new System.Drawing.Size(84, 18);
+            this.lblCantidad.TabIndex = 2;
+            this.lblCantidad.Text = "Cantidad:";
+            // 
+            // numCantidad
+            // 
+            this.numCantidad.Location = new System.Drawing.Point(120, 56);
+            this.numCantidad.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.numCantidad.Name = "numCantidad";
+            this.numCantidad.Size = new System.Drawing.Size(120, 22);
+            this.numCantidad.TabIndex = 3;
+            // 
+            // btnAgregarProducto
+            // 
+            this.btnAgregarProducto.BackColor = System.Drawing.Color.Sienna;
+            this.btnAgregarProducto.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.btnAgregarProducto.ForeColor = System.Drawing.Color.White;
+            this.btnAgregarProducto.Location = new System.Drawing.Point(464, 56);
+            this.btnAgregarProducto.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnAgregarProducto.Name = "btnAgregarProducto";
+            this.btnAgregarProducto.Size = new System.Drawing.Size(133, 31);
+            this.btnAgregarProducto.TabIndex = 6;
+            this.btnAgregarProducto.Text = "Agregar";
+            this.btnAgregarProducto.UseVisualStyleBackColor = false;
+            this.btnAgregarProducto.Click += new System.EventHandler(this.btnAgregarProducto_Click);
+            // 
+            // dgvOrdenCompra
+            // 
+            this.dgvOrdenCompra.AllowUserToAddRows = false;
+            this.dgvOrdenCompra.AllowUserToDeleteRows = false;
+            this.dgvOrdenCompra.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvOrdenCompra.ColumnHeadersHeight = 29;
+            this.dgvOrdenCompra.Location = new System.Drawing.Point(12, 232);
+            this.dgvOrdenCompra.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dgvOrdenCompra.MultiSelect = false;
+            this.dgvOrdenCompra.Name = "dgvOrdenCompra";
+            this.dgvOrdenCompra.ReadOnly = true;
+            this.dgvOrdenCompra.RowHeadersWidth = 51;
+            this.dgvOrdenCompra.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvOrdenCompra.Size = new System.Drawing.Size(776, 160);
+            this.dgvOrdenCompra.TabIndex = 3;
+            // 
+            // lblTotal
+            // 
+            this.lblTotal.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.lblTotal.Location = new System.Drawing.Point(12, 400);
+            this.lblTotal.Name = "lblTotal";
+            this.lblTotal.Size = new System.Drawing.Size(776, 24);
+            this.lblTotal.TabIndex = 4;
+            this.lblTotal.Text = "Total: $ 0.00";
+            this.lblTotal.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // btnGuardar
+            // 
+            this.btnGuardar.BackColor = System.Drawing.Color.Sienna;
+            this.btnGuardar.ForeColor = System.Drawing.Color.White;
+            this.btnGuardar.Location = new System.Drawing.Point(668, 432);
+            this.btnGuardar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnGuardar.Name = "btnGuardar";
+            this.btnGuardar.Size = new System.Drawing.Size(120, 32);
+            this.btnGuardar.TabIndex = 5;
+            this.btnGuardar.Text = "GUARDAR";
+            this.btnGuardar.UseVisualStyleBackColor = false;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // Fr_GenerarOrdenCompra
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
-            AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 600);
-            Controls.Add(pnlTop);
-            Controls.Add(grpProveedor);
-            Controls.Add(grpProducto);
-            Controls.Add(dgvOrdenCompra);
-            Controls.Add(lblTotal);
-            Controls.Add(btnGuardar);
-            FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            MaximizeBox = false;
-            Name = "Fr_GenerarOrdenCompra";
-            StartPosition = FormStartPosition.CenterScreen;
-            Text = "Fr_GenerarOrdenCompra";
-            Load += Fr_GenerarOrdenCompra_Load;
-            pnlTop.ResumeLayout(false);
-            grpProveedor.ResumeLayout(false);
-            grpProducto.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)numCantidad).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dgvOrdenCompra).EndInit();
-            ResumeLayout(false);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(800, 480);
+            this.Controls.Add(this.pnlTop);
+            this.Controls.Add(this.grpProveedor);
+            this.Controls.Add(this.grpProducto);
+            this.Controls.Add(this.dgvOrdenCompra);
+            this.Controls.Add(this.lblTotal);
+            this.Controls.Add(this.btnGuardar);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.MaximizeBox = false;
+            this.Name = "Fr_GenerarOrdenCompra";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Fr_GenerarOrdenCompra";
+            this.pnlTop.ResumeLayout(false);
+            this.grpProveedor.ResumeLayout(false);
+            this.grpProducto.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.numCantidad)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvOrdenCompra)).EndInit();
+            this.ResumeLayout(false);
+
         }
 
         private Panel pnlTop;

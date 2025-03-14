@@ -26,11 +26,22 @@ namespace UI
             gestorPermiso = new BLL_Permiso();
             usuarioActual = usuario;
             this.Load += Fr_GestionPermisos_Load;
+            btnAsignarPermiso.Click += btnAsignarPermiso_Click;
+            btnAsignarPermisoUsuario.Click += btnAsignarPermisoUsuario_Click;
+            btnAsignarRolUsuario.Click += btnAsignarRolUsuario_Click;
+            btnCrearRol.Click += btnCrearRol_Click;
+            btnEliminarRol.Click += btnEliminarRol_Click;
+            btnQuitarPermiso.Click += btnQuitarPermiso_Click;
+            btnRemoverPermisoUsuario.Click += btnRemoverPermisoUsuario_Click;
+            btnRemoverRolUsuario.Click += btnRemoverRolUsuario_Click;
+            tvPermisos.AfterSelect += tvPermisos_AfterSelect;
+            tvUsuarios.AfterSelect += tvUsuarios_AfterSelect;
         }
 
         private void Fr_GestionPermisos_Load(object sender, EventArgs e)
         {
             CargarTreeViews();
+            CargarCheckedListPermisos();
         }
 
         private void CargarTreeViews()
@@ -45,7 +56,9 @@ namespace UI
         private void CargarArbolUsuarios()
         {
             tvUsuarios.Nodes.Clear();
-            foreach (var usuario in gestorUsuario.Consultar())
+            var usuarios = gestorUsuario.Consultar();
+            usuarios.RemoveAll(x => x.ID == usuarioActual.ID || x.ID == 1);
+            foreach (var usuario in usuarios)
             {
                 tvUsuarios.Nodes.Add(new TreeNode(usuario.Username) { Tag = usuario });
             }
@@ -74,19 +87,24 @@ namespace UI
             tvRolesPermisos.Nodes.Clear();
             foreach (var rol in gestorPermiso.ListarRoles())
             {
-                var nodoRol = new TreeNode(rol.Nombre) { Tag = rol };
-                foreach (var permiso in rol.ObtenerHijos())
+                if (rol is BE_Rol rolObj)
                 {
-                    nodoRol.Nodes.Add(new TreeNode(permiso.Nombre) { Tag = permiso });
+                    var nodoRol = new TreeNode(rol.Nombre) { Tag = rol };
+                    foreach (var permiso in rolObj.ObtenerHijos())
+                    {
+                        nodoRol.Nodes.Add(new TreeNode(permiso.Nombre) { Tag = permiso });
+                    }
+                    tvRolesPermisos.Nodes.Add(nodoRol);
                 }
-                tvRolesPermisos.Nodes.Add(nodoRol);
             }
         }
 
         private void CargarArbolUsuariosPermisos()
         {
             tvUsuariosPermisos.Nodes.Clear();
-            foreach (var usuario in gestorUsuario.Consultar())
+            var usuarios = gestorUsuario.Consultar();
+            usuarios.RemoveAll(x => x.ID == usuarioActual.ID);
+            foreach (var usuario in usuarios)
             {
                 var nodoUsuario = new TreeNode(usuario.Username) { Tag = usuario };
                 var permisos = gestorPermiso.ListarPermisosUsuario(usuario);
@@ -107,6 +125,15 @@ namespace UI
             }
         }
 
+        private void CargarCheckedListPermisos()
+        {
+            clbPermisos.Items.Clear();
+            foreach (var permiso in gestorPermiso.ListarPermisos())
+            {
+                clbPermisos.Items.Add(permiso, false);
+            }
+        }
+
         private void btnCrearRol_Click(object sender, EventArgs e)
         {
             try
@@ -117,12 +144,29 @@ namespace UI
                     return;
                 }
 
+                if(clbPermisos.CheckedItems.Count == 0)
+                {
+                    MessageBox.Show("Debe seleccionar al menos un permiso para el rol", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
                 var nuevoRol = new BE_Rol(txtNombreRol.Text);
+
+                foreach (BE_Permiso permiso in clbPermisos.CheckedItems)
+                {
+                    gestorPermiso.AsignarPermisoARol(nuevoRol, permiso);
+                }
+
                 if (gestorPermiso.Guardar(nuevoRol))
                 {
                     MessageBox.Show("Rol creado con éxito", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    //gestorBitacora.Log(usuarioActual, $"Creó el rol {nuevoRol.Nombre}");
                     CargarTreeViews();
+                    txtNombreRol.Clear();
+
+                    for (int i = 0; i < clbPermisos.Items.Count; i++)
+                    {
+                        clbPermisos.SetItemChecked(i, false);
+                    }
                 }
             }
             catch (Exception ex)
@@ -140,7 +184,6 @@ namespace UI
                     if (gestorPermiso.Eliminar(rolSeleccionado))
                     {
                         MessageBox.Show("Rol eliminado con éxito", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        //gestorBitacora.Log(usuarioActual, $"Eliminó el rol {rolSeleccionado.Nombre}");
                         CargarTreeViews();
                     }
                 }
@@ -165,7 +208,6 @@ namespace UI
                     if (gestorPermiso.AsignarPermisoARol(rolSeleccionado, permisoSeleccionado))
                     {
                         MessageBox.Show("Permiso asignado con éxito", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        //gestorBitacora.Log(usuarioActual, $"Asignó el permiso {permisoSeleccionado.Nombre} al rol {rolSeleccionado.Nombre}");
                         CargarTreeViews();
                     }
                 }
@@ -191,7 +233,6 @@ namespace UI
                     if (gestorPermiso.EliminarPermisoDeRol(rolSeleccionado, permisoSeleccionado))
                     {
                         MessageBox.Show("Permiso removido con éxito", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        //gestorBitacora.Log(usuarioActual, $"Quitó el permiso {permisoSeleccionado.Nombre} del rol {rolSeleccionado.Nombre}");
                         CargarTreeViews();
                     }
                 }
@@ -216,7 +257,6 @@ namespace UI
                     if (gestorPermiso.AsignarRolAUsuario(usuarioSeleccionado, rolSeleccionado))
                     {
                         MessageBox.Show("Rol asignado con éxito", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        //gestorBitacora.Log(usuarioActual, $"Asignó el rol {rolSeleccionado.Nombre} al usuario {usuarioSeleccionado.Username}");
                         CargarTreeViews();
                     }
                 }
@@ -242,7 +282,6 @@ namespace UI
                     if (gestorPermiso.RemoverRolDeUsuario(usuarioSeleccionado, rolSeleccionado))
                     {
                         MessageBox.Show("Rol removido con éxito", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        //gestorBitacora.Log(usuarioActual, $"Removio el rol {rolSeleccionado.Nombre} al usuario {usuarioSeleccionado.Username}");
                         CargarTreeViews();
                     }
                 }
@@ -267,7 +306,6 @@ namespace UI
                     if (gestorPermiso.AsignarPermisoUsuario(usuarioSeleccionado, permisoSeleccionado))
                     {
                         MessageBox.Show("Permiso asignado con éxito", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        //gestorBitacora.Log(usuarioActual, $"Asignó el permiso {permisoSeleccionado.Nombre} al usuario {usuarioSeleccionado.Username}");
                         CargarTreeViews();
                     }
                 }
@@ -293,7 +331,6 @@ namespace UI
                     if (gestorPermiso.BorrarPermisoUsuario(usuarioSeleccionado, permisoSeleccionado))
                     {
                         MessageBox.Show("Permiso removido con éxito", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        //gestorBitacora.Log(usuarioActual, $"Removió el permiso {permisoSeleccionado.Nombre} al usuario {usuarioSeleccionado.Username}");
                         CargarTreeViews();
                     }
                 }
@@ -308,5 +345,61 @@ namespace UI
             }
         }
 
+        private void tvUsuarios_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+            BE_Usuario usuarioSeleccionado = tvUsuarios.SelectedNode?.Tag as BE_Usuario;
+            txtIdUsuario.Text = usuarioSeleccionado?.ID.ToString();
+            txtNombreUsuario.Text = usuarioSeleccionado?.NombreCompleto();
+            txtAreaUsuario.Text = usuarioSeleccionado?.Area;
+            txtPasswordUsuario.Text = Servicio.Encriptacion.DesencriptarPassword(usuarioSeleccionado?.Password);
+            //ActualizarBotones();
+        }
+
+        private void tvRoles_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+            //ActualizarBotones();
+        }
+
+        private void tvPermisos_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+            BE_Permiso permisoSeleccionado = tvPermisos.SelectedNode?.Tag as BE_Permiso;
+            txtNombrePermiso.Text = permisoSeleccionado?.Nombre;
+            //ActualizarBotones();
+        }
+
+        private void tvRolesPermisos_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+            //ActualizarBotones();
+        }
+
+        private void tvUsuariosPermisos_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+            //ActualizarBotones();
+        }
+
+        private void cbxCifrarPassword_CheckedChanged(object sender, EventArgs e)
+        {
+            BE_Usuario usuarioSeleccionado = tvUsuarios.SelectedNode?.Tag as BE_Usuario;
+            
+            if(cbxCifrarPassword.Checked)
+            {
+                txtPasswordUsuario.Text = Servicio.Encriptacion.EncriptarPassword(usuarioSeleccionado.Password);
+            }
+            else
+            {
+                txtPasswordUsuario.Text = Servicio.Encriptacion.DesencriptarPassword(usuarioSeleccionado.Password);
+            }
+        }
+        /*
+        private void ActualizarBotones()
+        {
+            btnEliminarRol.Enabled = tvRoles.SelectedNode?.Tag is BE_Rol;
+            btnAsignarPermiso.Enabled = tvRoles.SelectedNode?.Tag is BE_Rol && tvPermisos.SelectedNode?.Tag is BE_Permiso;
+            btnQuitarPermiso.Enabled = tvRolesPermisos.SelectedNode?.Tag is BE_Permiso && tvRolesPermisos.SelectedNode?.Parent != null;
+            btnAsignarRolUsuario.Enabled = tvUsuarios.SelectedNode?.Tag is BE_Usuario && tvRoles.SelectedNode?.Tag is BE_Rol;
+            btnRemoverRolUsuario.Enabled = tvUsuariosPermisos.SelectedNode?.Tag is BE_Rol && tvUsuariosPermisos.SelectedNode?.Parent != null;
+            btnAsignarPermisoUsuario.Enabled = tvUsuarios.SelectedNode?.Tag is BE_Usuario && tvPermisos.SelectedNode?.Tag is BE_Permiso;
+            btnRemoverPermisoUsuario.Enabled = tvUsuariosPermisos.SelectedNode?.Tag is BE_Permiso && tvUsuariosPermisos.SelectedNode?.Parent != null;
+        }*/
     }
 }

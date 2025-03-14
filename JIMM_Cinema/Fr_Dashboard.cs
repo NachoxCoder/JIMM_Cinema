@@ -30,6 +30,7 @@ namespace JIMM_Cinema
             dtpFechaHasta.Value = DateTime.Today;
             dtpFechaDesde.ValueChanged += DtpFecha_ValueChanged;
             dtpFechaHasta.ValueChanged += DtpFecha_ValueChanged;
+            this.Load += Fr_Dashboard_Load;
         }
 
         private void Fr_Dashboard_Load(object sender, EventArgs e)

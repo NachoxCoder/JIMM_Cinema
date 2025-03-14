@@ -15,7 +15,6 @@ namespace UI
     public partial class Fr_GestionFacturas : Form
     {
         private readonly BLL_FacturaProveedor _gestorFacturaProveedor;
-        private readonly BLL_Proveedor _gestorProveedor;
         private readonly BLL_OrdenCompra _gestorOrdenCompra;
         private BE_FacturaProveedor facturaSeleccionada;
         private BE_OrdenCompra ordenCompraSeleccionada;
@@ -25,7 +24,13 @@ namespace UI
             InitializeComponent();
             _gestorFacturaProveedor = new BLL_FacturaProveedor();
             _gestorOrdenCompra = new BLL_OrdenCompra();
-            _gestorProveedor = new BLL_Proveedor();
+            this.Load += Fr_GestionFacturas_Load;
+            btnGuardarFactura.Click += btnGuardarFactura_Click;
+            btnNuevaFactura.Click += btnNuevaFactura_Click;
+            btnModificarFactura.Click += btnModificarFactura_Click;
+            btnPagarFactura.Click += btnPagarFactura_Click;
+            dgvOrdenesCompra.SelectionChanged += dgvOrdenesCompra_SelectionChanged;
+            dgvFacturas.SelectionChanged += dgvFacturas_SelectionChanged;
         }
 
         private void Fr_GestionFacturas_Load(object sender, EventArgs e)

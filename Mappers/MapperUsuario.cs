@@ -35,12 +35,15 @@ namespace Mappers
             List<BE_Usuario> usuarios = _dalXml.LeerXml<BE_Usuario>();
             var usuarioEncontrado = usuarios.FirstOrDefault(x => x.ID == usuario.ID);
 
-            if (usuarioEncontrado == null)
+            if (usuarioEncontrado != null)
+            {
+                usuarios.Remove(usuarioEncontrado);
+                _dalXml.GuardarXml(usuarios);
+            }
+            else
             {
                 throw new Exception("No se encontro el usuario");
             }
-            usuarios.Remove(usuarioEncontrado);
-            _dalXml.GuardarXml(usuarios);
         }
 
         public void Modificar(BE_Usuario usuario)

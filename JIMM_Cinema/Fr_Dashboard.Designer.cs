@@ -41,19 +41,19 @@
             System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.dtpFechaDesde = new System.Windows.Forms.DateTimePicker();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lblBoletosVendidos = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.dtpFechaHasta = new System.Windows.Forms.DateTimePicker();
-            this.chartPeliculas = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.chartOcupacion = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.label5 = new System.Windows.Forms.Label();
-            this.lblBoletosVendidos = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.lblNuevasMembresias = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
             this.lblTotalRecaudado = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.chartPeliculas = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.lblNuevasMembresias = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.chartOcupacion = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.dgvProductosLowStock = new System.Windows.Forms.DataGridView();
             this.btnDescargarPDF = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
@@ -73,6 +73,7 @@
             this.dtpFechaDesde.Name = "dtpFechaDesde";
             this.dtpFechaDesde.Size = new System.Drawing.Size(121, 22);
             this.dtpFechaDesde.TabIndex = 0;
+            this.dtpFechaDesde.ValueChanged += new System.EventHandler(this.DtpFecha_ValueChanged);
             // 
             // groupBox1
             // 
@@ -96,6 +97,27 @@
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Fecha Reporte";
+            // 
+            // lblBoletosVendidos
+            // 
+            this.lblBoletosVendidos.AutoSize = true;
+            this.lblBoletosVendidos.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBoletosVendidos.ForeColor = System.Drawing.Color.Sienna;
+            this.lblBoletosVendidos.Location = new System.Drawing.Point(321, 33);
+            this.lblBoletosVendidos.Name = "lblBoletosVendidos";
+            this.lblBoletosVendidos.Size = new System.Drawing.Size(37, 39);
+            this.lblBoletosVendidos.TabIndex = 8;
+            this.lblBoletosVendidos.Text = "0";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(256, 10);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(218, 16);
+            this.label5.TabIndex = 7;
+            this.label5.Text = "Cantidad de Boletos Vendidos";
             // 
             // label2
             // 
@@ -122,6 +144,37 @@
             this.dtpFechaHasta.Name = "dtpFechaHasta";
             this.dtpFechaHasta.Size = new System.Drawing.Size(121, 22);
             this.dtpFechaHasta.TabIndex = 1;
+            this.dtpFechaHasta.ValueChanged += new System.EventHandler(this.DtpFecha_ValueChanged);
+            // 
+            // lblTotalRecaudado
+            // 
+            this.lblTotalRecaudado.AutoSize = true;
+            this.lblTotalRecaudado.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalRecaudado.ForeColor = System.Drawing.Color.Sienna;
+            this.lblTotalRecaudado.Location = new System.Drawing.Point(698, 33);
+            this.lblTotalRecaudado.Name = "lblTotalRecaudado";
+            this.lblTotalRecaudado.Size = new System.Drawing.Size(37, 39);
+            this.lblTotalRecaudado.TabIndex = 12;
+            this.lblTotalRecaudado.Text = "0";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(483, 101);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(178, 16);
+            this.label4.TabIndex = 5;
+            this.label4.Text = "Porcentaje Ocupacion Salas";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(702, 10);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(201, 16);
+            this.label9.TabIndex = 11;
+            this.label9.Text = "Total Recaudado en Ventas";
             // 
             // chartPeliculas
             // 
@@ -139,6 +192,17 @@
             this.chartPeliculas.TabIndex = 2;
             this.chartPeliculas.Text = "chart1";
             // 
+            // lblNuevasMembresias
+            // 
+            this.lblNuevasMembresias.AutoSize = true;
+            this.lblNuevasMembresias.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNuevasMembresias.ForeColor = System.Drawing.Color.Sienna;
+            this.lblNuevasMembresias.Location = new System.Drawing.Point(556, 33);
+            this.lblNuevasMembresias.Name = "lblNuevasMembresias";
+            this.lblNuevasMembresias.Size = new System.Drawing.Size(37, 39);
+            this.lblNuevasMembresias.TabIndex = 10;
+            this.lblNuevasMembresias.Text = "0";
+            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -148,14 +212,15 @@
             this.label3.TabIndex = 4;
             this.label3.Text = "Peliculas mas Vistas";
             // 
-            // label4
+            // label7
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(483, 101);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(178, 16);
-            this.label4.TabIndex = 5;
-            this.label4.Text = "Porcentaje Ocupacion Salas";
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(512, 10);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(149, 16);
+            this.label7.TabIndex = 9;
+            this.label7.Text = "Nuevas Membresias";
             // 
             // chartOcupacion
             // 
@@ -172,69 +237,6 @@
             this.chartOcupacion.Size = new System.Drawing.Size(406, 340);
             this.chartOcupacion.TabIndex = 6;
             this.chartOcupacion.Text = "chart1";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(256, 10);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(218, 16);
-            this.label5.TabIndex = 7;
-            this.label5.Text = "Cantidad de Boletos Vendidos";
-            // 
-            // lblBoletosVendidos
-            // 
-            this.lblBoletosVendidos.AutoSize = true;
-            this.lblBoletosVendidos.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBoletosVendidos.ForeColor = System.Drawing.Color.Sienna;
-            this.lblBoletosVendidos.Location = new System.Drawing.Point(321, 33);
-            this.lblBoletosVendidos.Name = "lblBoletosVendidos";
-            this.lblBoletosVendidos.Size = new System.Drawing.Size(37, 39);
-            this.lblBoletosVendidos.TabIndex = 8;
-            this.lblBoletosVendidos.Text = "0";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(512, 10);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(149, 16);
-            this.label7.TabIndex = 9;
-            this.label7.Text = "Nuevas Membresias";
-            // 
-            // lblNuevasMembresias
-            // 
-            this.lblNuevasMembresias.AutoSize = true;
-            this.lblNuevasMembresias.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNuevasMembresias.ForeColor = System.Drawing.Color.Sienna;
-            this.lblNuevasMembresias.Location = new System.Drawing.Point(556, 33);
-            this.lblNuevasMembresias.Name = "lblNuevasMembresias";
-            this.lblNuevasMembresias.Size = new System.Drawing.Size(37, 39);
-            this.lblNuevasMembresias.TabIndex = 10;
-            this.lblNuevasMembresias.Text = "0";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(702, 10);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(201, 16);
-            this.label9.TabIndex = 11;
-            this.label9.Text = "Total Recaudado en Ventas";
-            // 
-            // lblTotalRecaudado
-            // 
-            this.lblTotalRecaudado.AutoSize = true;
-            this.lblTotalRecaudado.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalRecaudado.ForeColor = System.Drawing.Color.Sienna;
-            this.lblTotalRecaudado.Location = new System.Drawing.Point(698, 33);
-            this.lblTotalRecaudado.Name = "lblTotalRecaudado";
-            this.lblTotalRecaudado.Size = new System.Drawing.Size(37, 39);
-            this.lblTotalRecaudado.TabIndex = 12;
-            this.lblTotalRecaudado.Text = "0";
             // 
             // dgvProductosLowStock
             // 

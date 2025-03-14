@@ -162,15 +162,32 @@ namespace Mappers
                 return new List<BE_Componente>();
             }
 
-            var componentes = usuarioAux.listaPermisos.Select(x => x.ID).ToList();
+            var listaRolesPermisos = new List<BE_Componente>();
 
             var roles = _dalXml.LeerXml<BE_Rol>();
             var permisos = _dalXml.LeerXml<BE_Permiso>();
 
-            var rolesAsignados = roles.Where(x => componentes.Contains(x.ID)).Cast<BE_Componente>().ToList();
-            var permisosAsignados = permisos.Where(x => componentes.Contains(x.ID)).Cast<BE_Componente>().ToList();
+            foreach(var componente in usuarioAux.listaPermisos)
+            {
+                if (componente.EsRol)
+                {
+                    var rolAux = roles.FirstOrDefault(x => x.ID == componente.ID);
+                    if(rolAux != null)
+                    {
+                        listaRolesPermisos.Add(rolAux);
+                    }
+                }
+                else
+                {
+                    var permisoAux = permisos.FirstOrDefault(x => x.ID == componente.ID);
+                    if (permisoAux != null)
+                    {
+                        listaRolesPermisos.Add(permisoAux);
+                    }
+                }
+            }
 
-            return rolesAsignados.Concat(permisosAsignados).ToList();
+            return listaRolesPermisos;
         }
     }
 }

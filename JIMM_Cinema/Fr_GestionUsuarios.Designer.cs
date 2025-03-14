@@ -31,254 +31,270 @@ namespace UI
         /// </summary>
         private void InitializeComponent()
         {
-            pnlTop = new Panel();
-            lblTitle = new Label();
-            grpDatos = new GroupBox();
-            lblUsername = new Label();
-            txtUsername = new TextBox();
-            lblPassword = new Label();
-            txtPassword = new TextBox();
-            btnMostrarPassword = new Button();
-            lblNombre = new Label();
-            txtNombre = new TextBox();
-            lblApellido = new Label();
-            txtApellido = new TextBox();
-            lblArea = new Label();
-            txtArea = new TextBox();
-            dgvUsuarios = new DataGridView();
-            btnGuardar = new Button();
-            btnEliminar = new Button();
-            btnModificar = new Button();
-            btnNuevoUsuario = new Button();
-            pnlTop.SuspendLayout();
-            grpDatos.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvUsuarios).BeginInit();
-            SuspendLayout();
+            this.pnlTop = new System.Windows.Forms.Panel();
+            this.lblTitle = new System.Windows.Forms.Label();
+            this.grpDatos = new System.Windows.Forms.GroupBox();
+            this.lblUsername = new System.Windows.Forms.Label();
+            this.txtUsername = new System.Windows.Forms.TextBox();
+            this.lblPassword = new System.Windows.Forms.Label();
+            this.txtPassword = new System.Windows.Forms.TextBox();
+            this.btnMostrarPassword = new System.Windows.Forms.Button();
+            this.lblNombre = new System.Windows.Forms.Label();
+            this.txtNombre = new System.Windows.Forms.TextBox();
+            this.lblApellido = new System.Windows.Forms.Label();
+            this.txtApellido = new System.Windows.Forms.TextBox();
+            this.lblArea = new System.Windows.Forms.Label();
+            this.txtArea = new System.Windows.Forms.TextBox();
+            this.dgvUsuarios = new System.Windows.Forms.DataGridView();
+            this.btnGuardar = new System.Windows.Forms.Button();
+            this.btnEliminar = new System.Windows.Forms.Button();
+            this.btnModificar = new System.Windows.Forms.Button();
+            this.btnNuevoUsuario = new System.Windows.Forms.Button();
+            this.pnlTop.SuspendLayout();
+            this.grpDatos.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvUsuarios)).BeginInit();
+            this.SuspendLayout();
             // 
             // pnlTop
             // 
-            pnlTop.BackColor = Color.FromArgb(10, 18, 80);
-            pnlTop.Controls.Add(lblTitle);
-            pnlTop.Dock = DockStyle.Top;
-            pnlTop.Location = new Point(0, 0);
-            pnlTop.Name = "pnlTop";
-            pnlTop.Size = new Size(1022, 60);
-            pnlTop.TabIndex = 0;
+            this.pnlTop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(18)))), ((int)(((byte)(80)))));
+            this.pnlTop.Controls.Add(this.lblTitle);
+            this.pnlTop.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlTop.Location = new System.Drawing.Point(0, 0);
+            this.pnlTop.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pnlTop.Name = "pnlTop";
+            this.pnlTop.Size = new System.Drawing.Size(1022, 48);
+            this.pnlTop.TabIndex = 0;
             // 
             // lblTitle
             // 
-            lblTitle.BackColor = Color.Sienna;
-            lblTitle.Dock = DockStyle.Fill;
-            lblTitle.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
-            lblTitle.ForeColor = Color.White;
-            lblTitle.Location = new Point(0, 0);
-            lblTitle.Name = "lblTitle";
-            lblTitle.Size = new Size(1022, 60);
-            lblTitle.TabIndex = 0;
-            lblTitle.Text = "GESTION DE USUARIOS";
-            lblTitle.TextAlign = ContentAlignment.MiddleCenter;
+            this.lblTitle.BackColor = System.Drawing.Color.Sienna;
+            this.lblTitle.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
+            this.lblTitle.ForeColor = System.Drawing.Color.White;
+            this.lblTitle.Location = new System.Drawing.Point(0, 0);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(1022, 48);
+            this.lblTitle.TabIndex = 0;
+            this.lblTitle.Text = "GESTION DE USUARIOS";
+            this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // grpDatos
             // 
-            grpDatos.Controls.Add(lblUsername);
-            grpDatos.Controls.Add(txtUsername);
-            grpDatos.Controls.Add(lblPassword);
-            grpDatos.Controls.Add(txtPassword);
-            grpDatos.Controls.Add(btnMostrarPassword);
-            grpDatos.Controls.Add(lblNombre);
-            grpDatos.Controls.Add(txtNombre);
-            grpDatos.Controls.Add(lblApellido);
-            grpDatos.Controls.Add(txtApellido);
-            grpDatos.Controls.Add(lblArea);
-            grpDatos.Controls.Add(txtArea);
-            grpDatos.Location = new Point(12, 70);
-            grpDatos.Name = "grpDatos";
-            grpDatos.Size = new Size(417, 300);
-            grpDatos.TabIndex = 1;
-            grpDatos.TabStop = false;
-            grpDatos.Text = "Datos del Usuario";
+            this.grpDatos.Controls.Add(this.lblUsername);
+            this.grpDatos.Controls.Add(this.txtUsername);
+            this.grpDatos.Controls.Add(this.lblPassword);
+            this.grpDatos.Controls.Add(this.txtPassword);
+            this.grpDatos.Controls.Add(this.btnMostrarPassword);
+            this.grpDatos.Controls.Add(this.lblNombre);
+            this.grpDatos.Controls.Add(this.txtNombre);
+            this.grpDatos.Controls.Add(this.lblApellido);
+            this.grpDatos.Controls.Add(this.txtApellido);
+            this.grpDatos.Controls.Add(this.lblArea);
+            this.grpDatos.Controls.Add(this.txtArea);
+            this.grpDatos.Location = new System.Drawing.Point(12, 56);
+            this.grpDatos.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.grpDatos.Name = "grpDatos";
+            this.grpDatos.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.grpDatos.Size = new System.Drawing.Size(417, 240);
+            this.grpDatos.TabIndex = 1;
+            this.grpDatos.TabStop = false;
+            this.grpDatos.Text = "Datos del Usuario";
             // 
             // lblUsername
             // 
-            lblUsername.Location = new Point(20, 30);
-            lblUsername.Name = "lblUsername";
-            lblUsername.Size = new Size(100, 23);
-            lblUsername.TabIndex = 0;
-            lblUsername.Text = "Usuario:";
+            this.lblUsername.Location = new System.Drawing.Point(20, 24);
+            this.lblUsername.Name = "lblUsername";
+            this.lblUsername.Size = new System.Drawing.Size(100, 18);
+            this.lblUsername.TabIndex = 0;
+            this.lblUsername.Text = "Usuario:";
             // 
             // txtUsername
             // 
-            txtUsername.Location = new Point(130, 30);
-            txtUsername.Name = "txtUsername";
-            txtUsername.Size = new Size(250, 27);
-            txtUsername.TabIndex = 1;
+            this.txtUsername.Location = new System.Drawing.Point(130, 24);
+            this.txtUsername.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtUsername.Name = "txtUsername";
+            this.txtUsername.Size = new System.Drawing.Size(250, 22);
+            this.txtUsername.TabIndex = 1;
             // 
             // lblPassword
             // 
-            lblPassword.Location = new Point(20, 70);
-            lblPassword.Name = "lblPassword";
-            lblPassword.Size = new Size(100, 23);
-            lblPassword.TabIndex = 2;
-            lblPassword.Text = "Contraseña:";
+            this.lblPassword.Location = new System.Drawing.Point(20, 56);
+            this.lblPassword.Name = "lblPassword";
+            this.lblPassword.Size = new System.Drawing.Size(100, 18);
+            this.lblPassword.TabIndex = 2;
+            this.lblPassword.Text = "Contraseña:";
             // 
             // txtPassword
             // 
-            txtPassword.Location = new Point(130, 70);
-            txtPassword.Name = "txtPassword";
-            txtPassword.Size = new Size(250, 27);
-            txtPassword.TabIndex = 3;
-            txtPassword.UseSystemPasswordChar = true;
+            this.txtPassword.Location = new System.Drawing.Point(130, 56);
+            this.txtPassword.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtPassword.Name = "txtPassword";
+            this.txtPassword.Size = new System.Drawing.Size(250, 22);
+            this.txtPassword.TabIndex = 3;
+            this.txtPassword.UseSystemPasswordChar = true;
             // 
             // btnMostrarPassword
             // 
-            btnMostrarPassword.FlatStyle = FlatStyle.Flat;
-            btnMostrarPassword.Location = new Point(385, 70);
-            btnMostrarPassword.Name = "btnMostrarPassword";
-            btnMostrarPassword.Size = new Size(30, 27);
-            btnMostrarPassword.TabIndex = 4;
-            btnMostrarPassword.Text = "👁";
-            btnMostrarPassword.MouseDown += btnMostrarPassword_MouseDown;
-            btnMostrarPassword.MouseUp += btnMostrarPassword_MouseUp;
+            this.btnMostrarPassword.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMostrarPassword.Location = new System.Drawing.Point(385, 56);
+            this.btnMostrarPassword.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnMostrarPassword.Name = "btnMostrarPassword";
+            this.btnMostrarPassword.Size = new System.Drawing.Size(30, 22);
+            this.btnMostrarPassword.TabIndex = 4;
+            this.btnMostrarPassword.Text = "👁";
+            this.btnMostrarPassword.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnMostrarPassword_MouseDown);
+            this.btnMostrarPassword.MouseUp += new System.Windows.Forms.MouseEventHandler(this.btnMostrarPassword_MouseUp);
             // 
             // lblNombre
             // 
-            lblNombre.Location = new Point(20, 110);
-            lblNombre.Name = "lblNombre";
-            lblNombre.Size = new Size(100, 23);
-            lblNombre.TabIndex = 5;
-            lblNombre.Text = "Nombre:";
+            this.lblNombre.Location = new System.Drawing.Point(20, 88);
+            this.lblNombre.Name = "lblNombre";
+            this.lblNombre.Size = new System.Drawing.Size(100, 18);
+            this.lblNombre.TabIndex = 5;
+            this.lblNombre.Text = "Nombre:";
             // 
             // txtNombre
             // 
-            txtNombre.Location = new Point(130, 110);
-            txtNombre.Name = "txtNombre";
-            txtNombre.Size = new Size(250, 27);
-            txtNombre.TabIndex = 6;
+            this.txtNombre.Location = new System.Drawing.Point(130, 88);
+            this.txtNombre.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtNombre.Name = "txtNombre";
+            this.txtNombre.Size = new System.Drawing.Size(250, 22);
+            this.txtNombre.TabIndex = 6;
             // 
             // lblApellido
             // 
-            lblApellido.Location = new Point(20, 150);
-            lblApellido.Name = "lblApellido";
-            lblApellido.Size = new Size(100, 23);
-            lblApellido.TabIndex = 7;
-            lblApellido.Text = "Apellido:";
+            this.lblApellido.Location = new System.Drawing.Point(20, 120);
+            this.lblApellido.Name = "lblApellido";
+            this.lblApellido.Size = new System.Drawing.Size(100, 18);
+            this.lblApellido.TabIndex = 7;
+            this.lblApellido.Text = "Apellido:";
             // 
             // txtApellido
             // 
-            txtApellido.Location = new Point(130, 150);
-            txtApellido.Name = "txtApellido";
-            txtApellido.Size = new Size(250, 27);
-            txtApellido.TabIndex = 8;
+            this.txtApellido.Location = new System.Drawing.Point(130, 120);
+            this.txtApellido.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtApellido.Name = "txtApellido";
+            this.txtApellido.Size = new System.Drawing.Size(250, 22);
+            this.txtApellido.TabIndex = 8;
             // 
             // lblArea
             // 
-            lblArea.Location = new Point(20, 190);
-            lblArea.Name = "lblArea";
-            lblArea.Size = new Size(100, 23);
-            lblArea.TabIndex = 9;
-            lblArea.Text = "Área:";
+            this.lblArea.Location = new System.Drawing.Point(20, 152);
+            this.lblArea.Name = "lblArea";
+            this.lblArea.Size = new System.Drawing.Size(100, 18);
+            this.lblArea.TabIndex = 9;
+            this.lblArea.Text = "Área:";
             // 
             // txtArea
             // 
-            txtArea.Location = new Point(130, 190);
-            txtArea.Name = "txtArea";
-            txtArea.Size = new Size(250, 27);
-            txtArea.TabIndex = 10;
+            this.txtArea.Location = new System.Drawing.Point(130, 152);
+            this.txtArea.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtArea.Name = "txtArea";
+            this.txtArea.Size = new System.Drawing.Size(250, 22);
+            this.txtArea.TabIndex = 10;
             // 
             // dgvUsuarios
             // 
-            dgvUsuarios.AllowUserToAddRows = false;
-            dgvUsuarios.AllowUserToDeleteRows = false;
-            dgvUsuarios.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dgvUsuarios.ColumnHeadersHeight = 29;
-            dgvUsuarios.Location = new Point(450, 70);
-            dgvUsuarios.MultiSelect = false;
-            dgvUsuarios.Name = "dgvUsuarios";
-            dgvUsuarios.ReadOnly = true;
-            dgvUsuarios.RowHeadersWidth = 51;
-            dgvUsuarios.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvUsuarios.Size = new Size(550, 350);
-            dgvUsuarios.TabIndex = 2;
-            dgvUsuarios.SelectionChanged += dgvUsuarios_SelectionChanged;
+            this.dgvUsuarios.AllowUserToAddRows = false;
+            this.dgvUsuarios.AllowUserToDeleteRows = false;
+            this.dgvUsuarios.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvUsuarios.ColumnHeadersHeight = 29;
+            this.dgvUsuarios.Location = new System.Drawing.Point(450, 56);
+            this.dgvUsuarios.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dgvUsuarios.MultiSelect = false;
+            this.dgvUsuarios.Name = "dgvUsuarios";
+            this.dgvUsuarios.ReadOnly = true;
+            this.dgvUsuarios.RowHeadersWidth = 51;
+            this.dgvUsuarios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvUsuarios.Size = new System.Drawing.Size(550, 280);
+            this.dgvUsuarios.TabIndex = 2;
+            this.dgvUsuarios.SelectionChanged += new System.EventHandler(this.dgvUsuarios_SelectionChanged);
             // 
             // btnGuardar
             // 
-            btnGuardar.BackColor = Color.Sienna;
-            btnGuardar.FlatStyle = FlatStyle.Flat;
-            btnGuardar.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            btnGuardar.ForeColor = Color.White;
-            btnGuardar.Location = new Point(111, 380);
-            btnGuardar.Name = "btnGuardar";
-            btnGuardar.Size = new Size(90, 40);
-            btnGuardar.TabIndex = 3;
-            btnGuardar.Text = "Guardar";
-            btnGuardar.UseVisualStyleBackColor = false;
-            btnGuardar.Click += btnGuardar_Click;
+            this.btnGuardar.BackColor = System.Drawing.Color.Sienna;
+            this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGuardar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.btnGuardar.ForeColor = System.Drawing.Color.White;
+            this.btnGuardar.Location = new System.Drawing.Point(111, 304);
+            this.btnGuardar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnGuardar.Name = "btnGuardar";
+            this.btnGuardar.Size = new System.Drawing.Size(90, 32);
+            this.btnGuardar.TabIndex = 3;
+            this.btnGuardar.Text = "Guardar";
+            this.btnGuardar.UseVisualStyleBackColor = false;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // btnEliminar
             // 
-            btnEliminar.BackColor = Color.Red;
-            btnEliminar.FlatStyle = FlatStyle.Flat;
-            btnEliminar.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            btnEliminar.ForeColor = Color.White;
-            btnEliminar.Location = new Point(329, 380);
-            btnEliminar.Name = "btnEliminar";
-            btnEliminar.Size = new Size(98, 40);
-            btnEliminar.TabIndex = 4;
-            btnEliminar.Text = "Eliminar";
-            btnEliminar.UseVisualStyleBackColor = false;
-            btnEliminar.Click += btnEliminar_Click;
+            this.btnEliminar.BackColor = System.Drawing.Color.Red;
+            this.btnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEliminar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.btnEliminar.ForeColor = System.Drawing.Color.White;
+            this.btnEliminar.Location = new System.Drawing.Point(329, 304);
+            this.btnEliminar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(98, 32);
+            this.btnEliminar.TabIndex = 4;
+            this.btnEliminar.Text = "Eliminar";
+            this.btnEliminar.UseVisualStyleBackColor = false;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // btnModificar
             // 
-            btnModificar.BackColor = Color.Sienna;
-            btnModificar.FlatStyle = FlatStyle.Flat;
-            btnModificar.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            btnModificar.ForeColor = Color.White;
-            btnModificar.Location = new Point(214, 380);
-            btnModificar.Name = "btnModificar";
-            btnModificar.Size = new Size(98, 40);
-            btnModificar.TabIndex = 5;
-            btnModificar.Text = "Modificar";
-            btnModificar.UseVisualStyleBackColor = false;
-            btnModificar.Click += btnModificar_Click;
+            this.btnModificar.BackColor = System.Drawing.Color.Sienna;
+            this.btnModificar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnModificar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.btnModificar.ForeColor = System.Drawing.Color.White;
+            this.btnModificar.Location = new System.Drawing.Point(214, 304);
+            this.btnModificar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnModificar.Name = "btnModificar";
+            this.btnModificar.Size = new System.Drawing.Size(98, 32);
+            this.btnModificar.TabIndex = 5;
+            this.btnModificar.Text = "Modificar";
+            this.btnModificar.UseVisualStyleBackColor = false;
+            this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
             // 
             // btnNuevoUsuario
             // 
-            btnNuevoUsuario.BackColor = Color.Sienna;
-            btnNuevoUsuario.FlatStyle = FlatStyle.Flat;
-            btnNuevoUsuario.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            btnNuevoUsuario.ForeColor = Color.White;
-            btnNuevoUsuario.Location = new Point(12, 380);
-            btnNuevoUsuario.Name = "btnNuevoUsuario";
-            btnNuevoUsuario.Size = new Size(88, 40);
-            btnNuevoUsuario.TabIndex = 6;
-            btnNuevoUsuario.Text = "Nuevo";
-            btnNuevoUsuario.UseVisualStyleBackColor = false;
-            btnNuevoUsuario.Click += btnNuevoUsuario_Click;
+            this.btnNuevoUsuario.BackColor = System.Drawing.Color.Sienna;
+            this.btnNuevoUsuario.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNuevoUsuario.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.btnNuevoUsuario.ForeColor = System.Drawing.Color.White;
+            this.btnNuevoUsuario.Location = new System.Drawing.Point(12, 304);
+            this.btnNuevoUsuario.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnNuevoUsuario.Name = "btnNuevoUsuario";
+            this.btnNuevoUsuario.Size = new System.Drawing.Size(88, 32);
+            this.btnNuevoUsuario.TabIndex = 6;
+            this.btnNuevoUsuario.Text = "Nuevo";
+            this.btnNuevoUsuario.UseVisualStyleBackColor = false;
+            this.btnNuevoUsuario.Click += new System.EventHandler(this.btnNuevoUsuario_Click);
             // 
             // Fr_GestionUsuarios
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
-            AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1022, 432);
-            Controls.Add(btnNuevoUsuario);
-            Controls.Add(pnlTop);
-            Controls.Add(grpDatos);
-            Controls.Add(dgvUsuarios);
-            Controls.Add(btnGuardar);
-            Controls.Add(btnEliminar);
-            Controls.Add(btnModificar);
-            FormBorderStyle = FormBorderStyle.FixedDialog;
-            MaximizeBox = false;
-            Name = "Fr_GestionUsuarios";
-            StartPosition = FormStartPosition.CenterScreen;
-            Text = "Gestión de Usuarios";
-            pnlTop.ResumeLayout(false);
-            grpDatos.ResumeLayout(false);
-            grpDatos.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvUsuarios).EndInit();
-            ResumeLayout(false);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(1022, 346);
+            this.Controls.Add(this.btnNuevoUsuario);
+            this.Controls.Add(this.pnlTop);
+            this.Controls.Add(this.grpDatos);
+            this.Controls.Add(this.dgvUsuarios);
+            this.Controls.Add(this.btnGuardar);
+            this.Controls.Add(this.btnEliminar);
+            this.Controls.Add(this.btnModificar);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.MaximizeBox = false;
+            this.Name = "Fr_GestionUsuarios";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Gestión de Usuarios";
+            this.pnlTop.ResumeLayout(false);
+            this.grpDatos.ResumeLayout(false);
+            this.grpDatos.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvUsuarios)).EndInit();
+            this.ResumeLayout(false);
+
         }
 
         private Panel pnlTop;

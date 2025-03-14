@@ -24,24 +24,5 @@ namespace BE
             Evento = evento;
             Usuario = usuario;
         }
-
-        public override string ToString()
-        {
-            return $"[{Fecha:dd/MM/yyyy HH:mm:ss}] - {Evento} - {Usuario}";
-        }
-
-        public override bool Equals(object obj)
-        {
-            if(obj == null || GetType() != obj.GetType())
-            return false;
-
-            BE_Bitacora otra = (BE_Bitacora)obj;
-            return ID == otra.ID;
-        }
-        /*
-        public override int GetHashCode()
-        {
-            return HashCode.Combine(ID,Fecha,Evento);
-        }*/
     }
 }

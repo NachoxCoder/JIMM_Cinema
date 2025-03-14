@@ -369,6 +369,7 @@ namespace UI
             this.dtpHoraInicio.ShowUpDown = true;
             this.dtpHoraInicio.Size = new System.Drawing.Size(85, 22);
             this.dtpHoraInicio.TabIndex = 20;
+            this.dtpHoraInicio.ValueChanged += new System.EventHandler(this.dtpHoraDesde_ValueChanged);
             // 
             // dtpFecha
             // 

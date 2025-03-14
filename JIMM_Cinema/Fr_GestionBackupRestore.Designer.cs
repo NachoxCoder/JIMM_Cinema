@@ -31,97 +31,94 @@ namespace UI
         /// </summary>
         private void InitializeComponent()
         {
-            pnlTop = new Panel();
-            lblTitle = new Label();
-            dgvBackups = new DataGridView();
-            btnBackup = new Button();
-            btnRestore = new Button();
-            pnlTop.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvBackups).BeginInit();
-            SuspendLayout();
+            this.pnlTop = new System.Windows.Forms.Panel();
+            this.lblTitle = new System.Windows.Forms.Label();
+            this.dgvBackups = new System.Windows.Forms.DataGridView();
+            this.btnBackup = new System.Windows.Forms.Button();
+            this.btnRestore = new System.Windows.Forms.Button();
+            this.pnlTop.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvBackups)).BeginInit();
+            this.SuspendLayout();
             // 
             // pnlTop
             // 
-            pnlTop.BackColor = Color.FromArgb(10, 18, 80);
-            pnlTop.Controls.Add(lblTitle);
-            pnlTop.Dock = DockStyle.Top;
-            pnlTop.Location = new Point(0, 0);
-            pnlTop.Margin = new Padding(3, 4, 3, 4);
-            pnlTop.Name = "pnlTop";
-            pnlTop.Size = new Size(914, 80);
-            pnlTop.TabIndex = 0;
+            this.pnlTop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(18)))), ((int)(((byte)(80)))));
+            this.pnlTop.Controls.Add(this.lblTitle);
+            this.pnlTop.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlTop.Location = new System.Drawing.Point(0, 0);
+            this.pnlTop.Name = "pnlTop";
+            this.pnlTop.Size = new System.Drawing.Size(914, 64);
+            this.pnlTop.TabIndex = 0;
             // 
             // lblTitle
             // 
-            lblTitle.BackColor = Color.Sienna;
-            lblTitle.Dock = DockStyle.Fill;
-            lblTitle.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
-            lblTitle.ForeColor = Color.White;
-            lblTitle.Location = new Point(0, 0);
-            lblTitle.Name = "lblTitle";
-            lblTitle.Size = new Size(914, 80);
-            lblTitle.TabIndex = 0;
-            lblTitle.Text = "GESTIÓN DE BACKUP";
-            lblTitle.TextAlign = ContentAlignment.MiddleCenter;
+            this.lblTitle.BackColor = System.Drawing.Color.Sienna;
+            this.lblTitle.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
+            this.lblTitle.ForeColor = System.Drawing.Color.White;
+            this.lblTitle.Location = new System.Drawing.Point(0, 0);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(914, 64);
+            this.lblTitle.TabIndex = 0;
+            this.lblTitle.Text = "GESTIÓN DE BACKUP";
+            this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // dgvBackups
             // 
-            dgvBackups.AllowUserToAddRows = false;
-            dgvBackups.AllowUserToDeleteRows = false;
-            dgvBackups.ColumnHeadersHeight = 29;
-            dgvBackups.Location = new Point(14, 101);
-            dgvBackups.Margin = new Padding(3, 4, 3, 4);
-            dgvBackups.MultiSelect = false;
-            dgvBackups.Name = "dgvBackups";
-            dgvBackups.ReadOnly = true;
-            dgvBackups.RowHeadersWidth = 51;
-            dgvBackups.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvBackups.Size = new Size(887, 376);
-            dgvBackups.TabIndex = 1;
+            this.dgvBackups.AllowUserToAddRows = false;
+            this.dgvBackups.AllowUserToDeleteRows = false;
+            this.dgvBackups.ColumnHeadersHeight = 29;
+            this.dgvBackups.Location = new System.Drawing.Point(14, 81);
+            this.dgvBackups.MultiSelect = false;
+            this.dgvBackups.Name = "dgvBackups";
+            this.dgvBackups.ReadOnly = true;
+            this.dgvBackups.RowHeadersWidth = 51;
+            this.dgvBackups.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvBackups.Size = new System.Drawing.Size(887, 301);
+            this.dgvBackups.TabIndex = 1;
             // 
             // btnBackup
             // 
-            btnBackup.BackColor = Color.FromArgb(10, 18, 80);
-            btnBackup.FlatStyle = FlatStyle.Flat;
-            btnBackup.ForeColor = Color.White;
-            btnBackup.Location = new Point(14, 491);
-            btnBackup.Margin = new Padding(3, 4, 3, 4);
-            btnBackup.Name = "btnBackup";
-            btnBackup.Size = new Size(171, 53);
-            btnBackup.TabIndex = 2;
-            btnBackup.Text = "Realizar Backup";
-            btnBackup.UseVisualStyleBackColor = false;
-            btnBackup.Click += btnBackup_Click;
+            this.btnBackup.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(18)))), ((int)(((byte)(80)))));
+            this.btnBackup.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBackup.ForeColor = System.Drawing.Color.White;
+            this.btnBackup.Location = new System.Drawing.Point(14, 393);
+            this.btnBackup.Name = "btnBackup";
+            this.btnBackup.Size = new System.Drawing.Size(171, 42);
+            this.btnBackup.TabIndex = 2;
+            this.btnBackup.Text = "Realizar Backup";
+            this.btnBackup.UseVisualStyleBackColor = false;
+            this.btnBackup.Click += new System.EventHandler(this.btnBackup_Click);
             // 
             // btnRestore
             // 
-            btnRestore.BackColor = Color.Sienna;
-            btnRestore.FlatStyle = FlatStyle.Flat;
-            btnRestore.ForeColor = Color.White;
-            btnRestore.Location = new Point(210, 491);
-            btnRestore.Margin = new Padding(3, 4, 3, 4);
-            btnRestore.Name = "btnRestore";
-            btnRestore.Size = new Size(171, 53);
-            btnRestore.TabIndex = 3;
-            btnRestore.Text = "Realizar Restore";
-            btnRestore.UseVisualStyleBackColor = false;
+            this.btnRestore.BackColor = System.Drawing.Color.Sienna;
+            this.btnRestore.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRestore.ForeColor = System.Drawing.Color.White;
+            this.btnRestore.Location = new System.Drawing.Point(210, 393);
+            this.btnRestore.Name = "btnRestore";
+            this.btnRestore.Size = new System.Drawing.Size(171, 42);
+            this.btnRestore.TabIndex = 3;
+            this.btnRestore.Text = "Realizar Restore";
+            this.btnRestore.UseVisualStyleBackColor = false;
+            this.btnRestore.Click += new System.EventHandler(this.btnRestore_Click);
             // 
             // Fr_GestionBackupRestore
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
-            AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(914, 557);
-            Controls.Add(pnlTop);
-            Controls.Add(dgvBackups);
-            Controls.Add(btnBackup);
-            Controls.Add(btnRestore);
-            Margin = new Padding(3, 4, 3, 4);
-            Name = "Fr_GestionBackupRestore";
-            StartPosition = FormStartPosition.CenterScreen;
-            Text = "Gestión de Backup";
-            pnlTop.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dgvBackups).EndInit();
-            ResumeLayout(false);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(914, 446);
+            this.Controls.Add(this.pnlTop);
+            this.Controls.Add(this.dgvBackups);
+            this.Controls.Add(this.btnBackup);
+            this.Controls.Add(this.btnRestore);
+            this.Name = "Fr_GestionBackupRestore";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Gestión de Backup";
+            this.pnlTop.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvBackups)).EndInit();
+            this.ResumeLayout(false);
+
         }
 
         private Panel pnlTop;

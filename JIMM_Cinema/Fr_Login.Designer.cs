@@ -40,126 +40,157 @@ namespace UI
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Fr_Login));
-            pnlTop = new Panel();
-            btnSalir = new Button();
-            lblTitle = new Label();
-            picLogo = new PictureBox();
-            txtUsername = new TextBox();
-            txtPassword = new TextBox();
-            btnMostrarPassword = new Button();
-            btnIngresar = new Button();
-            pnlTop.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)picLogo).BeginInit();
-            SuspendLayout();
+            this.pnlTop = new System.Windows.Forms.Panel();
+            this.btnSalir = new System.Windows.Forms.Button();
+            this.lblTitle = new System.Windows.Forms.Label();
+            this.picLogo = new System.Windows.Forms.PictureBox();
+            this.txtUsername = new System.Windows.Forms.TextBox();
+            this.txtPassword = new System.Windows.Forms.TextBox();
+            this.btnMostrarPassword = new System.Windows.Forms.Button();
+            this.btnIngresar = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.pnlTop.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picLogo)).BeginInit();
+            this.SuspendLayout();
             // 
             // pnlTop
             // 
-            pnlTop.BackColor = Color.Sienna;
-            pnlTop.Controls.Add(btnSalir);
-            pnlTop.Controls.Add(lblTitle);
-            pnlTop.Location = new Point(0, 0);
-            pnlTop.Name = "pnlTop";
-            pnlTop.Size = new Size(800, 55);
-            pnlTop.TabIndex = 0;
+            this.pnlTop.BackColor = System.Drawing.Color.Sienna;
+            this.pnlTop.Controls.Add(this.btnSalir);
+            this.pnlTop.Controls.Add(this.lblTitle);
+            this.pnlTop.Location = new System.Drawing.Point(0, 0);
+            this.pnlTop.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pnlTop.Name = "pnlTop";
+            this.pnlTop.Size = new System.Drawing.Size(800, 44);
+            this.pnlTop.TabIndex = 0;
             // 
             // btnSalir
             // 
-            btnSalir.FlatStyle = FlatStyle.Flat;
-            btnSalir.ForeColor = Color.White;
-            btnSalir.Location = new Point(0, 0);
-            btnSalir.Name = "btnSalir";
-            btnSalir.Size = new Size(30, 30);
-            btnSalir.TabIndex = 1;
-            btnSalir.Text = "✖";
-            btnSalir.Click += btnIngresar_Click;
+            this.btnSalir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSalir.ForeColor = System.Drawing.Color.White;
+            this.btnSalir.Location = new System.Drawing.Point(0, 0);
+            this.btnSalir.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnSalir.Name = "btnSalir";
+            this.btnSalir.Size = new System.Drawing.Size(30, 24);
+            this.btnSalir.TabIndex = 1;
+            this.btnSalir.Text = "✖";
+            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
             // lblTitle
             // 
-            lblTitle.Dock = DockStyle.Top;
-            lblTitle.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            lblTitle.ForeColor = Color.White;
-            lblTitle.Location = new Point(0, 0);
-            lblTitle.Name = "lblTitle";
-            lblTitle.Size = new Size(800, 39);
-            lblTitle.TabIndex = 0;
-            lblTitle.Text = "SISTEMA DE GESTIÓN CINEMATOGRÁFICA";
-            lblTitle.TextAlign = ContentAlignment.MiddleCenter;
+            this.lblTitle.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.lblTitle.ForeColor = System.Drawing.Color.White;
+            this.lblTitle.Location = new System.Drawing.Point(0, 0);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(800, 31);
+            this.lblTitle.TabIndex = 0;
+            this.lblTitle.Text = "SISTEMA DE GESTIÓN CINEMATOGRÁFICA";
+            this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // picLogo
             // 
-            picLogo.BackgroundImage = (Image)resources.GetObject("picLogo.BackgroundImage");
-            picLogo.BackgroundImageLayout = ImageLayout.Stretch;
-            picLogo.Location = new Point(92, 168);
-            picLogo.Name = "picLogo";
-            picLogo.Size = new Size(169, 161);
-            picLogo.SizeMode = PictureBoxSizeMode.Zoom;
-            picLogo.TabIndex = 1;
-            picLogo.TabStop = false;
+            this.picLogo.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("picLogo.BackgroundImage")));
+            this.picLogo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.picLogo.Location = new System.Drawing.Point(43, 109);
+            this.picLogo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.picLogo.Name = "picLogo";
+            this.picLogo.Size = new System.Drawing.Size(218, 183);
+            this.picLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picLogo.TabIndex = 1;
+            this.picLogo.TabStop = false;
             // 
             // txtUsername
             // 
-            txtUsername.Font = new Font("Segoe UI", 12F);
-            txtUsername.Location = new Point(282, 180);
-            txtUsername.Name = "txtUsername";
-            txtUsername.Text = "Usuario";
-            txtUsername.Size = new Size(250, 34);
-            txtUsername.TabIndex = 2;
+            this.txtUsername.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.txtUsername.Location = new System.Drawing.Point(282, 134);
+            this.txtUsername.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtUsername.Name = "txtUsername";
+            this.txtUsername.Size = new System.Drawing.Size(250, 34);
+            this.txtUsername.TabIndex = 2;
             // 
             // txtPassword
             // 
-            txtPassword.Font = new Font("Segoe UI", 12F);
-            txtPassword.Location = new Point(282, 235);
-            txtPassword.Name = "txtPassword";
-            txtPassword.Text = "Contraseña";
-            txtPassword.Size = new Size(250, 34);
-            txtPassword.TabIndex = 3;
+            this.txtPassword.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.txtPassword.Location = new System.Drawing.Point(282, 203);
+            this.txtPassword.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtPassword.Name = "txtPassword";
+            this.txtPassword.Size = new System.Drawing.Size(250, 34);
+            this.txtPassword.TabIndex = 3;
             // 
             // btnMostrarPassword
             // 
-            btnMostrarPassword.FlatStyle = FlatStyle.Flat;
-            btnMostrarPassword.Location = new Point(538, 240);
-            btnMostrarPassword.Name = "btnMostrarPassword";
-            btnMostrarPassword.Size = new Size(30, 30);
-            btnMostrarPassword.TabIndex = 4;
-            btnMostrarPassword.Text = "👁";
-            btnMostrarPassword.MouseDown += btnMostrarPassword_MouseDown;
-            btnMostrarPassword.MouseUp += btnMostrarPassword_MouseUp;
+            this.btnMostrarPassword.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMostrarPassword.Location = new System.Drawing.Point(538, 203);
+            this.btnMostrarPassword.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnMostrarPassword.Name = "btnMostrarPassword";
+            this.btnMostrarPassword.Size = new System.Drawing.Size(36, 34);
+            this.btnMostrarPassword.TabIndex = 4;
+            this.btnMostrarPassword.Text = "👁";
+            this.btnMostrarPassword.Click += new System.EventHandler(this.btnMostrarPassword_Click);
             // 
             // btnIngresar
             // 
-            btnIngresar.BackColor = Color.Sienna;
-            btnIngresar.FlatStyle = FlatStyle.Flat;
-            btnIngresar.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            btnIngresar.ForeColor = Color.White;
-            btnIngresar.Location = new Point(282, 289);
-            btnIngresar.Name = "btnIngresar";
-            btnIngresar.Size = new Size(250, 40);
-            btnIngresar.TabIndex = 5;
-            btnIngresar.Text = "INGRESAR";
-            btnIngresar.UseVisualStyleBackColor = false;
-            btnIngresar.Click += btnIngresar_Click;
+            this.btnIngresar.BackColor = System.Drawing.Color.Sienna;
+            this.btnIngresar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnIngresar.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.btnIngresar.ForeColor = System.Drawing.Color.White;
+            this.btnIngresar.Location = new System.Drawing.Point(282, 250);
+            this.btnIngresar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnIngresar.Name = "btnIngresar";
+            this.btnIngresar.Size = new System.Drawing.Size(250, 42);
+            this.btnIngresar.TabIndex = 5;
+            this.btnIngresar.Text = "INGRESAR";
+            this.btnIngresar.UseVisualStyleBackColor = false;
+            this.btnIngresar.Click += new System.EventHandler(this.btnIngresar_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(279, 109);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(54, 16);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "Usuario";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(279, 185);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(76, 16);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "Contraseña";
             // 
             // Fr_Login
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
-            AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(798, 445);
-            Controls.Add(picLogo);
-            Controls.Add(txtUsername);
-            Controls.Add(txtPassword);
-            Controls.Add(btnMostrarPassword);
-            Controls.Add(btnIngresar);
-            Controls.Add(pnlTop);
-            FormBorderStyle = FormBorderStyle.None;
-            Name = "Fr_Login";
-            StartPosition = FormStartPosition.CenterScreen;
-            Text = "Fr_Login";
-            pnlTop.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)picLogo).EndInit();
-            ResumeLayout(false);
-            PerformLayout();
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(798, 356);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.picLogo);
+            this.Controls.Add(this.txtUsername);
+            this.Controls.Add(this.txtPassword);
+            this.Controls.Add(this.btnMostrarPassword);
+            this.Controls.Add(this.btnIngresar);
+            this.Controls.Add(this.pnlTop);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Name = "Fr_Login";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Fr_Login";
+            this.pnlTop.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.picLogo)).EndInit();
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
         }
 
         #endregion
+
+        private Label label1;
+        private Label label2;
     }
 }

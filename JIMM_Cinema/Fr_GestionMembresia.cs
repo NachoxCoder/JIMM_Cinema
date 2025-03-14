@@ -16,19 +16,20 @@ namespace UI
     {
         private readonly BLL_Membresia gestorMembresia;
         private readonly BLL_Cliente gestorCliente;
-        //private readonly BLL_Bitacora gestorBitacora;
         private BE_Cliente clienteSeleccionado;
         private BE_Membresia membresiaSeleccionada;
-        private BE_Usuario usuarioActual;
 
         public Fr_GestionMembresia()
         {
             InitializeComponent();
             gestorMembresia = new BLL_Membresia();
             gestorCliente = new BLL_Cliente();
-            //gestorBitacora = new BLL_Bitacora();
-            //usuarioActual = usuario;
             this.Load += Fr_GestionMembresia_Load;
+            btnAsignarMembresia.Click += btnAsignarMembresia_Click;
+            btnRemoverMembresia.Click += btnRemoverMembresia_Click_1;
+            btnBuscarCliente.Click += btnBuscarCliente_Click_1;
+            dgvMembresias.SelectionChanged += dgvMembresias_SelectionChanged;
+
         }
 
         private void Fr_GestionMembresia_Load(object sender, EventArgs e)
@@ -53,45 +54,6 @@ namespace UI
             if (membresiaSeleccionada != null)
             {
                 cmbTipoMembresia.SelectedItem = membresiaSeleccionada.Tipo;
-                dtpFechaInicio.Value = membresiaSeleccionada.FechaInicio;
-                dtpFechaFin.Value = membresiaSeleccionada.FechaFin;
-                chkActiva.Checked = membresiaSeleccionada.EstaActiva;
-            }
-        }
-
-        private void btnGuardar_Click(object sender, EventArgs e)
-        {
-            if (clienteSeleccionado == null)
-            {
-                MessageBox.Show("Debe seleccionar un cliente para continuar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            try
-            {
-                if (membresiaSeleccionada == null)
-                {
-                    membresiaSeleccionada = new BE_Membresia();
-                }
-
-                membresiaSeleccionada.Cliente.ID = clienteSeleccionado.ID;
-                membresiaSeleccionada.Tipo = (TipoMembresia)cmbTipoMembresia.SelectedItem;
-                membresiaSeleccionada.FechaInicio = dtpFechaInicio.Value;
-                membresiaSeleccionada.FechaFin = dtpFechaFin.Value;
-                membresiaSeleccionada.EstaActiva = chkActiva.Checked;
-
-                if (gestorMembresia.Alta(membresiaSeleccionada))
-                {
-                    MessageBox.Show("Membresía guardada correctamente", "Membresía Guardada", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    //gestorBitacora.Log(usuarioActual, $"Se ha creado una membresía para el cliente: " +
-                    //$"{clienteSeleccionado.NombreCompleto()}");
-                    CargarMembresias();
-                    LimpiarFormulario();
-                }
-            }
-            catch (Exception ex)
-            {
-
-                MessageBox.Show($"Error al guardar la membresia: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -100,9 +62,6 @@ namespace UI
             txtDNI.Clear();
             txtNombre.Clear();
             cmbTipoMembresia.SelectedIndex = 0;
-            dtpFechaInicio.Value = DateTime.Today;
-            dtpFechaFin.Value = DateTime.Today.AddMonths(1);
-            chkActiva.Checked = true;
             clienteSeleccionado = null;
             membresiaSeleccionada = null;
         }
@@ -179,6 +138,7 @@ namespace UI
                 {
                     MessageBox.Show("Membresía asignada correctamente", "Membresía Asignada", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     ActualizarGrillaMembresias();
+                    LimpiarFormulario();
                 }
             }
             catch (Exception ex)

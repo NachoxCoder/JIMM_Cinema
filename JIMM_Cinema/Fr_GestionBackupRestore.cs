@@ -30,6 +30,8 @@ namespace UI
             gestorUsuario = new BLL_Usuario();
             usuarioActual = usuario;
             this.Load += Fr_GestionBackupRestore_Load;
+            btnBackup.Click += btnBackup_Click;
+            btnRestore.Click += btnRestore_Click;
         }
 
         private void Fr_GestionBackupRestore_Load(object sender, EventArgs e)

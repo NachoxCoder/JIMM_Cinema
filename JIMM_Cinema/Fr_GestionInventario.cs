@@ -16,8 +16,6 @@ namespace UI
     {
         private readonly BLL_Producto gestorProducto;
         private readonly BLL_Proveedor gestorProveedor;
-        //private readonly BLL_Bitacora gestorBitacora;
-        //private readonly BE_Empleado usuarioActual;
         private BE_Producto productoSeleccionado;
         private BE_Proveedor proveedorSeleccionado;
 
@@ -27,9 +25,19 @@ namespace UI
             InitializeComponent();
             gestorProducto = new BLL_Producto();
             gestorProveedor = new BLL_Proveedor();
-            //gestorBitacora = new BLL_Bitacora();
-            //usuarioActual = usuario;
             this.Load += Fr_GestionInventario_Load;
+            btnGuardarProducto.Click += btnGuardarProducto_Click;
+            btnEliminarProducto.Click += btnEliminarProducto_Click;
+            dgvProductos.SelectionChanged += dgvProductos_SelectionChanged;
+            btnNuevoProducto.Click += btnNuevoProducto_Click;
+            btnNuevoProveedor.Click += btnNuevoProveedor_Click;
+            btnGuardarProveedor.Click += btnGuardarProveedor_Click;
+            btnModificarProducto.Click += btnModificarProducto_Click;
+            btnEliminarProveedor.Click += btnEliminarProveedor_Click;
+            dgvProveedor.SelectionChanged += dgvProveedor_SelectionChanged;
+            btnModificarProveedor.Click += btnModificarProveedor_Click;
+            lblAlerta.Click += lblAlerta_Click;
+            btnGenerarOrdenCompra.Click += btnGenerarOrdenCompra_Click;
         }
 
         private void Fr_GestionInventario_Load(object sender, EventArgs e)
@@ -86,7 +94,7 @@ namespace UI
 
                 proveedorSeleccionado = (BE_Proveedor)dgvProveedor.CurrentRow.DataBoundItem;
 
-                if (!ValidarDatos()) return;
+                if (!ValidarDatosProducto()) return;
                 {
                     var producto = new BE_Producto
                     {
@@ -99,7 +107,6 @@ namespace UI
 
                     gestorProducto.Alta(producto);
                     gestorProveedor.AgregarProducto(proveedorSeleccionado, producto);
-                    //gestorBitacora.Log(usuarioActual, $"Producto: {productoSeleccionado.NombreProducto} agregado");
                     MessageBox.Show("Producto creado con éxito", "Producto", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     proveedorSeleccionado = gestorProveedor.ConsultarPorID(proveedorSeleccionado.ID);
                     RefrescarGrilla(dgvProductos, proveedorSeleccionado.Productos);
@@ -114,7 +121,7 @@ namespace UI
             }
         }
 
-        private bool ValidarDatos()
+        private bool ValidarDatosProducto()
         {
             if (string.IsNullOrWhiteSpace(txtNombreProducto.Text))
             {
@@ -173,7 +180,6 @@ namespace UI
 
                     gestorProveedor.RemoverProducto(proveedorSeleccionado, productoSeleccionado);
                     gestorProducto.Baja(productoSeleccionado);
-                    //gestorBitacora.Log(usuarioActual, $"Producto: {productoSeleccionado.NombreProducto} eliminado");
                     MessageBox.Show("Producto eliminado con éxito", "Producto", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     dgvProductos.DataSource = null;
                     proveedorSeleccionado = gestorProveedor.ConsultarPorID(proveedorID);
@@ -254,7 +260,6 @@ namespace UI
                 };
 
                 gestorProveedor.Alta(proveedor);
-                //gestorBitacora.Log(usuarioActual, $"Proveedor: {proveedorSeleccionado.RazonSocial} agregado");
                 MessageBox.Show("Proveedor creado con éxito", "Proveedor", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 RefrescarGrilla(dgvProveedor, gestorProveedor.Consultar());
                 RefrescarGrilla(dgvProductos, proveedor.Productos);
@@ -284,7 +289,6 @@ namespace UI
 
                 gestorProducto.Modificar(productoSeleccionado);
                 gestorProveedor.ActualizarProductos(productoSeleccionado);
-                //gestorBitacora.Log(usuarioActual, $"Producto: {productoSeleccionado.NombreProducto} modificado");
                 MessageBox.Show("Producto modificado con éxito", "Producto", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 proveedorSeleccionado = gestorProveedor.ConsultarPorID(proveedorSeleccionado.ID);
                 RefrescarGrilla(dgvProductos, proveedorSeleccionado.Productos);
@@ -313,7 +317,6 @@ namespace UI
                 try
                 {
                     gestorProveedor.Baja(proveedorSeleccionado);
-                    //gestorBitacora.Log(usuarioActual, $"Proveedor: {proveedorSeleccionado.RazonSocial} eliminado");
                     MessageBox.Show("Proveedor y sus productos asociados fueron eliminados con éxito", "Proveedor",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
                     RefrescarGrilla(dgvProveedor, gestorProveedor.Consultar());
@@ -356,35 +359,6 @@ namespace UI
             txtEmailProveedor.Clear();
             btnEliminarProveedor.Enabled = false;
             chkProveedorActivo.Checked = true;
-        }
-
-        private bool ValidarDatosProducto()
-        {
-            if (string.IsNullOrWhiteSpace(txtNombreProducto.Text))
-            {
-                MessageBox.Show("Ingrese un nombre para el producto", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
-
-            if (string.IsNullOrWhiteSpace(txtDescripcionProducto.Text))
-            {
-                MessageBox.Show("Ingrese una descripción para el producto", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
-
-            if (numPrecioProducto.Value <= 0)
-            {
-                MessageBox.Show("Ingrese un precio mayor a 0", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
-
-            if (numStockProducto.Value < 0)
-            {
-                MessageBox.Show("El stock NO puede ser negativo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
-
-            return true;
         }
 
         private bool ValidarDatosProveedor()
@@ -441,7 +415,6 @@ namespace UI
                 proveedorSeleccionado.EstaActivo = chkProveedorActivo.Checked;
 
                 gestorProveedor.Modificar(proveedorSeleccionado);
-                //gestorBitacora.Log(usuarioActual, $"Proveedor: {proveedorSeleccionado.RazonSocial} modificado");
                 MessageBox.Show("Proveedor modificado con éxito", "Proveedor", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 RefrescarGrilla(dgvProveedor, gestorProveedor.Consultar());
             }

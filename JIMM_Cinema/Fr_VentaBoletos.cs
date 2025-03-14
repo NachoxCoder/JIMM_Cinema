@@ -20,13 +20,11 @@ namespace UI
         private readonly BLL_Funcion gestorFuncion;
         private readonly BLL_Cliente gestorCliente;
         private readonly BLL_Butaca gestorButaca;
-        //private readonly BLL_Bitacora gestorBitacora;
         private readonly BLL_Boleto gestorBoleto;
         private readonly BLL_Membresia gestorMembresia;
         private BE_Cliente clienteSeleccionado;
         private BE_Funcion funcionSeleccionada;
         private BE_Pelicula peliculaSeleccionada;
-        private BE_Usuario usuarioActual;
         public Fr_VentaBoletos()
         {
             InitializeComponent();
@@ -34,11 +32,15 @@ namespace UI
             gestorFuncion = new BLL_Funcion();
             gestorCliente = new BLL_Cliente();
             gestorButaca = new BLL_Butaca();
-            //gestorBitacora = new BLL_Bitacora();
             gestorBoleto = new BLL_Boleto();
             gestorMembresia = new BLL_Membresia();
-            //usuarioActual = usuario;
             this.Load += Fr_VentaBoletos_Load;
+            dgvFunciones.SelectionChanged += dgvFunciones_SelectionChanged;
+            dgvPeliculas.SelectionChanged += dgvPeliculas_SelectionChanged;
+            btnCompletarVenta.Click += btnCompletarVenta_Click;
+            btnNuevoCliente.Click += btnNuevoCliente_Click;
+            btnMembresia.Click += btnMembresia_Click;
+            btnBuscarCliente.Click += btnBuscarCliente_Click;
         }
 
         private void Fr_VentaBoletos_Load(object sender, EventArgs e)
@@ -143,12 +145,12 @@ namespace UI
             if (lstBxButacasSeleccionadas.Items.Contains(butaca))
             {
                 lstBxButacasSeleccionadas.Items.Remove(butaca);
-                boton.BackColor = System.Drawing.Color.LightGreen;
+                boton.BackColor = Color.LightGreen;
             }
             else
             {
                 lstBxButacasSeleccionadas.Items.Add(butaca);
-                boton.BackColor = System.Drawing.Color.Yellow;
+                boton.BackColor = Color.Yellow;
             }
 
             ActualizarTotal();
@@ -213,10 +215,6 @@ namespace UI
 
                     MessageBox.Show("Venta completada con éxito", "Venta Exitosa",
                                     MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                    /*gestorBitacora.Log(usuarioActual, 
-                        $"Venta de {lstBxButacasSeleccionadas.Items.Count} butacas para la función: " +
-                        $"{funcionSeleccionada.PeliculaTitulo()} al cliente: {clienteSeleccionado.NombreCompleto()}");*/
 
                     LimpiarForm();
                 }

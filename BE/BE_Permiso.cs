@@ -14,6 +14,7 @@ namespace BE
         }
         public BE_Permiso()
         {
+            EsRol = false;
         }
 
         public override void AgregarHijo(BE_Componente pComponente)

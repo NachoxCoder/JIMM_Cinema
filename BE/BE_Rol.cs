@@ -8,29 +8,30 @@ namespace BE
 {
     public class BE_Rol : BE_Componente
     {
-        private readonly List<BE_Componente> _hijos;
+        public List<BE_Componente> Hijos { get; set; }
 
         public BE_Rol(string pNombre) : base(pNombre)
         {
             EsRol = true;
-            _hijos = new List<BE_Componente>();
+            Hijos = new List<BE_Componente>();
         }
 
         public BE_Rol()
         {
-                    
+            EsRol = true;
+            Hijos = new List<BE_Componente>();
         }
 
         public override void AgregarHijo(BE_Componente pComponente)
         {
-            if(!_hijos.Contains(pComponente))
-                _hijos.Add(pComponente);
+            if(!Hijos.Contains(pComponente))
+                Hijos.Add(pComponente);
         }
 
         public override List<BE_Componente> ObtenerHijos()
         {
             List<BE_Componente> listaComponentes = new List<BE_Componente>();
-            foreach (BE_Componente componente in _hijos)
+            foreach (BE_Componente componente in Hijos)
             {
                 if (componente is BE_Rol rol)
                 {
@@ -46,12 +47,12 @@ namespace BE
 
         public override void RemoverHijo(BE_Componente pComponent)
         {
-            _hijos.Remove(pComponent);
+            Hijos.Remove(pComponent);
         }
 
         public override void QuitarTodosHijos()
         {
-            _hijos.Clear();
+            Hijos.Clear();
         }
     }
 }

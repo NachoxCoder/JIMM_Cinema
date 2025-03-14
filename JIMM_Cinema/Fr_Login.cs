@@ -20,20 +20,24 @@ namespace UI
         private readonly BLL_Bitacora gestorBitacora;
         private int iniciosDeSesion;
         private const int maxIntentos = 3;
+        private bool contraseñaVisible = false;
+
         public Fr_Login()
         {
             InitializeComponent();
             gestorUsuario = new BLL_Usuario();
             gestorBitacora = new BLL_Bitacora();
             iniciosDeSesion = 0;
+            this.Load += Fr_Login_Load;
+            btnIngresar.Click += btnIngresar_Click;
+            btnSalir.Click += btnSalir_Click;
+            btnMostrarPassword.Click += btnMostrarPassword_Click;
         }
 
         public void Fr_Login_Load(object sender, EventArgs e)
         {
-            txtPassword.UseSystemPasswordChar = true;
+            txtPassword.PasswordChar = '*';
             AcceptButton = btnIngresar;
-            txtUsername.Clear();
-            txtPassword.Clear();
         }
 
 
@@ -84,25 +88,23 @@ namespace UI
             }
         }
 
-        private void btnMostrarPassword_MouseDown(object sender, EventArgs e)
-        {
-            txtPassword.UseSystemPasswordChar = false;
-        }
-
-        private void btnMostrarPassword_MouseUp(object sender, EventArgs e)
-        {
-            txtPassword.UseSystemPasswordChar = true;
-        }
-
         private void btnSalir_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
-        protected override void OnFormClosing(FormClosingEventArgs e)
+
+        private void btnMostrarPassword_Click(object sender, EventArgs e)
         {
-            base.OnFormClosing(e);
-            if (e.CloseReason == CloseReason.UserClosing)
-            Application.Exit();
+            contraseñaVisible = !contraseñaVisible;
+
+            if(contraseñaVisible)
+            {
+                txtPassword.PasswordChar = '\0';
+            }
+            else
+            {
+                txtPassword.PasswordChar = '*';
+            }
         }
     }
 }

@@ -24,6 +24,13 @@ namespace UI
             gestorUsuario = new BLL_Usuario();
             usuarioActual = usuario;
             this.Load += Fr_GestionUsuarios_Load;
+            btnGuardar.Click += btnGuardar_Click;
+            btnEliminar.Click += btnEliminar_Click;
+            btnModificar.Click += btnModificar_Click;
+            dgvUsuarios.SelectionChanged += dgvUsuarios_SelectionChanged;
+            btnMostrarPassword.MouseDown += btnMostrarPassword_MouseDown;
+            btnMostrarPassword.MouseUp += btnMostrarPassword_MouseUp;
+            btnNuevoUsuario.Click += btnNuevoUsuario_Click;
         }
 
         private void Fr_GestionUsuarios_Load(object sender, EventArgs e)
@@ -38,7 +45,8 @@ namespace UI
             {
                 dgvUsuarios.DataSource = null;
                 var usuarios = gestorUsuario.Consultar();
-                usuarios.RemoveAll(x => x.ID == usuarioActual.ID);
+                //Remover el usuario actual y el usuario admin
+                usuarios.RemoveAll(x => x.ID == usuarioActual.ID || x.ID == 1);
                 dgvUsuarios.DataSource = usuarios;
             }
             catch (Exception ex)
@@ -115,11 +123,7 @@ namespace UI
                 usuarioSeleccionado.Nombre = txtNombre.Text;
                 usuarioSeleccionado.Apellido = txtApellido.Text;
                 usuarioSeleccionado.Area = txtArea.Text;
-
-                if (!string.IsNullOrWhiteSpace(txtPassword.Text) && txtPassword.Text != "*********")
-                {
-                    usuarioSeleccionado.Password = Servicio.Encriptacion.EncriptarPassword(txtPassword.Text);
-                }
+                usuarioSeleccionado.Password = Servicio.Encriptacion.EncriptarPassword(txtPassword.Text);
 
                 gestorUsuario.Modificar(usuarioSeleccionado);
                 MessageBox.Show("usuario modificado correctamente");
@@ -138,7 +142,6 @@ namespace UI
             {
                 usuarioSeleccionado = (BE_Usuario)dgvUsuarios.CurrentRow.DataBoundItem;
                 Mostrarusuario();
-                HabilitarControles(false);
                 btnEliminar.Enabled = true;
             }
         }
@@ -149,7 +152,7 @@ namespace UI
             txtNombre.Text = usuarioSeleccionado.Nombre;
             txtApellido.Text = usuarioSeleccionado.Apellido;
             txtArea.Text = usuarioSeleccionado.Area;
-            txtPassword.Text = "*********";
+            txtPassword.Text = Servicio.Encriptacion.DesencriptarPassword(usuarioSeleccionado.Password);
         }
 
         private void LimpiarForm()
@@ -161,32 +164,15 @@ namespace UI
             txtArea.Clear();
             txtPassword.Clear();
             btnEliminar.Enabled = false;
-            HabilitarControles(true);
         }
 
-        private void HabilitarControles(bool habilitar)
+        private bool ValidarDatos()
         {
-            txtUsername.ReadOnly = !habilitar;
-            txtNombre.ReadOnly = !habilitar;
-            txtApellido.ReadOnly = !habilitar;
-            txtArea.ReadOnly = !habilitar;
-            txtPassword.ReadOnly = !habilitar;
-        }
-
-        private bool ValidarDatos(bool esModificacion = false)
-        {
-            if (string.IsNullOrWhiteSpace(txtUsername.Text) ||
-                string.IsNullOrWhiteSpace(txtNombre.Text) ||
-                string.IsNullOrWhiteSpace(txtApellido.Text) ||
-                string.IsNullOrWhiteSpace(txtArea.Text))
+            if (string.IsNullOrWhiteSpace(txtUsername.Text) || string.IsNullOrWhiteSpace(txtNombre.Text) ||
+                string.IsNullOrWhiteSpace(txtApellido.Text) || string.IsNullOrWhiteSpace(txtArea.Text) || 
+                    string.IsNullOrWhiteSpace(txtPassword.Text))
             {
                 MessageBox.Show("Debe completar todos los campos obligatorios", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
-
-            if (!esModificacion && string.IsNullOrWhiteSpace(txtPassword.Text))
-            {
-                MessageBox.Show("Debe ingresar una contraseña para el nuevo usuario", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
 

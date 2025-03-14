@@ -15,18 +15,17 @@ namespace UI
     public partial class Fr_GestionSalas : Form
     {
         private readonly BLL_Sala gestorSala;
-        //private readonly BLL_Bitacora gestorBitacora;
-        private readonly BLL_Butaca gestorButaca;
-        private BE_Usuario usuarioActual;
         private BE_Sala salaSeleccionada;
         public Fr_GestionSalas()
         {
             InitializeComponent();
             gestorSala = new BLL_Sala();
-            //gestorBitacora = new BLL_Bitacora();
-            gestorButaca = new BLL_Butaca();
-            //usuarioActual = usuario;
             this.Load += Fr_GestionSalas_Load;
+            btnEliminarSala.Click += btnEliminarSala_Click;
+            btnGuardarSala.Click += btnGuardarSala_Click;
+            dgvSalas.SelectionChanged += dgvSalas_SelectionChanged;
+            btnModificarSala.Click += btnModificarSala_Click;
+            btnNuevaSala.Click += btnNuevaSala_Click;
         }
 
         private void Fr_GestionSalas_Load(object sender, EventArgs e)
@@ -76,38 +75,12 @@ namespace UI
                 }
                 gestorSala.Alta(sala);
                 MessageBox.Show("Sala guardada correctamente");
-                //gestorBitacora.Log(usuarioActual, $"Se guardó la sala {salaSeleccionada.Nombre}");
                 CargarSalas();
                 LimpiarFormulario();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-            }
-
-        }
-
-        private void CrearButacas()
-        {
-            int filasTotal = (int)numFilas.Value;
-            int butacasPorFila = (int)numButacasPorFila.Value;
-
-            for (int fila = 0; fila < filasTotal; fila++)
-            {
-                string letraFila = ((char)('A' + fila)).ToString();
-
-                for (int num = 1; num <= butacasPorFila; num++)
-                {
-                    var butaca = new BE_Butaca
-                    {
-                        Sala = salaSeleccionada,
-                        Fila = letraFila,
-                        Numero = num,
-                        Disponible = true
-                    };
-
-                    gestorButaca.Alta(butaca);
-                }
             }
         }
 
@@ -143,7 +116,6 @@ namespace UI
                         if (gestorSala.Baja(salaSeleccionada))
                         {
                             MessageBox.Show("Sala eliminada correctamente");
-                            //gestorBitacora.Log(usuarioActual, $"Se eliminó la sala: {salaSeleccionada.Nombre}");
                             CargarSalas();
                             LimpiarFormulario();
                         }
@@ -182,7 +154,7 @@ namespace UI
             numButacasPorFila.Value = 0;
         }
 
-        private void btnModificar_Click(object sender, EventArgs e)
+        private void btnModificarSala_Click(object sender, EventArgs e)
         {
             try
             {
@@ -201,7 +173,6 @@ namespace UI
                 if (gestorSala.Modificar(salaSeleccionada))
                 {
                     MessageBox.Show("Sala modificada correctamente", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    //gestorBitacora.Log(usuarioActual, $"Se ha modificado la sala: {salaSeleccionada.Nombre}");
                     CargarSalas();
                     LimpiarFormulario();
                 }

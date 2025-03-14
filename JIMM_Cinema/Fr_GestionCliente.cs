@@ -21,6 +21,12 @@ namespace Gestion_Cine
         {
             InitializeComponent();
             gestorCliente = new BLL_Cliente();
+            this.Load += Fr_GestionCliente_Load_1;
+            btnNuevoCliente.Click += btnNuevoCliente_Click;
+            btnGuardar.Click += btnGuardar_Click_1;
+            btnModificar.Click += btnModificar_Click;
+            btnEliminar.Click += btnEliminar_Click_1;
+            dgvClientes.SelectionChanged += dgvClientes_SelectionChanged_1;
         }
 
         private void Fr_GestionCliente_Load_1(object sender, EventArgs e)

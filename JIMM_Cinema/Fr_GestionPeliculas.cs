@@ -17,8 +17,6 @@ namespace UI
         private readonly BLL_Pelicula gestorPelicula;
         private readonly BLL_Funcion gestorFuncion;
         private readonly BLL_Sala gestorSala;
-        //private readonly BLL_Bitacora gestorBitacora;
-        private BE_Usuario usuarioActual;
         private BE_Pelicula peliculaSeleccionada;
         private BE_Funcion funcionSeleccionada;
 
@@ -28,9 +26,18 @@ namespace UI
             gestorPelicula = new BLL_Pelicula();
             gestorFuncion = new BLL_Funcion();
             gestorSala = new BLL_Sala();
-            //gestorBitacora = new BLL_Bitacora();
-            //usuarioActual = usuario;
             this.Load += Fr_GestionPeliculas_Load;
+            btn_NuevaPelicula.Click += btn_NuevaPelicula_Click;
+            btnGuardarPelicula.Click += btnGuardarPelicula_Click;
+            btnNuevaFuncion.Click += btnNuevaFuncion_Click;
+            btnGuardarFuncion.Click += btnGuardarFuncion_Click;
+            dgvPeliculas.SelectionChanged += dgvPeliculas_SelectionChanged;
+            dgvFunciones.SelectionChanged += dgvFunciones_SelectionChanged;
+            btnModificarPelicula.Click += btnModificarPelicula_Click;
+            btnEliminarPelicula.Click += btnEliminarPelicula_Click;
+            btnModificarFuncion.Click += btnModificarFuncion_Click;
+            btnEliminarFuncion.Click += btnEliminarFuncion_Click;
+            dtpHoraInicio.ValueChanged += dtpHoraDesde_ValueChanged;
         }
 
         private void Fr_GestionPeliculas_Load(object sender, EventArgs e)
@@ -108,7 +115,6 @@ namespace UI
                 if (gestorFuncion.Alta(nuevaFuncion))
                 {
                         MessageBox.Show("Función guardada correctamente");
-                        //gestorBitacora.Log(usuarioActual, $"Se guardó la función de la película: {peliculaSeleccionada.Titulo}");
                         RefrescarGrilla(dgvFunciones, gestorFuncion.ConsultarFuncionesPorPelicula(peliculaSeleccionada));
                         LimpiarFormularioFuncion();
                 }
@@ -217,7 +223,6 @@ namespace UI
                 if (gestorPelicula.Modificar(peliculaSeleccionada))
                 {
                     MessageBox.Show("Pelicula modificada correctamente");
-                    //gestorBitacora.Log(usuarioActual, $"Se modificó la película: {peliculaSeleccionada.Titulo}");
                     RefrescarGrilla(dgvPeliculas, gestorPelicula.Consultar());
                     LimpiarFormularioPelicula();
                 }
@@ -228,6 +233,7 @@ namespace UI
 
             }
         }
+
         private void btnEliminarPelicula_Click(object sender, EventArgs e)
         {
             try
@@ -244,7 +250,6 @@ namespace UI
                     if (gestorPelicula.Baja(peliculaSeleccionada))
                     {
                         MessageBox.Show("Película eliminada correctamente");
-                        //gestorBitacora.Log(usuarioActual, $"Se eliminó la película: {peliculaSeleccionada.Titulo}");
                         RefrescarGrilla(dgvPeliculas, gestorPelicula.Consultar());
                         LimpiarFormularioPelicula();
                     }
@@ -278,7 +283,6 @@ namespace UI
                 if (gestorFuncion.Modificar(funcionSeleccionada))
                 {
                     MessageBox.Show("Función modificada correctamente");
-                    //gestorBitacora.Log(usuarioActual, $"Se modificó la función de la película: {peliculaSeleccionada.Titulo}");
                     RefrescarGrilla(dgvFunciones, gestorFuncion.ConsultarFuncionesPorPelicula(peliculaSeleccionada));
                     LimpiarFormularioFuncion();
                 }
@@ -305,7 +309,6 @@ namespace UI
                     if (gestorFuncion.Baja(funcionSeleccionada))
                     {
                         MessageBox.Show("Función eliminada correctamente");
-                        //gestorBitacora.Log(usuarioActual, $"Se eliminó la función de la película: {peliculaSeleccionada.Titulo}");
                         RefrescarGrilla(dgvFunciones, gestorFuncion.ConsultarFuncionesPorPelicula(peliculaSeleccionada));
                         LimpiarFormularioFuncion();
                     }
