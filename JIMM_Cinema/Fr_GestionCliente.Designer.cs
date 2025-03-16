@@ -94,6 +94,7 @@ namespace Gestion_Cine
             this.btnGuardar.TabIndex = 2;
             this.btnGuardar.Text = "GUARDAR";
             this.btnGuardar.UseVisualStyleBackColor = false;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click_1);
             // 
             // btnEliminar
             // 
@@ -107,6 +108,7 @@ namespace Gestion_Cine
             this.btnEliminar.TabIndex = 3;
             this.btnEliminar.Text = "ELIMINAR";
             this.btnEliminar.UseVisualStyleBackColor = false;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click_1);
             // 
             // groupBox1
             // 
@@ -265,6 +267,7 @@ namespace Gestion_Cine
             this.btnModificar.TabIndex = 6;
             this.btnModificar.Text = "MODIFICAR";
             this.btnModificar.UseVisualStyleBackColor = false;
+            this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
             // 
             // dgvClientes
             // 
@@ -278,6 +281,7 @@ namespace Gestion_Cine
             this.dgvClientes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvClientes.Size = new System.Drawing.Size(709, 326);
             this.dgvClientes.TabIndex = 7;
+            this.dgvClientes.SelectionChanged += new System.EventHandler(this.dgvClientes_SelectionChanged_1);
             // 
             // btnNuevoCliente
             // 
@@ -291,6 +295,7 @@ namespace Gestion_Cine
             this.btnNuevoCliente.TabIndex = 8;
             this.btnNuevoCliente.Text = "NUEVO";
             this.btnNuevoCliente.UseVisualStyleBackColor = false;
+            this.btnNuevoCliente.Click += new System.EventHandler(this.btnNuevoCliente_Click);
             // 
             // Fr_GestionCliente
             // 

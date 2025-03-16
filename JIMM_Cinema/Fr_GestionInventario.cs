@@ -26,18 +26,6 @@ namespace UI
             gestorProducto = new BLL_Producto();
             gestorProveedor = new BLL_Proveedor();
             this.Load += Fr_GestionInventario_Load;
-            btnGuardarProducto.Click += btnGuardarProducto_Click;
-            btnEliminarProducto.Click += btnEliminarProducto_Click;
-            dgvProductos.SelectionChanged += dgvProductos_SelectionChanged;
-            btnNuevoProducto.Click += btnNuevoProducto_Click;
-            btnNuevoProveedor.Click += btnNuevoProveedor_Click;
-            btnGuardarProveedor.Click += btnGuardarProveedor_Click;
-            btnModificarProducto.Click += btnModificarProducto_Click;
-            btnEliminarProveedor.Click += btnEliminarProveedor_Click;
-            dgvProveedor.SelectionChanged += dgvProveedor_SelectionChanged;
-            btnModificarProveedor.Click += btnModificarProveedor_Click;
-            lblAlerta.Click += lblAlerta_Click;
-            btnGenerarOrdenCompra.Click += btnGenerarOrdenCompra_Click;
         }
 
         private void Fr_GestionInventario_Load(object sender, EventArgs e)

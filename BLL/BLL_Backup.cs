@@ -32,18 +32,31 @@ namespace BLL
 
                 string timestamp = DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss");
                 string backupFolder = Path.Combine(_backupPath, $"BACKUP-{timestamp}");
+
+                if (Directory.Exists(backupFolder))
+                {
+                    throw new InvalidOperationException($"Ya existe un backup con la misma fecha y hora: {timestamp}");
+                }
+
                 Directory.CreateDirectory(backupFolder);
 
-                if(!Directory.Exists(_dataPath))
+                if (!Directory.Exists(_dataPath))
                 {
                     throw new DirectoryNotFoundException($"No se encontró la carpeta de datos: {_dataPath}");
                 }
 
+                int archivosCopiados = 0;
                 foreach (string file in Directory.GetFiles(_dataPath, "*.xml"))
                 {
                     string fileName = Path.GetFileName(file);
                     string destFile = Path.Combine(backupFolder, fileName);
                     File.Copy(file, destFile, true);
+                    archivosCopiados++;
+                }
+
+                if (archivosCopiados == 0)
+                {
+                    throw new InvalidOperationException("No se encontraron archivos XML para copiar");
                 }
 
                 var mapperUsuario = new MapperUsuario();

@@ -17,20 +17,14 @@ namespace UI
         private Dictionary<BE_Producto, int> productosCantidad;
         private readonly BLL_OrdenCompra _gestorOrdenCompra;
         private readonly BLL_Proveedor _gestorProveedor;
-        private readonly BLL_Producto _gestorProducto;
 
         public Fr_GenerarOrdenCompra()
         {
             InitializeComponent();
             _gestorOrdenCompra = new BLL_OrdenCompra();
             _gestorProveedor = new BLL_Proveedor();
-            _gestorProducto = new BLL_Producto();
             productosCantidad = new Dictionary<BE_Producto, int>();
             this.Load += Fr_GenerarOrdenCompra_Load;
-            btnAgregarProducto.Click += btnAgregarProducto_Click;
-            btnGuardar.Click += btnGuardar_Click;
-            btnRemover.Click += btnRemover_Click;
-            cmbProveedor.SelectedIndexChanged += cmbProveedor_SelectedIndexChanged;
         }
 
         private void Fr_GenerarOrdenCompra_Load(object sender, EventArgs e)

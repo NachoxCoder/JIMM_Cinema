@@ -26,16 +26,6 @@ namespace UI
             gestorPermiso = new BLL_Permiso();
             usuarioActual = usuario;
             this.Load += Fr_GestionPermisos_Load;
-            btnAsignarPermiso.Click += btnAsignarPermiso_Click;
-            btnAsignarPermisoUsuario.Click += btnAsignarPermisoUsuario_Click;
-            btnAsignarRolUsuario.Click += btnAsignarRolUsuario_Click;
-            btnCrearRol.Click += btnCrearRol_Click;
-            btnEliminarRol.Click += btnEliminarRol_Click;
-            btnQuitarPermiso.Click += btnQuitarPermiso_Click;
-            btnRemoverPermisoUsuario.Click += btnRemoverPermisoUsuario_Click;
-            btnRemoverRolUsuario.Click += btnRemoverRolUsuario_Click;
-            tvPermisos.AfterSelect += tvPermisos_AfterSelect;
-            tvUsuarios.AfterSelect += tvUsuarios_AfterSelect;
         }
 
         private void Fr_GestionPermisos_Load(object sender, EventArgs e)
@@ -44,6 +34,7 @@ namespace UI
             CargarCheckedListPermisos();
         }
 
+        //Cargo todos los TreeView
         private void CargarTreeViews()
         {
             CargarArbolUsuarios();
@@ -53,6 +44,7 @@ namespace UI
             CargarArbolUsuariosPermisos();
         }
 
+        //TreeView Usuarios
         private void CargarArbolUsuarios()
         {
             tvUsuarios.Nodes.Clear();
@@ -64,6 +56,7 @@ namespace UI
             }
         }
 
+        //TreeView Roles
         private void CargarArbolRoles()
         {
             tvRoles.Nodes.Clear();
@@ -73,6 +66,7 @@ namespace UI
             }
         }
 
+        //TreeView Permisos
         private void CargarArbolPermisos()
         {
             tvPermisos.Nodes.Clear();
@@ -82,6 +76,7 @@ namespace UI
             }
         }
 
+        //TreeView Roles-Permisos
         private void CargarArbolRolesPermisos()
         {
             tvRolesPermisos.Nodes.Clear();
@@ -99,6 +94,7 @@ namespace UI
             }
         }
 
+        //TreeView Usuarios-Permisos
         private void CargarArbolUsuariosPermisos()
         {
             tvUsuariosPermisos.Nodes.Clear();
@@ -125,6 +121,7 @@ namespace UI
             }
         }
 
+        //Cargamos la lista de todos los Permisos
         private void CargarCheckedListPermisos()
         {
             clbPermisos.Items.Clear();
@@ -134,10 +131,12 @@ namespace UI
             }
         }
 
+        //Boton crear nuevo Rol
         private void btnCrearRol_Click(object sender, EventArgs e)
         {
             try
             {
+                //Valido que el ususario haya introducido los datos necesarios para crear un nuevo rol
                 if (string.IsNullOrWhiteSpace(txtNombreRol.Text))
                 {
                     MessageBox.Show("Debe ingresar un nombre para el rol", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -150,6 +149,7 @@ namespace UI
                     return;
                 }
 
+                //Si los datos existen creamos un nuevo rol asignandole todos los permisos que el usuario haya seleccionado
                 var nuevoRol = new BE_Rol(txtNombreRol.Text);
 
                 foreach (BE_Permiso permiso in clbPermisos.CheckedItems)
@@ -163,6 +163,7 @@ namespace UI
                     CargarTreeViews();
                     txtNombreRol.Clear();
 
+                    //Limpio el checklistbox
                     for (int i = 0; i < clbPermisos.Items.Count; i++)
                     {
                         clbPermisos.SetItemChecked(i, false);
@@ -175,12 +176,15 @@ namespace UI
             }
         }
 
+        //Boton Eliminar Rol
         private void btnEliminarRol_Click(object sender, EventArgs e)
         {
             try
             {
+                //Comprobamos que se encuentre seleccionado un Rol
                 if (tvRoles.SelectedNode?.Tag is BE_Rol rolSeleccionado)
                 {
+                    //Pasamos el rol a la BLL para que lo remueva
                     if (gestorPermiso.Eliminar(rolSeleccionado))
                     {
                         MessageBox.Show("Rol eliminado con éxito", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -198,13 +202,16 @@ namespace UI
             }
         }
 
+        //Boton Asignar Permiso a Rol
         private void btnAsignarPermiso_Click(object sender, EventArgs e)
         {
             try
             {
+                //Verificamos que esten seleccionados un Rol y un Permiso es sus respectivos TreeViews
                 if (tvRoles.SelectedNode?.Tag is BE_Rol rolSeleccionado &&
                     tvPermisos.SelectedNode?.Tag is BE_Permiso permisoSeleccionado)
                 {
+                    //Le asigno el permiso seleccionado al rol seleccionado utilizando la BLL
                     if (gestorPermiso.AsignarPermisoARol(rolSeleccionado, permisoSeleccionado))
                     {
                         MessageBox.Show("Permiso asignado con éxito", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -222,14 +229,17 @@ namespace UI
             }
         }
 
+        //Boton Quitar Permiso a Rol
         private void btnQuitarPermiso_Click(object sender, EventArgs e)
         {
             try
             {
+                //Verificamos que este seleccionado un permiso dentro de un Rol
                 if (tvRolesPermisos.SelectedNode?.Parent != null &&
                     tvRolesPermisos.SelectedNode?.Parent.Tag is BE_Rol rolSeleccionado &&
                     tvRolesPermisos.SelectedNode?.Tag is BE_Permiso permisoSeleccionado)
                 {
+                    //Utilizamos la BLL para remover el permiso al rol
                     if (gestorPermiso.EliminarPermisoDeRol(rolSeleccionado, permisoSeleccionado))
                     {
                         MessageBox.Show("Permiso removido con éxito", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -247,13 +257,16 @@ namespace UI
             }
         }
 
+        //Boton asignar Rol a Usuario
         private void btnAsignarRolUsuario_Click(object sender, EventArgs e)
         {
             try
             {
+                //Verifico que este seleccionado tanto un Usuario como un Rol en sus TreeViews respectivos
                 if (tvUsuarios.SelectedNode?.Tag is BE_Usuario usuarioSeleccionado &&
                     tvRoles.SelectedNode?.Tag is BE_Rol rolSeleccionado)
                 {
+                    //Utilizo a la BLL para asignar el Rol al Usuario
                     if (gestorPermiso.AsignarRolAUsuario(usuarioSeleccionado, rolSeleccionado))
                     {
                         MessageBox.Show("Rol asignado con éxito", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -271,14 +284,17 @@ namespace UI
             }
         }
 
+        //Boton Remover Rol a Usuario
         private void btnRemoverRolUsuario_Click(object sender, EventArgs e)
         {
             try
             {
+                //Verifico que este seleccionado un Rol de un Usuario desde el treeview Usuarios con sus Roles y Permisos
                 if (tvUsuariosPermisos.SelectedNode?.Parent != null &&
                     tvUsuariosPermisos.SelectedNode?.Parent.Tag is BE_Usuario usuarioSeleccionado &&
                     tvUsuariosPermisos.SelectedNode?.Tag is BE_Rol rolSeleccionado)
                 {
+                    //Utilizamos la BLL para remover el Rol del Usuario
                     if (gestorPermiso.RemoverRolDeUsuario(usuarioSeleccionado, rolSeleccionado))
                     {
                         MessageBox.Show("Rol removido con éxito", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -296,13 +312,16 @@ namespace UI
             }
         }
 
+        //Boton para asignar Permiso a Usuario
         private void btnAsignarPermisoUsuario_Click(object sender, EventArgs e)
         {
             try
             {
+                //Verificamos que este seleccionado un Usuario y un Permiso en cada TreeView correspondiente
                 if (tvUsuarios.SelectedNode?.Tag is BE_Usuario usuarioSeleccionado &&
                     tvPermisos.SelectedNode?.Tag is BE_Permiso permisoSeleccionado)
                 {
+                    //Le pasamos a la BLL el usuario y el permiso seleccionado para que asigne el permiso al Usuario
                     if (gestorPermiso.AsignarPermisoUsuario(usuarioSeleccionado, permisoSeleccionado))
                     {
                         MessageBox.Show("Permiso asignado con éxito", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);

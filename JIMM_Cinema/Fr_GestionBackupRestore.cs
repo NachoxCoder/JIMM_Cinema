@@ -30,8 +30,6 @@ namespace UI
             gestorUsuario = new BLL_Usuario();
             usuarioActual = usuario;
             this.Load += Fr_GestionBackupRestore_Load;
-            btnBackup.Click += btnBackup_Click;
-            btnRestore.Click += btnRestore_Click;
         }
 
         private void Fr_GestionBackupRestore_Load(object sender, EventArgs e)
@@ -57,6 +55,9 @@ namespace UI
         {
             try
             {
+                backupEventcount = 0;
+                restoreEventcount = 0;
+
                 var registros = gestorBitacora.Consultar()
                     .Where(b => b.Evento.Contains("BACKUP") || b.Evento.Contains("RESTORE")).Select(x => new
                     {
@@ -116,7 +117,8 @@ namespace UI
 
                 if (backupFolder.Count == 0)
                 {
-                    MessageBox.Show("No se encontraron backups para restaurar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show($"No se encontró el backup con fecha {fechaSeleccionada:dd/MM/yyyy HH:mm:ss}",
+                                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
@@ -129,7 +131,11 @@ namespace UI
                         MessageBox.Show("Restore realizado con éxito", "Restore", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         CargarHistorialBackups();
 
-                        Application.Restart();
+                        if (MessageBox.Show("Es necesario reiniciar la aplicación para aplicar los cambios. ¿Desea reiniciar ahora?",
+                                            "Reinicio necesario", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                        {
+                            Application.Restart();
+                        }
                     }
                 }   
             }

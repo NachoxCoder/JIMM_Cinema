@@ -29,9 +29,6 @@ namespace UI
             gestorBitacora = new BLL_Bitacora();
             iniciosDeSesion = 0;
             this.Load += Fr_Login_Load;
-            btnIngresar.Click += btnIngresar_Click;
-            btnSalir.Click += btnSalir_Click;
-            btnMostrarPassword.Click += btnMostrarPassword_Click;
         }
 
         public void Fr_Login_Load(object sender, EventArgs e)
@@ -45,27 +42,32 @@ namespace UI
         {
             try
             {
+                //Valida que los campos no esten vacios
                 if (string.IsNullOrWhiteSpace(txtUsername.Text) || string.IsNullOrWhiteSpace(txtPassword.Text))
                 {
                     MessageBox.Show("Debe ingresar un usuario y una contraseña", "Campos Requeridos",
                                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
-                var usuario = new BE_Usuario
-                {
-                    Username = txtUsername.Text,
-                    Password = txtPassword.Text
-                };
 
-                if (gestorUsuario.ValidarCredenciales(usuario.Username, usuario.Password))
+                //Chequea si el usuario existe en sistema
+                var usuarioExistente = gestorUsuario.ConsultarPorUsername(txtUsername.Text);
+                if (usuarioExistente == null)
                 {
-                    //Traer la data del usuario
-                    usuario = gestorUsuario.Consultar()
-                               .Find(x => x.Username.ToLower() == txtUsername.Text.ToLower());
-
-                    Hide();
-                    new Fr_MenuPrincipal(usuario, this).Show();
+                    MessageBox.Show("El usuario ingresado no existe", "Usuario Inexistente",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
                 }
+
+                //Si existe valida las credenciales
+                if (gestorUsuario.ValidarCredenciales(txtUsername.Text, txtPassword.Text))
+                {
+                    //Inicia Sesion
+                    MessageBox.Show("¡Bienvenido! Se ha iniciado sesión correctamente.", "Inicio de Sesión Exitoso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Hide();
+                    new Fr_MenuPrincipal(usuarioExistente, this).Show();
+                }
+                //Si no es correcta la contraseña
                 else
                 {
                     iniciosDeSesion++;
@@ -76,7 +78,7 @@ namespace UI
                                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                         Application.Exit();
                     }
-                    MessageBox.Show($"Usuario o contraseña incorrectos. Intentos Restantes: " +
+                    MessageBox.Show($"Contraseña incorrecta. Intentos Restantes: " +
                                     $"{maxIntentos - iniciosDeSesion}", "Error de Autenticacion",
                                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }

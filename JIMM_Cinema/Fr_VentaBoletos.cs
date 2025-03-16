@@ -35,12 +35,6 @@ namespace UI
             gestorBoleto = new BLL_Boleto();
             gestorMembresia = new BLL_Membresia();
             this.Load += Fr_VentaBoletos_Load;
-            dgvFunciones.SelectionChanged += dgvFunciones_SelectionChanged;
-            dgvPeliculas.SelectionChanged += dgvPeliculas_SelectionChanged;
-            btnCompletarVenta.Click += btnCompletarVenta_Click;
-            btnNuevoCliente.Click += btnNuevoCliente_Click;
-            btnMembresia.Click += btnMembresia_Click;
-            btnBuscarCliente.Click += btnBuscarCliente_Click;
         }
 
         private void Fr_VentaBoletos_Load(object sender, EventArgs e)

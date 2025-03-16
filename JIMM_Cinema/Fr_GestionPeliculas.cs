@@ -27,17 +27,6 @@ namespace UI
             gestorFuncion = new BLL_Funcion();
             gestorSala = new BLL_Sala();
             this.Load += Fr_GestionPeliculas_Load;
-            btn_NuevaPelicula.Click += btn_NuevaPelicula_Click;
-            btnGuardarPelicula.Click += btnGuardarPelicula_Click;
-            btnNuevaFuncion.Click += btnNuevaFuncion_Click;
-            btnGuardarFuncion.Click += btnGuardarFuncion_Click;
-            dgvPeliculas.SelectionChanged += dgvPeliculas_SelectionChanged;
-            dgvFunciones.SelectionChanged += dgvFunciones_SelectionChanged;
-            btnModificarPelicula.Click += btnModificarPelicula_Click;
-            btnEliminarPelicula.Click += btnEliminarPelicula_Click;
-            btnModificarFuncion.Click += btnModificarFuncion_Click;
-            btnEliminarFuncion.Click += btnEliminarFuncion_Click;
-            dtpHoraInicio.ValueChanged += dtpHoraDesde_ValueChanged;
         }
 
         private void Fr_GestionPeliculas_Load(object sender, EventArgs e)

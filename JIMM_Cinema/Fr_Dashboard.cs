@@ -28,9 +28,6 @@ namespace JIMM_Cinema
             _gestorProducto = new BLL_Producto();
             dtpFechaDesde.Value = DateTime.Today.AddMonths(-1);
             dtpFechaHasta.Value = DateTime.Today;
-            dtpFechaDesde.ValueChanged += DtpFecha_ValueChanged;
-            dtpFechaHasta.ValueChanged += DtpFecha_ValueChanged;
-            this.Load += Fr_Dashboard_Load;
         }
 
         private void Fr_Dashboard_Load(object sender, EventArgs e)
@@ -68,7 +65,7 @@ namespace JIMM_Cinema
             chartPeliculas.ChartAreas[0].AxisX.TitleFont = new System.Drawing.Font("Segoe UI", 10, FontStyle.Bold);
             chartPeliculas.ChartAreas[0].AxisX.LabelStyle.Font = new System.Drawing.Font("Segoe UI", 8);
             chartPeliculas.ChartAreas[0].AxisX.MajorGrid.Enabled = false;
-            chartPeliculas.ChartAreas[0].AxisY.Title = "Boletos Vendidos";
+            chartPeliculas.ChartAreas[0].AxisY.Title = "Puestos Vendidos";
             chartPeliculas.ChartAreas[0].AxisY.TitleFont = new System.Drawing.Font("Segoe UI", 10, FontStyle.Bold);
             chartPeliculas.ChartAreas[0].AxisY.LabelStyle.Font = new System.Drawing.Font("Segoe UI", 8);
             chartPeliculas.ChartAreas[0].AxisY.MajorGrid.LineColor = Color.LightGray;
@@ -369,6 +366,43 @@ namespace JIMM_Cinema
                 }
                 catch { }
             }
+        }
+
+        private void btnHoy_Click(object sender, EventArgs e)
+        {
+            dtpFechaDesde.Value = DateTime.Today;
+            dtpFechaHasta.Value = DateTime.Today;
+
+            CargarDatos();
+            CargarProductosBajoStock();
+        }
+
+        private void btnSemana_Click(object sender, EventArgs e)
+        {
+            dtpFechaHasta.Value = DateTime.Today;
+            dtpFechaDesde.Value = DateTime.Today.AddDays(-7);
+
+            CargarDatos();
+            CargarProductosBajoStock();
+        }
+
+        private void btn30Dias_Click(object sender, EventArgs e)
+        {
+            dtpFechaHasta.Value = DateTime.Today;
+            dtpFechaDesde.Value = DateTime.Today.AddDays(-30);
+
+            CargarDatos();
+            CargarProductosBajoStock();
+        }
+
+        private void btnMes_Click(object sender, EventArgs e)
+        {
+            DateTime firstDayOfMonth = new DateTime(DateTime.Today.Year, DateTime.Today.Month, 1);
+            dtpFechaDesde.Value = firstDayOfMonth;
+            dtpFechaHasta.Value = DateTime.Today;
+
+            CargarDatos();
+            CargarProductosBajoStock();
         }
     }
 }

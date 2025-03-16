@@ -25,12 +25,6 @@ namespace UI
             _gestorFacturaProveedor = new BLL_FacturaProveedor();
             _gestorOrdenCompra = new BLL_OrdenCompra();
             this.Load += Fr_GestionFacturas_Load;
-            btnGuardarFactura.Click += btnGuardarFactura_Click;
-            btnNuevaFactura.Click += btnNuevaFactura_Click;
-            btnModificarFactura.Click += btnModificarFactura_Click;
-            btnPagarFactura.Click += btnPagarFactura_Click;
-            dgvOrdenesCompra.SelectionChanged += dgvOrdenesCompra_SelectionChanged;
-            dgvFacturas.SelectionChanged += dgvFacturas_SelectionChanged;
         }
 
         private void Fr_GestionFacturas_Load(object sender, EventArgs e)

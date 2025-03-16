@@ -9,18 +9,11 @@ namespace Gestion_Cine
         /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
-        private System.Windows.Forms.MenuStrip menuStrip;
-        private System.Windows.Forms.ToolStripMenuItem archivoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cerrarSesiónToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem salirToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem ventasToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem boletosToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem membresiasToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem administracionToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem peliculasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem funcionesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem salasToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem sistemaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem backupToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem bitacoraToolStripMenuItem;
 
@@ -45,7 +38,6 @@ namespace Gestion_Cine
         /// </summary>
         private void InitializeComponent()
         {
-            this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.archivoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cerrarSesionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.salirSistemaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -65,27 +57,14 @@ namespace Gestion_Cine
             this.gestionDeUsuariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gestionDePermisosYRolesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gestionDeBackupsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
-            // menuStrip
-            // 
-            this.menuStrip.BackColor = System.Drawing.Color.Sienna;
-            this.menuStrip.ForeColor = System.Drawing.Color.White;
-            this.menuStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.archivoToolStripMenuItem,
-            this.ventasToolStripMenuItem,
-            this.comprasToolStripMenuItem,
-            this.administracionToolStripMenuItem,
-            this.sistemaToolStripMenuItem});
-            this.menuStrip.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Size = new System.Drawing.Size(800, 28);
-            this.menuStrip.TabIndex = 1;
-            // 
             // archivoToolStripMenuItem
             // 
+            this.archivoToolStripMenuItem.AutoToolTip = true;
+            this.archivoToolStripMenuItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.archivoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.cerrarSesionToolStripMenuItem,
             this.salirSistemaToolStripMenuItem});
@@ -113,6 +92,7 @@ namespace Gestion_Cine
             this.boletosToolStripMenuItem,
             this.membresiasToolStripMenuItem,
             this.gestorClientesToolStripMenuItem});
+            this.ventasToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Sienna;
             this.ventasToolStripMenuItem.Name = "ventasToolStripMenuItem";
             this.ventasToolStripMenuItem.Size = new System.Drawing.Size(66, 24);
             this.ventasToolStripMenuItem.Text = "Ventas";
@@ -120,21 +100,21 @@ namespace Gestion_Cine
             // boletosToolStripMenuItem
             // 
             this.boletosToolStripMenuItem.Name = "boletosToolStripMenuItem";
-            this.boletosToolStripMenuItem.Size = new System.Drawing.Size(191, 26);
+            this.boletosToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.boletosToolStripMenuItem.Text = "Boletos";
             this.boletosToolStripMenuItem.Click += new System.EventHandler(this.boletosToolStripMenuItem_Click);
             // 
             // membresiasToolStripMenuItem
             // 
             this.membresiasToolStripMenuItem.Name = "membresiasToolStripMenuItem";
-            this.membresiasToolStripMenuItem.Size = new System.Drawing.Size(191, 26);
+            this.membresiasToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.membresiasToolStripMenuItem.Text = "Membresias";
             this.membresiasToolStripMenuItem.Click += new System.EventHandler(this.membresiasToolStripMenuItem_Click);
             // 
             // gestorClientesToolStripMenuItem
             // 
             this.gestorClientesToolStripMenuItem.Name = "gestorClientesToolStripMenuItem";
-            this.gestorClientesToolStripMenuItem.Size = new System.Drawing.Size(191, 26);
+            this.gestorClientesToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.gestorClientesToolStripMenuItem.Text = "Gestor Clientes";
             this.gestorClientesToolStripMenuItem.Click += new System.EventHandler(this.gestorClientesToolStripMenuItem_Click);
             // 
@@ -231,11 +211,27 @@ namespace Gestion_Cine
             this.gestionDeBackupsToolStripMenuItem.Text = "Gestion de Backups";
             this.gestionDeBackupsToolStripMenuItem.Click += new System.EventHandler(this.gestionDeBackupsToolStripMenuItem_Click);
             // 
+            // menuStrip
+            // 
+            this.menuStrip.BackColor = System.Drawing.Color.Sienna;
+            this.menuStrip.ForeColor = System.Drawing.Color.White;
+            this.menuStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.archivoToolStripMenuItem,
+            this.ventasToolStripMenuItem,
+            this.comprasToolStripMenuItem,
+            this.administracionToolStripMenuItem,
+            this.sistemaToolStripMenuItem});
+            this.menuStrip.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip.Name = "menuStrip";
+            this.menuStrip.Size = new System.Drawing.Size(800, 28);
+            this.menuStrip.TabIndex = 1;
+            // 
             // Fr_MenuPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 360);
+            this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.menuStrip);
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip;
@@ -243,7 +239,6 @@ namespace Gestion_Cine
             this.Name = "Fr_MenuPrincipal";
             this.Text = "Fr_MenuPrincipal";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Fr_MenuPrincipal_FormClosed);
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
             this.ResumeLayout(false);
@@ -252,19 +247,25 @@ namespace Gestion_Cine
         }
 
         #endregion
-
-        private ToolStripMenuItem comprasToolStripMenuItem;
+        private ToolStripMenuItem archivoToolStripMenuItem;
         private ToolStripMenuItem cerrarSesionToolStripMenuItem;
         private ToolStripMenuItem salirSistemaToolStripMenuItem;
-        private ToolStripMenuItem gestionDePeliculasToolStripMenuItem;
-        private ToolStripMenuItem gestionDeSalasToolStripMenuItem;
-        private ToolStripMenuItem gestionDePermisosYRolesToolStripMenuItem;
-        private ToolStripMenuItem gestionDeBackupsToolStripMenuItem;
+        private ToolStripMenuItem ventasToolStripMenuItem;
+        private ToolStripMenuItem boletosToolStripMenuItem;
+        private ToolStripMenuItem membresiasToolStripMenuItem;
+        private ToolStripMenuItem gestorClientesToolStripMenuItem;
+        private ToolStripMenuItem comprasToolStripMenuItem;
         private ToolStripMenuItem gestionDeInventarioToolStripMenuItem;
-        private ToolStripMenuItem dashboardToolStripMenuItem;
         private ToolStripMenuItem generarOrdenDeCompraToolStripMenuItem;
         private ToolStripMenuItem gestionDeFacturasToolStripMenuItem;
+        private ToolStripMenuItem administracionToolStripMenuItem;
+        private ToolStripMenuItem gestionDePeliculasToolStripMenuItem;
+        private ToolStripMenuItem gestionDeSalasToolStripMenuItem;
+        private ToolStripMenuItem dashboardToolStripMenuItem;
+        private ToolStripMenuItem sistemaToolStripMenuItem;
         private ToolStripMenuItem gestionDeUsuariosToolStripMenuItem;
-        private ToolStripMenuItem gestorClientesToolStripMenuItem;
+        private ToolStripMenuItem gestionDePermisosYRolesToolStripMenuItem;
+        private ToolStripMenuItem gestionDeBackupsToolStripMenuItem;
+        private MenuStrip menuStrip;
     }
 }

@@ -24,13 +24,6 @@ namespace UI
             gestorUsuario = new BLL_Usuario();
             usuarioActual = usuario;
             this.Load += Fr_GestionUsuarios_Load;
-            btnGuardar.Click += btnGuardar_Click;
-            btnEliminar.Click += btnEliminar_Click;
-            btnModificar.Click += btnModificar_Click;
-            dgvUsuarios.SelectionChanged += dgvUsuarios_SelectionChanged;
-            btnMostrarPassword.MouseDown += btnMostrarPassword_MouseDown;
-            btnMostrarPassword.MouseUp += btnMostrarPassword_MouseUp;
-            btnNuevoUsuario.Click += btnNuevoUsuario_Click;
         }
 
         private void Fr_GestionUsuarios_Load(object sender, EventArgs e)

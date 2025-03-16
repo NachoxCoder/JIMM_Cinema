@@ -26,21 +26,6 @@ namespace Gestion_Cine
             gestorPermiso = new BLL_Permiso();
             this.Load += Fr_MenuPrincipal_Load;
             frLogin = FrLogin;
-            gestorClientesToolStripMenuItem.Click += gestorClientesToolStripMenuItem_Click;
-            gestionDeBackupsToolStripMenuItem.Click += gestionDeBackupsToolStripMenuItem_Click;
-            generarOrdenDeCompraToolStripMenuItem.Click += generarOrdenDeCompraToolStripMenuItem_Click;
-            membresiasToolStripMenuItem.Click += membresiasToolStripMenuItem_Click;
-            boletosToolStripMenuItem.Click += boletosToolStripMenuItem_Click;
-            gestionDeInventarioToolStripMenuItem.Click += gestionDeInventarioToolStripMenuItem_Click;
-            gestionDeFacturasToolStripMenuItem.Click += gestionDeFacturasToolStripMenuItem_Click;
-            dashboardToolStripMenuItem.Click += dashboardToolStripMenuItem_Click;
-            gestionDePeliculasToolStripMenuItem.Click += gestionDePeliculasToolStripMenuItem_Click;
-            gestionDeSalasToolStripMenuItem.Click += gestionDeSalasToolStripMenuItem_Click;
-            gestionDePermisosYRolesToolStripMenuItem.Click += gestionDePermisosYRolesToolStripMenuItem_Click;
-            gestionDeUsuariosToolStripMenuItem.Click += gestionDeUsuariosToolStripMenuItem_Click;
-            cerrarSesionToolStripMenuItem.Click += cerrarSesionToolStripMenuItem_Click;
-            salirSistemaToolStripMenuItem.Click += salirSistemaToolStripMenuItem_Click;
-            this.FormClosed += Fr_MenuPrincipal_FormClosed;
         }
 
         private void Fr_MenuPrincipal_Load(object sender, EventArgs e)
@@ -185,8 +170,19 @@ namespace Gestion_Cine
 
         private void cerrarSesionToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Close();
-            frLogin.Show();
+            try
+            {
+                this.Hide();
+                Fr_Login form = new Fr_Login();
+                form.Show();
+                form.FormClosing += loginCerrar;
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
         }
 
         private void salirSistemaToolStripMenuItem_Click(object sender, EventArgs e)
@@ -194,7 +190,7 @@ namespace Gestion_Cine
             Application.Exit();
         }
 
-        private void Fr_MenuPrincipal_FormClosed(object sender, FormClosedEventArgs e)
+        private void loginCerrar(object sender, FormClosingEventArgs e)
         {
             Application.Exit();
         }

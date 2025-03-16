@@ -21,11 +21,6 @@ namespace UI
             InitializeComponent();
             gestorSala = new BLL_Sala();
             this.Load += Fr_GestionSalas_Load;
-            btnEliminarSala.Click += btnEliminarSala_Click;
-            btnGuardarSala.Click += btnGuardarSala_Click;
-            dgvSalas.SelectionChanged += dgvSalas_SelectionChanged;
-            btnModificarSala.Click += btnModificarSala_Click;
-            btnNuevaSala.Click += btnNuevaSala_Click;
         }
 
         private void Fr_GestionSalas_Load(object sender, EventArgs e)

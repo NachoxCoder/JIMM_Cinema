@@ -25,10 +25,6 @@ namespace UI
             gestorMembresia = new BLL_Membresia();
             gestorCliente = new BLL_Cliente();
             this.Load += Fr_GestionMembresia_Load;
-            btnAsignarMembresia.Click += btnAsignarMembresia_Click;
-            btnRemoverMembresia.Click += btnRemoverMembresia_Click_1;
-            btnBuscarCliente.Click += btnBuscarCliente_Click_1;
-            dgvMembresias.SelectionChanged += dgvMembresias_SelectionChanged;
 
         }
 
