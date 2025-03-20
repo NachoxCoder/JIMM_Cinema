@@ -255,6 +255,8 @@ namespace UI
             // 
             // dgvOrdenesCompra
             // 
+            this.dgvOrdenesCompra.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvOrdenesCompra.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvOrdenesCompra.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvOrdenesCompra.Location = new System.Drawing.Point(478, 80);
             this.dgvOrdenesCompra.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);

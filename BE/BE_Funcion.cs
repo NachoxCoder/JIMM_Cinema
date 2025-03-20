@@ -38,7 +38,9 @@ namespace BE
         }
         public bool EstaActiva { get; set; }
         public decimal Precio { get; set; }
+        [Browsable(false)]
         public BE_Pelicula Pelicula { get; set; }
+        [Browsable(false)]
         public BE_Sala Sala { get; set; }
         public List<BE_Boleto> Boletos { get; set; }
 
@@ -46,9 +48,9 @@ namespace BE
         {
             return Pelicula?.Titulo?? "No hay pelicula asignada";
         }
-        public string SalaNombre()
+        public string SalaNombre
         {
-            return Sala?.Nombre ?? "No hay sala asignada";
+           get { return Sala?.Nombre ?? "No hay sala asignada"; }
         }
         public int AsientosDisponibles()
         {

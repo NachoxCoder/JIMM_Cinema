@@ -29,6 +29,7 @@ namespace UI
 
         private void Fr_GestionFacturas_Load(object sender, EventArgs e)
         {
+            ConfigurarGrillaOrdenesCompra();
             RefrescarGrilla(dgvOrdenesCompra, _gestorOrdenCompra.Consultar());
             ordenCompraSeleccionada = dgvOrdenesCompra.CurrentRow?.DataBoundItem as BE_OrdenCompra;
             if (ordenCompraSeleccionada != null)
@@ -283,6 +284,63 @@ namespace UI
             }
 
             return true;
+        }
+
+        private void ConfigurarGrillaOrdenesCompra()
+        {
+            dgvOrdenesCompra.AutoGenerateColumns = false;
+
+            //Limpia las columnas existentes
+            dgvOrdenesCompra.Columns.Clear();
+
+            //Agrega columnas manualmente
+
+            dgvOrdenesCompra.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = "Proveedor",
+                HeaderText = "Proveedor",
+                Name = "Proveedor"
+            });
+
+            dgvOrdenesCompra.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = "FechaOrdenCompra",
+                HeaderText = "Fecha",
+                Name = "Fecha"
+            });
+
+            //Columna personalizada para mostrar los productos y sus cantidades
+            var productosColumn = new DataGridViewTextBoxColumn
+            {
+                HeaderText = "Productos",
+                Name = "Productos"
+            };
+            productosColumn.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+            dgvOrdenesCompra.Columns.Add(productosColumn);
+
+            //Columna para mostrar el monto de la Orden de Compra
+            dgvOrdenesCompra.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = "TotalOrdenCompra",
+                HeaderText = "Total",
+                Name = "Total"
+            });
+
+            //Formato personalizado para la columna Productos
+            dgvOrdenesCompra.CellFormatting += (sender, e) =>
+            {
+                if (e.ColumnIndex == dgvOrdenesCompra.Columns["Productos"].Index)
+                {
+                    if (e.Value is BE_OrdenCompra ordenCompra)
+                    {
+                        var productosDetalle = string.Join("\n",
+                            ordenCompra.Items.Select(item =>
+                                $"{item.Producto.NombreProducto} (x{item.Cantidad})"));
+                        e.Value = productosDetalle;
+                        e.CellStyle.WrapMode = DataGridViewTriState.True;
+                    }
+                }
+            };
         }
     }
 }

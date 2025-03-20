@@ -75,14 +75,14 @@ namespace Gestion_Cine
             // cerrarSesionToolStripMenuItem
             // 
             this.cerrarSesionToolStripMenuItem.Name = "cerrarSesionToolStripMenuItem";
-            this.cerrarSesionToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.cerrarSesionToolStripMenuItem.Size = new System.Drawing.Size(179, 26);
             this.cerrarSesionToolStripMenuItem.Text = "Cerrar Sesion";
             this.cerrarSesionToolStripMenuItem.Click += new System.EventHandler(this.cerrarSesionToolStripMenuItem_Click);
             // 
             // salirSistemaToolStripMenuItem
             // 
             this.salirSistemaToolStripMenuItem.Name = "salirSistemaToolStripMenuItem";
-            this.salirSistemaToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.salirSistemaToolStripMenuItem.Size = new System.Drawing.Size(179, 26);
             this.salirSistemaToolStripMenuItem.Text = "Salir Sistema";
             this.salirSistemaToolStripMenuItem.Click += new System.EventHandler(this.salirSistemaToolStripMenuItem_Click);
             // 
@@ -100,22 +100,22 @@ namespace Gestion_Cine
             // boletosToolStripMenuItem
             // 
             this.boletosToolStripMenuItem.Name = "boletosToolStripMenuItem";
-            this.boletosToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.boletosToolStripMenuItem.Text = "Boletos";
+            this.boletosToolStripMenuItem.Size = new System.Drawing.Size(226, 26);
+            this.boletosToolStripMenuItem.Text = "Venta Boletos";
             this.boletosToolStripMenuItem.Click += new System.EventHandler(this.boletosToolStripMenuItem_Click);
             // 
             // membresiasToolStripMenuItem
             // 
             this.membresiasToolStripMenuItem.Name = "membresiasToolStripMenuItem";
-            this.membresiasToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.membresiasToolStripMenuItem.Text = "Membresias";
+            this.membresiasToolStripMenuItem.Size = new System.Drawing.Size(226, 26);
+            this.membresiasToolStripMenuItem.Text = "Gestion Membresias";
             this.membresiasToolStripMenuItem.Click += new System.EventHandler(this.membresiasToolStripMenuItem_Click);
             // 
             // gestorClientesToolStripMenuItem
             // 
             this.gestorClientesToolStripMenuItem.Name = "gestorClientesToolStripMenuItem";
-            this.gestorClientesToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.gestorClientesToolStripMenuItem.Text = "Gestor Clientes";
+            this.gestorClientesToolStripMenuItem.Size = new System.Drawing.Size(226, 26);
+            this.gestorClientesToolStripMenuItem.Text = "Gestion Clientes";
             this.gestorClientesToolStripMenuItem.Click += new System.EventHandler(this.gestorClientesToolStripMenuItem_Click);
             // 
             // comprasToolStripMenuItem

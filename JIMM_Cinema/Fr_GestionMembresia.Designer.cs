@@ -40,6 +40,10 @@ namespace UI
             this.lblNombre = new System.Windows.Forms.Label();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.grpMembresia = new System.Windows.Forms.GroupBox();
+            this.txtCostoMensual = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cmbMetodoPago = new System.Windows.Forms.ComboBox();
             this.lblTipo = new System.Windows.Forms.Label();
             this.cmbTipoMembresia = new System.Windows.Forms.ComboBox();
             this.btnAsignarMembresia = new System.Windows.Forms.Button();
@@ -59,7 +63,7 @@ namespace UI
             this.pnlTop.Location = new System.Drawing.Point(0, 0);
             this.pnlTop.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pnlTop.Name = "pnlTop";
-            this.pnlTop.Size = new System.Drawing.Size(995, 48);
+            this.pnlTop.Size = new System.Drawing.Size(1174, 48);
             this.pnlTop.TabIndex = 0;
             // 
             // lblTitle
@@ -70,7 +74,7 @@ namespace UI
             this.lblTitle.ForeColor = System.Drawing.Color.White;
             this.lblTitle.Location = new System.Drawing.Point(0, 0);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(995, 48);
+            this.lblTitle.Size = new System.Drawing.Size(1174, 48);
             this.lblTitle.TabIndex = 0;
             this.lblTitle.Text = "GESTIÓN DE MEMBRESÍAS";
             this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -95,7 +99,7 @@ namespace UI
             // 
             this.lblDNI.Location = new System.Drawing.Point(9, 19);
             this.lblDNI.Name = "lblDNI";
-            this.lblDNI.Size = new System.Drawing.Size(74, 18);
+            this.lblDNI.Size = new System.Drawing.Size(42, 22);
             this.lblDNI.TabIndex = 0;
             this.lblDNI.Text = "DNI:";
             // 
@@ -121,7 +125,7 @@ namespace UI
             // 
             this.lblNombre.Location = new System.Drawing.Point(6, 61);
             this.lblNombre.Name = "lblNombre";
-            this.lblNombre.Size = new System.Drawing.Size(74, 18);
+            this.lblNombre.Size = new System.Drawing.Size(61, 18);
             this.lblNombre.TabIndex = 3;
             this.lblNombre.Text = "Nombre:";
             // 
@@ -136,16 +140,53 @@ namespace UI
             // 
             // grpMembresia
             // 
+            this.grpMembresia.Controls.Add(this.txtCostoMensual);
+            this.grpMembresia.Controls.Add(this.label2);
+            this.grpMembresia.Controls.Add(this.label1);
+            this.grpMembresia.Controls.Add(this.cmbMetodoPago);
             this.grpMembresia.Controls.Add(this.lblTipo);
             this.grpMembresia.Controls.Add(this.cmbTipoMembresia);
             this.grpMembresia.Location = new System.Drawing.Point(12, 160);
             this.grpMembresia.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.grpMembresia.Name = "grpMembresia";
             this.grpMembresia.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.grpMembresia.Size = new System.Drawing.Size(400, 80);
+            this.grpMembresia.Size = new System.Drawing.Size(400, 149);
             this.grpMembresia.TabIndex = 2;
             this.grpMembresia.TabStop = false;
             this.grpMembresia.Text = "Nueva Membresía";
+            // 
+            // txtCostoMensual
+            // 
+            this.txtCostoMensual.Enabled = false;
+            this.txtCostoMensual.Location = new System.Drawing.Point(120, 58);
+            this.txtCostoMensual.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtCostoMensual.Name = "txtCostoMensual";
+            this.txtCostoMensual.Size = new System.Drawing.Size(260, 22);
+            this.txtCostoMensual.TabIndex = 5;
+            // 
+            // label2
+            // 
+            this.label2.Location = new System.Drawing.Point(20, 61);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(100, 18);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "Costo Mensual:";
+            // 
+            // label1
+            // 
+            this.label1.Location = new System.Drawing.Point(20, 98);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(100, 18);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Metodo Pago:";
+            // 
+            // cmbMetodoPago
+            // 
+            this.cmbMetodoPago.Location = new System.Drawing.Point(120, 96);
+            this.cmbMetodoPago.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cmbMetodoPago.Name = "cmbMetodoPago";
+            this.cmbMetodoPago.Size = new System.Drawing.Size(260, 24);
+            this.cmbMetodoPago.TabIndex = 3;
             // 
             // lblTipo
             // 
@@ -162,13 +203,15 @@ namespace UI
             this.cmbTipoMembresia.Name = "cmbTipoMembresia";
             this.cmbTipoMembresia.Size = new System.Drawing.Size(260, 24);
             this.cmbTipoMembresia.TabIndex = 1;
+            this.cmbTipoMembresia.SelectedIndexChanged += new System.EventHandler(this.cmbTipoMembresia_SelectedIndexChanged);
             // 
             // btnAsignarMembresia
             // 
             this.btnAsignarMembresia.BackColor = System.Drawing.Color.Sienna;
             this.btnAsignarMembresia.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAsignarMembresia.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAsignarMembresia.ForeColor = System.Drawing.Color.White;
-            this.btnAsignarMembresia.Location = new System.Drawing.Point(12, 256);
+            this.btnAsignarMembresia.Location = new System.Drawing.Point(0, 428);
             this.btnAsignarMembresia.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnAsignarMembresia.Name = "btnAsignarMembresia";
             this.btnAsignarMembresia.Size = new System.Drawing.Size(190, 32);
@@ -181,8 +224,9 @@ namespace UI
             // 
             this.btnRemoverMembresia.BackColor = System.Drawing.Color.Red;
             this.btnRemoverMembresia.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRemoverMembresia.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRemoverMembresia.ForeColor = System.Drawing.Color.White;
-            this.btnRemoverMembresia.Location = new System.Drawing.Point(222, 256);
+            this.btnRemoverMembresia.Location = new System.Drawing.Point(222, 428);
             this.btnRemoverMembresia.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnRemoverMembresia.Name = "btnRemoverMembresia";
             this.btnRemoverMembresia.Size = new System.Drawing.Size(190, 32);
@@ -203,15 +247,14 @@ namespace UI
             this.dgvMembresias.ReadOnly = true;
             this.dgvMembresias.RowHeadersWidth = 51;
             this.dgvMembresias.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvMembresias.Size = new System.Drawing.Size(550, 232);
+            this.dgvMembresias.Size = new System.Drawing.Size(732, 404);
             this.dgvMembresias.TabIndex = 5;
-            this.dgvMembresias.SelectionChanged += new System.EventHandler(this.dgvMembresias_SelectionChanged);
             // 
             // Fr_GestionMembresia
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(995, 305);
+            this.ClientSize = new System.Drawing.Size(1174, 492);
             this.Controls.Add(this.pnlTop);
             this.Controls.Add(this.grpCliente);
             this.Controls.Add(this.grpMembresia);
@@ -228,6 +271,7 @@ namespace UI
             this.grpCliente.ResumeLayout(false);
             this.grpCliente.PerformLayout();
             this.grpMembresia.ResumeLayout(false);
+            this.grpMembresia.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMembresias)).EndInit();
             this.ResumeLayout(false);
 
@@ -252,8 +296,13 @@ namespace UI
         private System.Windows.Forms.Button btnAsignarMembresia;
         private System.Windows.Forms.Button btnRemoverMembresia;
         private System.Windows.Forms.DataGridView dgvMembresias;
-    
+
 
         #endregion
+
+        private Label label1;
+        private ComboBox cmbMetodoPago;
+        private TextBox txtCostoMensual;
+        private Label label2;
     }
 }

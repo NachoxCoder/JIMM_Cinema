@@ -51,7 +51,7 @@ namespace UI
 
                 if (productosBajoStock.Any())
                 {
-                    lblAlerta.Text = $"Hay {productosBajoStock.Count} productos con stock bajo";
+                    lblAlerta.Text = $"Hay {productosBajoStock.Count} productos con bajo stock (Haga click para conocer el detalle)";
                     lblAlerta.ForeColor = Color.Red;
                     lblAlerta.Visible = true;
                     lblAlerta.Cursor = Cursors.Hand;

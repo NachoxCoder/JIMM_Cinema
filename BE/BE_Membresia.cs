@@ -25,6 +25,41 @@ namespace BE
         public bool EstaActiva { get; set; }
         [Browsable(false)]
         public BE_Cliente Cliente { get; set; }
+        public MetodoPagoMembresia Metodo { get; set; }
+        public enum MetodoPagoMembresia
+        {
+            Efectivo,
+            TarjetaDebito,
+            TarjetaCredito,
+            CodigoQR,
+            Transferencia
+        }
+        public string ClienteNombre
+        {
+            get { return Cliente.NombreCompleto(); }
+        }
+        private void AsignarCostoMensual()
+        {
+            switch (Tipo)
+            {
+                case TipoMembresia.Plata:
+                    CostoMensual = 5000;
+                    break;
+                case TipoMembresia.Oro:
+                    CostoMensual = 10000;
+                    break;
+                case TipoMembresia.Premium:
+                    CostoMensual = 15000;
+                    break;
+                default:
+                    CostoMensual = 0;
+                    break;
+            }
+        }
+        public void ActualizarCostoMensual()
+        {
+            AsignarCostoMensual();
+        }
     }
 
     public enum TipoMembresia

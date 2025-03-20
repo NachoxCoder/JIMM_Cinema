@@ -152,6 +152,7 @@ namespace UI
             // 
             this.btnGuardarSala.BackColor = System.Drawing.Color.Sienna;
             this.btnGuardarSala.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGuardarSala.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGuardarSala.ForeColor = System.Drawing.Color.White;
             this.btnGuardarSala.Location = new System.Drawing.Point(125, 280);
             this.btnGuardarSala.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -166,6 +167,7 @@ namespace UI
             // 
             this.btnEliminarSala.BackColor = System.Drawing.Color.Red;
             this.btnEliminarSala.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEliminarSala.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEliminarSala.ForeColor = System.Drawing.Color.White;
             this.btnEliminarSala.Location = new System.Drawing.Point(366, 280);
             this.btnEliminarSala.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -245,6 +247,7 @@ namespace UI
             // 
             this.btnModificarSala.BackColor = System.Drawing.Color.Sienna;
             this.btnModificarSala.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnModificarSala.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnModificarSala.ForeColor = System.Drawing.Color.White;
             this.btnModificarSala.Location = new System.Drawing.Point(238, 280);
             this.btnModificarSala.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -259,6 +262,7 @@ namespace UI
             // 
             this.btnNuevaSala.BackColor = System.Drawing.Color.Sienna;
             this.btnNuevaSala.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNuevaSala.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNuevaSala.ForeColor = System.Drawing.Color.White;
             this.btnNuevaSala.Location = new System.Drawing.Point(12, 280);
             this.btnNuevaSala.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);

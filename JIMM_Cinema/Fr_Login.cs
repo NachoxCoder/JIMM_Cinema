@@ -63,7 +63,6 @@ namespace UI
                 if (gestorUsuario.ValidarCredenciales(txtUsername.Text, txtPassword.Text))
                 {
                     //Inicia Sesion
-                    MessageBox.Show("¡Bienvenido! Se ha iniciado sesión correctamente.", "Inicio de Sesión Exitoso", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     Hide();
                     new Fr_MenuPrincipal(usuarioExistente, this).Show();
                 }

@@ -15,7 +15,6 @@ namespace UI
         private System.Windows.Forms.TextBox txtClientDNI;
         private System.Windows.Forms.Button btnBuscarCliente;
         private System.Windows.Forms.DataGridView dgvFunciones;
-        private System.Windows.Forms.FlowLayoutPanel panelButacas;
         private System.Windows.Forms.ListBox lstBxButacasSeleccionadas;
         private System.Windows.Forms.Label lblTotal;
         private System.Windows.Forms.Button btnCompletarVenta;
@@ -51,7 +50,6 @@ namespace UI
             this.txtClientDNI = new System.Windows.Forms.TextBox();
             this.btnBuscarCliente = new System.Windows.Forms.Button();
             this.dgvFunciones = new System.Windows.Forms.DataGridView();
-            this.panelButacas = new System.Windows.Forms.FlowLayoutPanel();
             this.lstBxButacasSeleccionadas = new System.Windows.Forms.ListBox();
             this.lblTotal = new System.Windows.Forms.Label();
             this.btnCompletarVenta = new System.Windows.Forms.Button();
@@ -60,6 +58,8 @@ namespace UI
             this.btnMembresia = new System.Windows.Forms.Button();
             this.cmbxMetodoPago = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.panelButacas = new System.Windows.Forms.FlowLayoutPanel();
+            this.btnVerBoletos = new System.Windows.Forms.Button();
             this.pnlTop.SuspendLayout();
             this.grpClient.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFunciones)).BeginInit();
@@ -74,7 +74,7 @@ namespace UI
             this.pnlTop.Location = new System.Drawing.Point(0, 0);
             this.pnlTop.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pnlTop.Name = "pnlTop";
-            this.pnlTop.Size = new System.Drawing.Size(1320, 48);
+            this.pnlTop.Size = new System.Drawing.Size(1110, 48);
             this.pnlTop.TabIndex = 0;
             // 
             // lblTitle
@@ -85,7 +85,7 @@ namespace UI
             this.lblTitle.ForeColor = System.Drawing.Color.White;
             this.lblTitle.Location = new System.Drawing.Point(0, 0);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(1320, 48);
+            this.lblTitle.Size = new System.Drawing.Size(1110, 48);
             this.lblTitle.TabIndex = 0;
             this.lblTitle.Text = "VENTA DE BOLETOS";
             this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -164,38 +164,30 @@ namespace UI
             // 
             this.dgvFunciones.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvFunciones.ColumnHeadersHeight = 29;
-            this.dgvFunciones.Location = new System.Drawing.Point(693, 147);
+            this.dgvFunciones.EnableHeadersVisualStyles = false;
+            this.dgvFunciones.Location = new System.Drawing.Point(541, 147);
             this.dgvFunciones.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgvFunciones.MultiSelect = false;
             this.dgvFunciones.Name = "dgvFunciones";
             this.dgvFunciones.RowHeadersWidth = 51;
             this.dgvFunciones.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvFunciones.Size = new System.Drawing.Size(600, 160);
+            this.dgvFunciones.Size = new System.Drawing.Size(552, 160);
             this.dgvFunciones.TabIndex = 2;
             this.dgvFunciones.SelectionChanged += new System.EventHandler(this.dgvFunciones_SelectionChanged);
-            // 
-            // panelButacas
-            // 
-            this.panelButacas.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelButacas.Location = new System.Drawing.Point(12, 312);
-            this.panelButacas.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.panelButacas.Name = "panelButacas";
-            this.panelButacas.Size = new System.Drawing.Size(1074, 483);
-            this.panelButacas.TabIndex = 3;
             // 
             // lstBxButacasSeleccionadas
             // 
             this.lstBxButacasSeleccionadas.ItemHeight = 16;
-            this.lstBxButacasSeleccionadas.Location = new System.Drawing.Point(1103, 315);
+            this.lstBxButacasSeleccionadas.Location = new System.Drawing.Point(903, 311);
             this.lstBxButacasSeleccionadas.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.lstBxButacasSeleccionadas.Name = "lstBxButacasSeleccionadas";
-            this.lstBxButacasSeleccionadas.Size = new System.Drawing.Size(190, 164);
+            this.lstBxButacasSeleccionadas.Size = new System.Drawing.Size(190, 196);
             this.lstBxButacasSeleccionadas.TabIndex = 4;
             // 
             // lblTotal
             // 
             this.lblTotal.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.lblTotal.Location = new System.Drawing.Point(1103, 486);
+            this.lblTotal.Location = new System.Drawing.Point(903, 509);
             this.lblTotal.Name = "lblTotal";
             this.lblTotal.Size = new System.Drawing.Size(190, 24);
             this.lblTotal.TabIndex = 5;
@@ -208,10 +200,10 @@ namespace UI
             this.btnCompletarVenta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCompletarVenta.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnCompletarVenta.ForeColor = System.Drawing.Color.White;
-            this.btnCompletarVenta.Location = new System.Drawing.Point(1103, 596);
+            this.btnCompletarVenta.Location = new System.Drawing.Point(876, 636);
             this.btnCompletarVenta.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnCompletarVenta.Name = "btnCompletarVenta";
-            this.btnCompletarVenta.Size = new System.Drawing.Size(190, 32);
+            this.btnCompletarVenta.Size = new System.Drawing.Size(217, 32);
             this.btnCompletarVenta.TabIndex = 6;
             this.btnCompletarVenta.Text = "COMPLETAR VENTA";
             this.btnCompletarVenta.UseVisualStyleBackColor = false;
@@ -220,13 +212,14 @@ namespace UI
             // dgvPeliculas
             // 
             this.dgvPeliculas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPeliculas.EnableHeadersVisualStyles = false;
             this.dgvPeliculas.Location = new System.Drawing.Point(12, 147);
             this.dgvPeliculas.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgvPeliculas.MultiSelect = false;
             this.dgvPeliculas.Name = "dgvPeliculas";
             this.dgvPeliculas.RowHeadersWidth = 51;
             this.dgvPeliculas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvPeliculas.Size = new System.Drawing.Size(642, 160);
+            this.dgvPeliculas.Size = new System.Drawing.Size(523, 160);
             this.dgvPeliculas.TabIndex = 7;
             this.dgvPeliculas.SelectionChanged += new System.EventHandler(this.dgvPeliculas_SelectionChanged);
             // 
@@ -261,26 +254,51 @@ namespace UI
             // cmbxMetodoPago
             // 
             this.cmbxMetodoPago.FormattingEnabled = true;
-            this.cmbxMetodoPago.Location = new System.Drawing.Point(1103, 543);
+            this.cmbxMetodoPago.Location = new System.Drawing.Point(876, 579);
             this.cmbxMetodoPago.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbxMetodoPago.Name = "cmbxMetodoPago";
-            this.cmbxMetodoPago.Size = new System.Drawing.Size(181, 24);
+            this.cmbxMetodoPago.Size = new System.Drawing.Size(208, 24);
             this.cmbxMetodoPago.TabIndex = 10;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(1103, 525);
+            this.label3.Location = new System.Drawing.Point(873, 550);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(108, 16);
             this.label3.TabIndex = 11;
             this.label3.Text = "Metodo de Pago";
             // 
+            // panelButacas
+            // 
+            this.panelButacas.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelButacas.Location = new System.Drawing.Point(12, 311);
+            this.panelButacas.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panelButacas.Name = "panelButacas";
+            this.panelButacas.Size = new System.Drawing.Size(794, 633);
+            this.panelButacas.TabIndex = 3;
+            // 
+            // btnVerBoletos
+            // 
+            this.btnVerBoletos.BackColor = System.Drawing.Color.Sienna;
+            this.btnVerBoletos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnVerBoletos.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.btnVerBoletos.ForeColor = System.Drawing.Color.White;
+            this.btnVerBoletos.Location = new System.Drawing.Point(876, 705);
+            this.btnVerBoletos.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnVerBoletos.Name = "btnVerBoletos";
+            this.btnVerBoletos.Size = new System.Drawing.Size(217, 32);
+            this.btnVerBoletos.TabIndex = 12;
+            this.btnVerBoletos.Text = "VER BOLETOS";
+            this.btnVerBoletos.UseVisualStyleBackColor = false;
+            this.btnVerBoletos.Click += new System.EventHandler(this.btnVerBoletos_Click);
+            // 
             // Fr_VentaBoletos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1320, 806);
+            this.ClientSize = new System.Drawing.Size(1110, 955);
+            this.Controls.Add(this.btnVerBoletos);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.cmbxMetodoPago);
             this.Controls.Add(this.btnMembresia);
@@ -317,5 +335,7 @@ namespace UI
         private Button btnMembresia;
         private ComboBox cmbxMetodoPago;
         private Label label3;
+        private FlowLayoutPanel panelButacas;
+        private Button btnVerBoletos;
     }
 }

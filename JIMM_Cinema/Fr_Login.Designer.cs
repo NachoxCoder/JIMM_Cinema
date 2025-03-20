@@ -72,7 +72,7 @@ namespace UI
             this.btnSalir.Location = new System.Drawing.Point(0, 0);
             this.btnSalir.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(30, 24);
+            this.btnSalir.Size = new System.Drawing.Size(34, 31);
             this.btnSalir.TabIndex = 1;
             this.btnSalir.Text = "✖";
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);

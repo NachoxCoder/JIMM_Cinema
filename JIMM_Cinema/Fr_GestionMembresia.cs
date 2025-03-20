@@ -31,18 +31,22 @@ namespace UI
         private void Fr_GestionMembresia_Load(object sender, EventArgs e)
         {
             ConfigurarControles();
-            CargarMembresias();
+            CargarMetodosPago();
+            LimpiarFormulario();
+            dgvMembresias.DataSource = null;
         }
 
         private void ConfigurarControles()
         {
             var membresias = Enum.GetValues(typeof(TipoMembresia));
             cmbTipoMembresia.DataSource = membresias;
+            CostoMensualMembresia();
         }
 
-        private void CargarMembresias()
+        private void CargarMetodosPago()
         {
-            dgvMembresias.DataSource = gestorMembresia.Consultar();
+            cmbMetodoPago.DataSource = Enum.GetValues(typeof(BE_Membresia.MetodoPagoMembresia));
+            cmbMetodoPago.SelectedIndex = 0;
         }
 
         private void MostrarDatosMembresia()
@@ -50,6 +54,8 @@ namespace UI
             if (membresiaSeleccionada != null)
             {
                 cmbTipoMembresia.SelectedItem = membresiaSeleccionada.Tipo;
+                txtCostoMensual.Text = $"${membresiaSeleccionada.CostoMensual:N2}";
+                cmbMetodoPago.SelectedItem = membresiaSeleccionada.Metodo;
             }
         }
 
@@ -60,6 +66,8 @@ namespace UI
             cmbTipoMembresia.SelectedIndex = 0;
             clienteSeleccionado = null;
             membresiaSeleccionada = null;
+            txtCostoMensual.Clear();
+            ActualizarControles();
         }
 
         private void dgvMembresias_SelectionChanged(object sender, EventArgs e)
@@ -82,6 +90,8 @@ namespace UI
                 return;
             }
 
+            membresiaSeleccionada = null;
+
             clienteSeleccionado = gestorCliente.ObtenerporDNI(txtDNI.Text.Trim());
 
             if (clienteSeleccionado == null)
@@ -91,7 +101,29 @@ namespace UI
             }
 
             txtNombre.Text = clienteSeleccionado.NombreCompleto();
-            ActualizarGrillaMembresias();
+            var membresiasCliente = gestorMembresia.ConsultarPorCliente(clienteSeleccionado.ID);
+            dgvMembresias.DataSource = membresiasCliente;
+            dgvMembresias.ClearSelection();
+
+            if (membresiasCliente.Any())
+            {
+                membresiaSeleccionada = membresiasCliente.FirstOrDefault(x => x.EstaActiva);
+                if (membresiaSeleccionada != null)
+                {
+                    MostrarDatosMembresia();
+                }
+                else
+                {
+                    cmbTipoMembresia.SelectedIndex = 0;
+                    CostoMensualMembresia();
+                }
+            }
+            else
+            {
+                membresiaSeleccionada = null;
+            }
+
+            ActualizarControles();
         }
 
         private void ActualizarGrillaMembresias()
@@ -100,21 +132,42 @@ namespace UI
             {
                 var membresiasCliente = gestorMembresia.ConsultarPorCliente(clienteSeleccionado.ID);
                 dgvMembresias.DataSource = membresiasCliente;
-                membresiaSeleccionada = membresiasCliente.FirstOrDefault(m => m.EstaActiva);
+                if (membresiasCliente.Any())
+                {
+                    membresiaSeleccionada = membresiasCliente.FirstOrDefault(x => x.EstaActiva);
+                    if (membresiaSeleccionada != null)
+                    {
+                        MostrarDatosMembresia();
+                    }
+                    else
+                    {
+                        cmbTipoMembresia.SelectedIndex = 0;
+                        CostoMensualMembresia();
+                    }
+                }
+                else
+                {
+                    membresiaSeleccionada = null;
+                }
+
                 ActualizarControles();
             }
         }
 
         private void ActualizarControles()
         {
+            bool clienteSeleccionadoExiste = clienteSeleccionado != null;
             bool tieneMembresiaActiva = membresiaSeleccionada?.EstaActiva ?? false;
-            btnAsignarMembresia.Enabled = !tieneMembresiaActiva;
-            btnRemoverMembresia.Enabled = tieneMembresiaActiva;
-            cmbTipoMembresia.Enabled = !tieneMembresiaActiva;
+
+            btnAsignarMembresia.Enabled = clienteSeleccionadoExiste && !tieneMembresiaActiva;
+            btnRemoverMembresia.Enabled = clienteSeleccionadoExiste && tieneMembresiaActiva;
+            cmbTipoMembresia.Enabled = clienteSeleccionadoExiste && !tieneMembresiaActiva;
+            cmbMetodoPago.Enabled = clienteSeleccionadoExiste && !tieneMembresiaActiva;
 
             if (tieneMembresiaActiva)
             {
                 cmbTipoMembresia.SelectedItem = membresiaSeleccionada.Tipo;
+                txtCostoMensual.Text = $"${membresiaSeleccionada.CostoMensual:N2}";
             }
         }
 
@@ -122,7 +175,17 @@ namespace UI
         {
             try
             {
-                if (clienteSeleccionado == null) return;
+                if (clienteSeleccionado == null)
+                {
+                    MessageBox.Show("Debe seleccionar un cliente", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                if (cmbMetodoPago.SelectedItem == null)
+                {
+                    MessageBox.Show("Debe seleccionar un método de pago", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
 
                 var nuevaMembresia = new BE_Membresia
                 {
@@ -130,11 +193,24 @@ namespace UI
                     Tipo = (TipoMembresia)cmbTipoMembresia.SelectedItem
                 };
 
-                if (gestorMembresia.Alta(nuevaMembresia))
+                nuevaMembresia.ActualizarCostoMensual();
+
+                BE_Membresia.MetodoPagoMembresia metodoPago = (BE_Membresia.MetodoPagoMembresia)cmbMetodoPago.SelectedItem;
+                string mensajeMetodo = $"Se realizará un pago de: ${nuevaMembresia.CostoMensual:N2} mediante {metodoPago}";
+
+                if (MessageBox.Show($"{mensajeMetodo}\n¿Desea confirmar la suscripción?",
+                                   "Confirmar Suscripción",
+                                   MessageBoxButtons.YesNo,
+                                   MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    MessageBox.Show("Membresía asignada correctamente", "Membresía Asignada", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    ActualizarGrillaMembresias();
-                    LimpiarFormulario();
+                    if (gestorMembresia.Alta(nuevaMembresia))
+                    {
+                        MessageBox.Show("Membresía asignada correctamente", "Membresía Asignada", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        ActualizarGrillaMembresias();
+                        cmbTipoMembresia.SelectedIndex = 0;
+                        CostoMensualMembresia();
+                        cmbMetodoPago.SelectedIndex = 0;
+                    }
                 }
             }
             catch (Exception ex)
@@ -156,6 +232,19 @@ namespace UI
                     ActualizarGrillaMembresias();
                 }
             }
+        }
+
+        private void cmbTipoMembresia_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            CostoMensualMembresia();
+        }
+
+        private void CostoMensualMembresia()
+        {
+            var tipoMembresia = (TipoMembresia)cmbTipoMembresia.SelectedItem;
+            var membresia = new BE_Membresia { Tipo = tipoMembresia };  
+            membresia.ActualizarCostoMensual();
+            txtCostoMensual.Text = $"${membresia.CostoMensual:N2}";
         }
     }
 }

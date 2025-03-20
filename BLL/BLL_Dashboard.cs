@@ -132,5 +132,24 @@ namespace BLL
 
             return datos;
         }
+
+        public Dictionary<DateTime, decimal> ObtenerIngresosDiarios(DateTime startDate, DateTime endDate)
+        {
+            var boletos = _gestorBoleto.Consultar().Where(b => b.FechaVenta.Date >= startDate.Date
+                                                          && b.FechaVenta.Date <= endDate.Date).ToList();
+
+            var ingresosPorDia = boletos.GroupBy(b => b.FechaVenta.Date).OrderBy(g => g.Key).ToDictionary(g => g.Key,
+                    g => g.Sum(b => b.Precio));
+
+            for (var fecha = startDate.Date; fecha <= endDate.Date; fecha = fecha.AddDays(1))
+            {
+                if (!ingresosPorDia.ContainsKey(fecha))
+                {
+                    ingresosPorDia[fecha] = 0;
+                }
+            }
+
+            return ingresosPorDia.OrderBy(kvp => kvp.Key).ToDictionary(kvp => kvp.Key, kvp => kvp.Value);
+        }
     }
 }

@@ -14,6 +14,7 @@ using iTextSharp.text;
 using iTextSharp.text.pdf;
 using System.Windows.Forms.DataVisualization.Charting;
 using System.Xml.Linq;
+using Servicios;
 
 namespace JIMM_Cinema
 {
@@ -21,13 +22,23 @@ namespace JIMM_Cinema
     {
         private readonly BLL_Dashboard _gestorDashboard;
         private readonly BLL_Producto _gestorProducto;
+        private readonly GeneradorPDF _generadorPDF;
+        private string tempPeliculasChart;
+        private string tempOcupacionChart;
+        private string tempMembresiasChart;
+        private string tempAnalisisIngresosChart;
         public Fr_Dashboard()
         {
             InitializeComponent();
             _gestorDashboard = new BLL_Dashboard();
             _gestorProducto = new BLL_Producto();
+            _generadorPDF = new GeneradorPDF();
             dtpFechaDesde.Value = DateTime.Today.AddMonths(-1);
             dtpFechaHasta.Value = DateTime.Today;
+            tempPeliculasChart = "tempPeliculasChart.png";
+            tempOcupacionChart = "tempOcupacionChart.png";
+            tempMembresiasChart = "tempMembresiasChart.png";
+            tempAnalisisIngresosChart = "tempAnalisisIngresosChart.png";
         }
 
         private void Fr_Dashboard_Load(object sender, EventArgs e)
@@ -39,6 +50,7 @@ namespace JIMM_Cinema
 
         private void ConfigurarGraficos()
         {
+            //Grafico de peliculas mas vistas
             chartPeliculas.Series.Clear();
             chartPeliculas.Palette = ChartColorPalette.BrightPastel;
             chartPeliculas.BackColor = Color.WhiteSmoke;
@@ -72,6 +84,7 @@ namespace JIMM_Cinema
             chartPeliculas.ChartAreas[0].AxisY.MinorGrid.Enabled = false;
             chartPeliculas.Legends[0].Enabled = false;
 
+            //Grafico de ocupacion de salas
             chartOcupacion.Series.Clear();
             chartOcupacion.Palette = ChartColorPalette.Excel;
             chartOcupacion.BackColor = Color.WhiteSmoke;
@@ -119,6 +132,46 @@ namespace JIMM_Cinema
             chartTotalMembresias.Legends[0].Font = new System.Drawing.Font("Segoe UI", 9);
             chartTotalMembresias.ChartAreas[0].Area3DStyle.Enable3D = true;
             chartTotalMembresias.ChartAreas[0].Area3DStyle.Inclination = 30;
+
+            //Grafico de analisis de ingresos
+            chartAnalisisIngresos.Series.Clear();
+            chartAnalisisIngresos.Palette = ChartColorPalette.Fire;
+            chartAnalisisIngresos.BackColor = Color.WhiteSmoke;
+            chartAnalisisIngresos.BorderlineColor = Color.LightGray;
+            chartAnalisisIngresos.BorderlineDashStyle = ChartDashStyle.Solid;
+            chartAnalisisIngresos.BorderlineWidth = 1;
+
+            var serieIngresos = new Series("Ingresos Diarios")
+            {
+                ChartType = SeriesChartType.Line,
+                BorderWidth = 3,
+                MarkerStyle = MarkerStyle.Circle,
+                MarkerSize = 8,
+                Font = new System.Drawing.Font("Segoe UI", 9, FontStyle.Bold),
+                Color = Color.Red
+            };
+            chartAnalisisIngresos.Series.Add(serieIngresos);
+
+            chartAnalisisIngresos.ChartAreas[0].BackColor = Color.White;
+            chartAnalisisIngresos.ChartAreas[0].BorderColor = Color.LightGray;
+            chartAnalisisIngresos.ChartAreas[0].BorderWidth = 1;
+            chartAnalisisIngresos.ChartAreas[0].AxisX.Title = "Fecha";
+            chartAnalisisIngresos.ChartAreas[0].AxisX.TitleFont = new System.Drawing.Font("Segoe UI", 8, FontStyle.Bold);
+            chartAnalisisIngresos.ChartAreas[0].AxisX.LabelStyle.Font = new System.Drawing.Font("Segoe UI", 6);
+            chartAnalisisIngresos.ChartAreas[0].AxisX.MajorGrid.Enabled = true;
+            chartAnalisisIngresos.ChartAreas[0].AxisX.MajorGrid.LineColor = Color.LightGray;
+            chartAnalisisIngresos.ChartAreas[0].AxisX.LabelStyle.Format = "dd/MM";
+            chartAnalisisIngresos.ChartAreas[0].AxisX.Interval = 1;
+            chartAnalisisIngresos.ChartAreas[0].AxisY.Title = "Ingresos ($)";
+            chartAnalisisIngresos.ChartAreas[0].AxisY.TitleFont = new System.Drawing.Font("Segoe UI", 8, FontStyle.Bold);
+            chartAnalisisIngresos.ChartAreas[0].AxisY.LabelStyle.Font = new System.Drawing.Font("Segoe UI", 8);
+            chartAnalisisIngresos.ChartAreas[0].AxisY.MajorGrid.LineColor = Color.LightGray;
+            chartAnalisisIngresos.ChartAreas[0].AxisY.LabelStyle.Format = "${0:N0}";
+            chartAnalisisIngresos.Legends[0].Docking = Docking.Bottom;
+
+            chartAnalisisIngresos.Titles.Clear();
+            var title = new Title("Tendencia de Ingresos", Docking.Top, new System.Drawing.Font("Segoe UI", 8, FontStyle.Bold), Color.Black);
+            chartAnalisisIngresos.Titles.Add(title);
         }
 
         private void CargarDatos()
@@ -132,8 +185,9 @@ namespace JIMM_Cinema
                 lblNuevasMembresias.Text = datosGenerales.ContainsKey("NuevasMembresias") ?
                     datosGenerales["NuevasMembresias"].ToString() : "0";
                 lblTotalRecaudado.Text = datosGenerales.ContainsKey("VentasPeriodo") ?
-                    $"${Convert.ToDecimal(datosGenerales["VentasPeriodo"]):N2}" : "$0.00";
+                    $"${Convert.ToDecimal(datosGenerales["VentasPeriodo"]):N0}" : "$0";
 
+                //Grafico de peliculas mas vistas
                 var datosPelicula = _gestorDashboard.ObtenerDatosPeliculas(dtpFechaDesde.Value, dtpFechaHasta.Value);
                 chartPeliculas.Series[0].Points.Clear();
                 if (datosPelicula.Count == 0)
@@ -159,6 +213,7 @@ namespace JIMM_Cinema
                     }
                 }
 
+                //Grafico de ocupacion de salas
                 var datosOcupacion = _gestorDashboard.ObtenerDatosOcupacion(dtpFechaDesde.Value, dtpFechaHasta.Value);
                 chartOcupacion.Series[0].Points.Clear();
 
@@ -192,9 +247,56 @@ namespace JIMM_Cinema
                     point.LegendText = item.Key;
                 }
 
+                //Grafico de analisis de ingresos
+                var tendenciaIngresos = _gestorDashboard.ObtenerIngresosDiarios(dtpFechaDesde.Value, dtpFechaHasta.Value);
+
+                chartAnalisisIngresos.Series[0].Points.Clear();
+
+                int diasDiferencia = (int)(dtpFechaHasta.Value - dtpFechaDesde.Value).TotalDays;
+                if(diasDiferencia > 14)
+                {
+                    chartAnalisisIngresos.ChartAreas[0].AxisX.Interval = Math.Max(1, diasDiferencia / 10);
+                }
+                else
+                {
+                    chartAnalisisIngresos.ChartAreas[0].AxisX.Interval = 1;
+                }
+
+                foreach (var item in tendenciaIngresos)
+                {
+                    int pointIndex = chartAnalisisIngresos.Series[0].Points.AddXY(item.Key, item.Value);
+                    var point = chartAnalisisIngresos.Series[0].Points[pointIndex];
+                    point.ToolTip = $"{item.Key:dd/MM}: ${item.Value:N2}";
+                }
+
+                var valores = tendenciaIngresos.Values.ToList();
+                if(valores.Any())
+                {
+                    decimal min = valores.Min();
+                    decimal max = valores.Max();
+                    decimal promedio = valores.Average();
+                    decimal total = valores.Sum();
+
+                    string estadisticas = $"Min: ${min:N0} | Max: ${max:N0} | Promedio: ${promedio:N0} | Total: ${total:N0}";
+
+                    //Agregamos un titulo con las estadisticas, y nos aseguramos que a medida que el grafico se actualiza, se actualicen las estadisticas
+                    if (chartAnalisisIngresos.Titles.Count < 2)
+                    {
+                        var estadisticasTitulo = new Title(estadisticas, Docking.Bottom, 
+                            new System.Drawing.Font("Segoe UI", 9, FontStyle.Bold), Color.Black);
+                        chartAnalisisIngresos.Titles.Add(estadisticasTitulo);
+                    }
+                    else
+                    {
+                        chartAnalisisIngresos.Titles[1].Text = estadisticas;
+                    }
+                }
+
+                //Utilizar el metodo Invalidate para que se actualicen los graficos
                 chartPeliculas.Invalidate();
                 chartOcupacion.Invalidate();
                 chartTotalMembresias.Invalidate();
+                chartAnalisisIngresos.Invalidate();
             }
             catch (Exception ex)
             {
@@ -240,131 +342,36 @@ namespace JIMM_Cinema
                 if(saveFileDialog.ShowDialog() == DialogResult.OK)
                 {
                     string filePath = saveFileDialog.FileName;
-                    ExportarPDF(filePath);
-                    MessageBox.Show("Reporte exportado correctamente", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    var datosGenerales = _gestorDashboard.ObtenerDatos(dtpFechaDesde.Value, dtpFechaHasta.Value);
+                    var datosPeliculas = _gestorDashboard.ObtenerDatosPeliculas(dtpFechaDesde.Value, dtpFechaHasta.Value);
+                    var datosOcupacion = _gestorDashboard.ObtenerDatosOcupacion(dtpFechaDesde.Value, dtpFechaHasta.Value);
+                    var datosMembresias = _gestorDashboard.ObtenerMembresiasActivasPorTipo();
+                    var productosLowStock = _gestorProducto.ConsultarConStockBajo();
+
+                    chartPeliculas.SaveImage(tempPeliculasChart, ChartImageFormat.Png);
+                    chartOcupacion.SaveImage(tempOcupacionChart, ChartImageFormat.Png);
+                    chartTotalMembresias.SaveImage(tempMembresiasChart, ChartImageFormat.Png);
+                    chartAnalisisIngresos.SaveImage(tempAnalisisIngresosChart, ChartImageFormat.Png);
+
+                    string pdfPath = _generadorPDF.GenerarReporteDashboard( datosGenerales, datosPeliculas, datosOcupacion, 
+                                    datosMembresias, productosLowStock, dtpFechaDesde.Value, dtpFechaHasta.Value, filePath);
+
+                    MessageBox.Show("Reporte exportado correctamente", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
+
+                try
+                {
+                    if (File.Exists(tempPeliculasChart)) File.Delete(tempPeliculasChart);
+                    if (File.Exists(tempOcupacionChart)) File.Delete(tempOcupacionChart);
+                    if (File.Exists(tempMembresiasChart)) File.Delete(tempMembresiasChart);
+                    if (File.Exists(tempAnalisisIngresosChart)) File.Delete(tempAnalisisIngresosChart);
+                }
+                catch { }
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Error al exportar PDF: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void ExportarPDF(string filePath)
-        {
-            string tempPeliculasChart = Path.GetTempFileName() + ".png";
-            string tempOcupacionChart = Path.GetTempFileName() + ".png";
-            string tempMembresiasChart = Path.GetTempFileName() + ".png";
-
-            try
-            {
-                Document doc = new Document(PageSize.A4);
-                PdfWriter writer = PdfWriter.GetInstance(doc, new FileStream(filePath, FileMode.Create));
-                doc.Open();
-
-                Paragraph title = new Paragraph("Reporte Dashboard", new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA,
-                    18, iTextSharp.text.Font.BOLD));
-                title.Alignment = Element.ALIGN_CENTER;
-                doc.Add(title);
-                doc.Add(new Paragraph(" "));
-
-                Paragraph periodo = new Paragraph($"Periodo desde: {dtpFechaDesde.Value:dd/MM/yyyy} - hasta: {dtpFechaHasta.Value:dd/MM/yyyy}",
-                    new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 12));
-                doc.Add(periodo);
-                doc.Add(new Paragraph(" "));
-
-                Paragraph resumen = new Paragraph("Resumen General", new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA,
-                    16, iTextSharp.text.Font.BOLD));
-                doc.Add(resumen);
-                doc.Add(new Paragraph(" "));
-
-                PdfPTable tablaResumen = new PdfPTable(2);
-                tablaResumen.WidthPercentage = 80;
-                tablaResumen.SetWidths(new float[] { 1, 1 });
-
-                tablaResumen.AddCell("Boletos Vendidos");
-                tablaResumen.AddCell(lblBoletosVendidos.Text);
-
-                tablaResumen.AddCell("Membresias Activas");
-                tablaResumen.AddCell(lblNuevasMembresias.Text);
-
-                tablaResumen.AddCell("Total Recaudado");
-                tablaResumen.AddCell(lblTotalRecaudado.Text);
-
-                doc.Add(tablaResumen);
-                doc.Add(new Paragraph(" "));
-
-                Paragraph graficos = new Paragraph("GRÁFICOS",
-                    new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 14, iTextSharp.text.Font.BOLD));
-                doc.Add(graficos);
-                doc.Add(new Paragraph(" "));
-
-                chartPeliculas.SaveImage(tempPeliculasChart, ChartImageFormat.Png);
-                chartOcupacion.SaveImage(tempOcupacionChart, ChartImageFormat.Png);
-                chartTotalMembresias.SaveImage(tempMembresiasChart, ChartImageFormat.Png);
-
-                doc.Add(new Paragraph("Películas más vistas - Cantidad de boletos vendidos",
-                    new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 12, iTextSharp.text.Font.BOLD)));
-                iTextSharp.text.Image imagenPeliculas = iTextSharp.text.Image.GetInstance(tempPeliculasChart);
-                imagenPeliculas.ScalePercent(75);
-                doc.Add(imagenPeliculas);
-                doc.Add(new Paragraph(" "));
-
-                doc.Add(new Paragraph("Porcentaje de ocupación de salas",
-                    new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 12, iTextSharp.text.Font.BOLD)));
-                iTextSharp.text.Image imagenOcupacion = iTextSharp.text.Image.GetInstance(tempOcupacionChart);
-                imagenOcupacion.ScalePercent(75);
-                doc.Add(imagenOcupacion);
-                doc.Add(new Paragraph(" "));
-
-                doc.Add(new Paragraph("Membresias activas por tipo", new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA,
-                                                                         12, iTextSharp.text.Font.BOLD)));
-                iTextSharp.text.Image imagenMembresias = iTextSharp.text.Image.GetInstance(tempMembresiasChart);
-                imagenMembresias.ScalePercent(75);
-                doc.Add(imagenMembresias);
-                doc.Add(new Paragraph(" "));
-
-                Paragraph productos = new Paragraph("PRODUCTOS CON BAJO STOCK",
-                    new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 14, iTextSharp.text.Font.BOLD));
-                doc.Add(productos);
-                doc.Add(new Paragraph(" "));
-
-                PdfPTable tablaProductos = new PdfPTable(3);
-                tablaProductos.WidthPercentage = 100;
-                tablaProductos.SetWidths(new float[] { 2, 4, 1 });
-
-                tablaProductos.AddCell(new PdfPCell(new Phrase("Nombre", new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 12, iTextSharp.text.Font.BOLD))));
-                tablaProductos.AddCell(new PdfPCell(new Phrase("Descripción", new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 12, iTextSharp.text.Font.BOLD))));
-                tablaProductos.AddCell(new PdfPCell(new Phrase("Stock", new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 12, iTextSharp.text.Font.BOLD))));
-
-                var productosLowStock = _gestorProducto.ConsultarConStockBajo();
-                foreach (var producto in productosLowStock)
-                {
-                    tablaProductos.AddCell(producto.NombreProducto);
-                    tablaProductos.AddCell(producto.DescripcionProducto);
-                    tablaProductos.AddCell(producto.Stock.ToString());
-                }
-
-                doc.Add(tablaProductos);
-
-                doc.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error al generar el PDF: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                try
-                {
-                    if (File.Exists(tempPeliculasChart))
-                        File.Delete(tempPeliculasChart);
-                    if (File.Exists(tempOcupacionChart))
-                        File.Delete(tempOcupacionChart);
-                    if (File.Exists(tempMembresiasChart))
-                        File.Delete(tempMembresiasChart);
-                }
-                catch { }
             }
         }
 

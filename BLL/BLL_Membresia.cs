@@ -39,7 +39,6 @@ namespace BLL
                 if (membresia.ID == 0)
                 {
                     membresia.FechaInicio = DateTime.Today;
-                    membresia.FechaFin = DateTime.Today.AddMonths(1);
                     membresia.EstaActiva = true;
                     _mapperMembresia.Alta(membresia);
                 }
