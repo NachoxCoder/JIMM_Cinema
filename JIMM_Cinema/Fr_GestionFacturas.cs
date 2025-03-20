@@ -119,7 +119,6 @@ namespace UI
                     facturaEnOrden.FechaEmision = dtpFechaFactura.Value;
                     _gestorOrdenCompra.Modificar(ordenCompraSeleccionada);
                 }
-                //gestorBitacora.Log(usuarioActual, $"Factura: {facturaSeleccionada.NumeroFactura} modificada");
                 MessageBox.Show("Factura modificada con éxito", "Factura", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 ordenCompraSeleccionada = _gestorOrdenCompra.ConsultarPorID(ordenCompraSeleccionada.ID);
                 RefrescarGrilla(dgvFacturas, ordenCompraSeleccionada.Facturas);
@@ -309,15 +308,6 @@ namespace UI
                 Name = "Fecha"
             });
 
-            //Columna personalizada para mostrar los productos y sus cantidades
-            var productosColumn = new DataGridViewTextBoxColumn
-            {
-                HeaderText = "Productos",
-                Name = "Productos"
-            };
-            productosColumn.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
-            dgvOrdenesCompra.Columns.Add(productosColumn);
-
             //Columna para mostrar el monto de la Orden de Compra
             dgvOrdenesCompra.Columns.Add(new DataGridViewTextBoxColumn
             {
@@ -325,22 +315,6 @@ namespace UI
                 HeaderText = "Total",
                 Name = "Total"
             });
-
-            //Formato personalizado para la columna Productos
-            dgvOrdenesCompra.CellFormatting += (sender, e) =>
-            {
-                if (e.ColumnIndex == dgvOrdenesCompra.Columns["Productos"].Index)
-                {
-                    if (e.Value is BE_OrdenCompra ordenCompra)
-                    {
-                        var productosDetalle = string.Join("\n",
-                            ordenCompra.Items.Select(item =>
-                                $"{item.Producto.NombreProducto} (x{item.Cantidad})"));
-                        e.Value = productosDetalle;
-                        e.CellStyle.WrapMode = DataGridViewTriState.True;
-                    }
-                }
-            };
         }
     }
 }

@@ -64,6 +64,8 @@ namespace UI
                 {
                     //Inicia Sesion
                     Hide();
+                    txtPassword.Clear();
+                    txtUsername.Clear();
                     new Fr_MenuPrincipal(usuarioExistente, this).Show();
                 }
                 //Si no es correcta la contraseña

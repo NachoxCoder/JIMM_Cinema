@@ -239,6 +239,7 @@ namespace Gestion_Cine
             this.Name = "Fr_MenuPrincipal";
             this.Text = "Fr_MenuPrincipal";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Fr_MenuPrincipal_FormClosing);
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
             this.ResumeLayout(false);

@@ -252,9 +252,14 @@ namespace JIMM_Cinema
 
                 chartAnalisisIngresos.Series[0].Points.Clear();
 
+                //Declaramos una variable para almacenar la cantidad de dias de diferencia entre las fechas
                 int diasDiferencia = (int)(dtpFechaHasta.Value - dtpFechaDesde.Value).TotalDays;
-                if(diasDiferencia > 14)
+
+                //Establecer el intervalo del eje X en base a la cantidad de dias de diferencia entre las fechas
+                //Si la diferencia es mayor a 14 dias, establecemos un intervalo de 10 dias, sino, intervalo de 1 dia
+                if (diasDiferencia > 14)
                 {
+                    //Si el rango de fechas es de 30 días (diasDiferencia = 30), el intervalo del eje X será 30 / 10 = 3 días.
                     chartAnalisisIngresos.ChartAreas[0].AxisX.Interval = Math.Max(1, diasDiferencia / 10);
                 }
                 else
@@ -262,13 +267,16 @@ namespace JIMM_Cinema
                     chartAnalisisIngresos.ChartAreas[0].AxisX.Interval = 1;
                 }
 
+                //Recorremos el diccionario de tendencia de ingresos y agregamos los puntos al grafico
                 foreach (var item in tendenciaIngresos)
                 {
+                    //Por cada item en el diccionario agregamos un punto al grafico con la fecha y el monto de ingresos
                     int pointIndex = chartAnalisisIngresos.Series[0].Points.AddXY(item.Key, item.Value);
                     var point = chartAnalisisIngresos.Series[0].Points[pointIndex];
                     point.ToolTip = $"{item.Key:dd/MM}: ${item.Value:N2}";
                 }
 
+                //Si hay valores en la tendencia de ingresos, calculamos estadisticas(Min,Max, Promedio, Total)
                 var valores = tendenciaIngresos.Values.ToList();
                 if(valores.Any())
                 {
@@ -277,9 +285,11 @@ namespace JIMM_Cinema
                     decimal promedio = valores.Average();
                     decimal total = valores.Sum();
 
+                    //Almacenamos las estadisticas en un string
                     string estadisticas = $"Min: ${min:N0} | Max: ${max:N0} | Promedio: ${promedio:N0} | Total: ${total:N0}";
 
-                    //Agregamos un titulo con las estadisticas, y nos aseguramos que a medida que el grafico se actualiza, se actualicen las estadisticas
+                    //Agregamos un titulo con las estadisticas, y nos aseguramos que a medida que el grafico se actualiza, se actualice el Titulo
+                    //Para ello revisamos si el grafico tiene 2 titulos, si es asi, actualizamos el segundo titulo, sino, lo creamos
                     if (chartAnalisisIngresos.Titles.Count < 2)
                     {
                         var estadisticasTitulo = new Title(estadisticas, Docking.Bottom, 
@@ -292,7 +302,7 @@ namespace JIMM_Cinema
                     }
                 }
 
-                //Utilizar el metodo Invalidate para que se actualicen los graficos
+                //Utilizamos el metodo Invalidate para que se actualicen los graficos cada vez que el usuario cambie la fecha
                 chartPeliculas.Invalidate();
                 chartOcupacion.Invalidate();
                 chartTotalMembresias.Invalidate();
@@ -329,6 +339,7 @@ namespace JIMM_Cinema
             CargarDatos();
         }
 
+        //Metodo para exportar el reporte a PDF
         private void btnDescargarPDF_Click(object sender, EventArgs e)
         {
             try

@@ -194,5 +194,10 @@ namespace Gestion_Cine
         {
             Application.Exit();
         }
+
+        private void Fr_MenuPrincipal_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            frLogin.Show();
+        }
     }
 }
