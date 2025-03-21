@@ -110,6 +110,7 @@ namespace JIMM_Cinema
             chartOcupacion.ChartAreas[0].Area3DStyle.Inclination = 30;
             chartOcupacion.ChartAreas[0].Area3DStyle.LightStyle = LightStyle.Realistic;
 
+            //Grafico de membresias activas
             chartTotalMembresias.Series.Clear();
             chartTotalMembresias.Palette = ChartColorPalette.Berry;
             chartTotalMembresias.BackColor = Color.WhiteSmoke;

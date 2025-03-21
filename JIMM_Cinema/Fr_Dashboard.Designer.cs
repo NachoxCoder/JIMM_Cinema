@@ -110,7 +110,7 @@
             this.groupBox1.Controls.Add(this.chartOcupacion);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1766, 486);
+            this.groupBox1.Size = new System.Drawing.Size(1803, 486);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Fecha Reporte";
@@ -118,7 +118,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(1084, 90);
+            this.label8.Location = new System.Drawing.Point(1093, 90);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(128, 16);
             this.label8.TabIndex = 21;
@@ -130,13 +130,13 @@
             this.chartAnalisisIngresos.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
             this.chartAnalisisIngresos.Legends.Add(legend1);
-            this.chartAnalisisIngresos.Location = new System.Drawing.Point(1087, 117);
+            this.chartAnalisisIngresos.Location = new System.Drawing.Point(1096, 117);
             this.chartAnalisisIngresos.Name = "chartAnalisisIngresos";
             series1.ChartArea = "ChartArea1";
             series1.Legend = "Legend1";
             series1.Name = "Series1";
             this.chartAnalisisIngresos.Series.Add(series1);
-            this.chartAnalisisIngresos.Size = new System.Drawing.Size(673, 349);
+            this.chartAnalisisIngresos.Size = new System.Drawing.Size(699, 349);
             this.chartAnalisisIngresos.TabIndex = 20;
             this.chartAnalisisIngresos.Text = "chartAnalisisIngresos";
             // 
@@ -330,7 +330,7 @@
             this.chartOcupacion.ChartAreas.Add(chartArea3);
             legend3.Name = "Legend1";
             this.chartOcupacion.Legends.Add(legend3);
-            this.chartOcupacion.Location = new System.Drawing.Point(706, 117);
+            this.chartOcupacion.Location = new System.Drawing.Point(710, 117);
             this.chartOcupacion.Name = "chartOcupacion";
             series3.ChartArea = "ChartArea1";
             series3.Legend = "Legend1";
@@ -362,7 +362,7 @@
             this.dgvProductosLowStock.RowHeadersWidth = 51;
             this.dgvProductosLowStock.RowTemplate.Height = 24;
             this.dgvProductosLowStock.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvProductosLowStock.Size = new System.Drawing.Size(593, 237);
+            this.dgvProductosLowStock.Size = new System.Drawing.Size(812, 281);
             this.dgvProductosLowStock.TabIndex = 13;
             // 
             // label11
@@ -377,7 +377,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(633, 507);
+            this.label6.Location = new System.Drawing.Point(994, 507);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(163, 16);
             this.label6.TabIndex = 16;
@@ -389,13 +389,13 @@
             this.chartTotalMembresias.ChartAreas.Add(chartArea4);
             legend4.Name = "Legend1";
             this.chartTotalMembresias.Legends.Add(legend4);
-            this.chartTotalMembresias.Location = new System.Drawing.Point(636, 526);
+            this.chartTotalMembresias.Location = new System.Drawing.Point(997, 526);
             this.chartTotalMembresias.Name = "chartTotalMembresias";
             series4.ChartArea = "ChartArea1";
             series4.Legend = "Legend1";
             series4.Name = "Series1";
             this.chartTotalMembresias.Series.Add(series4);
-            this.chartTotalMembresias.Size = new System.Drawing.Size(509, 237);
+            this.chartTotalMembresias.Size = new System.Drawing.Size(606, 281);
             this.chartTotalMembresias.TabIndex = 17;
             this.chartTotalMembresias.Text = "chartTotalMembresias";
             // 
@@ -403,7 +403,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1790, 775);
+            this.ClientSize = new System.Drawing.Size(1827, 845);
             this.Controls.Add(this.chartTotalMembresias);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.groupBox1);
@@ -411,6 +411,7 @@
             this.Controls.Add(this.dgvProductosLowStock);
             this.Name = "Fr_Dashboard";
             this.Text = " ";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Fr_Dashboard_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

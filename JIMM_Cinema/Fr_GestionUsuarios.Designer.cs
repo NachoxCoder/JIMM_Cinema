@@ -96,7 +96,7 @@ namespace UI
             this.grpDatos.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.grpDatos.Name = "grpDatos";
             this.grpDatos.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.grpDatos.Size = new System.Drawing.Size(417, 240);
+            this.grpDatos.Size = new System.Drawing.Size(432, 240);
             this.grpDatos.TabIndex = 1;
             this.grpDatos.TabStop = false;
             this.grpDatos.Text = "Datos del Usuario";
@@ -137,10 +137,10 @@ namespace UI
             // btnMostrarPassword
             // 
             this.btnMostrarPassword.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMostrarPassword.Location = new System.Drawing.Point(385, 56);
+            this.btnMostrarPassword.Location = new System.Drawing.Point(386, 52);
             this.btnMostrarPassword.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnMostrarPassword.Name = "btnMostrarPassword";
-            this.btnMostrarPassword.Size = new System.Drawing.Size(30, 22);
+            this.btnMostrarPassword.Size = new System.Drawing.Size(39, 28);
             this.btnMostrarPassword.TabIndex = 4;
             this.btnMostrarPassword.Text = "👁";
             this.btnMostrarPassword.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnMostrarPassword_MouseDown);

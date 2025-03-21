@@ -29,6 +29,7 @@ namespace JIMM_Cinema
             BE_Usuario usuarioAdmin = new BE_Usuario();
             usuarioAdmin.ID = 1;
             usuarioAdmin.Username = "admin";
+            usuarioAdmin.Nombre = "Administrador";
             usuarioAdmin.Password = Encriptacion.EncriptarPassword("admin");
             usuarioAdmin.listaPermisos.AddRange(permisos);
 
